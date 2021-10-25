@@ -17,15 +17,7 @@ module.exports = {
             {text: 'Home', link: '/'},
             {text: 'TimeLine', link: '/timeline/', icon: 'reco-date'},
             {text: 'External', link: 'https://google.com', target: '_self', rel: ''},
-            {text: 'Guide', link: '/guide/', target: '_blank'},
-            {
-                text: 'Languages',
-                ariaLabel: 'Language Menu',
-                items: [
-                    {text: 'Chinese', link: '/language/chinese/'},
-                    {text: 'Japanese', link: '/language/japanese/'}
-                ]
-            }
+            {text: 'Guide', link: '/guide/', target: '_blank'}
         ],
         sidebar: 'auto',
         subSidebar: 'auto',

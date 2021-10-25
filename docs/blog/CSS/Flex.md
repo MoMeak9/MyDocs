@@ -1,4 +1,16 @@
-> 本文总结自两篇非常不错的Flex布局讲解文章，希望可以帮到你。
+---
+title: Flex布局
+date: 2021-04-24
+author: MoMeaks
+sidebar: 'auto'
+categories:
+- fontEnd
+- blog
+tags:
+- CSS
+---
+
+ > 本文总结自两篇非常不错的Flex布局讲解文章，希望可以帮到你。
 
 ## 简介
 

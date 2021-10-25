@@ -1,3 +1,16 @@
+---
+title: Http问题集
+date: 2021-06-28
+author: MoMeaks
+sidebar: 'auto'
+categories:
+- fontEnd
+- wiki
+- intern
+tags:
+- Internet
+---
+
 #### **介绍chrome 浏览器的几个版本**
 
 1）Chrome 浏览器提供 4 种发布版本，即稳定版(Stable)、测试版(Beta)、开发者版(Dev)和金丝雀版(Canary)。
