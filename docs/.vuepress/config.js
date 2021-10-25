@@ -8,7 +8,6 @@ module.exports = {
         ]
     ],
     title: "Yihui's docs",
-    theme: 'reco',
     description: '文档管理站点',
     plugins: ['@vuepress/back-to-top'],
     theme: 'reco',

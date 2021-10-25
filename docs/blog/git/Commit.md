@@ -2,6 +2,7 @@
 title: CommitMessage的Git格式规范
 date: 2021-04-24
 author: MoMeaks
+sidebar: 'auto'
 categories:
 - git
 tags:

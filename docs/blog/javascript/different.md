@@ -1,15 +1,13 @@
 ---
 title: js中==与===的区别
-date: 2021-03-28
+date: 2021-04-26
+author: MoMeaks
+sidebar: 'auto'
 categories:
-- frontEnd
+- fontEnd
 tags:
-- vue
+- js
 ---
-
-::: tip
-This is a tip
-:::
 
 ## 介绍
 
