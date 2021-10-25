@@ -6,7 +6,8 @@
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.8.2",
     "@vuepress/plugin-blog": "^1.9.4",
-    "vuepress": "^1.8.2"
+    "vuepress": "^1.8.2",
+    "vuepress-plugin-dynamic-title": "^1.0.0"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",

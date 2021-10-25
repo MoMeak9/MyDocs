@@ -5,11 +5,36 @@ module.exports = {
         [
             'link', // 设置 favicon.ico，注意图片放在 public 文件夹下
             {rel: 'icon', href: 'logo.png'}
-        ]
+        ],
+        // 移动栏优化
+        ['meta', {name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no'}],
+        // 引入jquery
+        ["script", {
+            "language": "javascript",
+            "type": "text/javascript",
+            "src": "https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"
+        }],
+        // 引入鼠标点击脚本
+        ["script", {
+            "language": "javascript",
+            "type": "text/javascript",
+            "src": "/js/MouseClickEffect.js"
+        }]
     ],
     title: "Yihui's docs",
     description: '个人文档管理站点',
-    plugins: ['@vuepress/back-to-top'],
+    plugins: ['@vuepress/back-to-top',
+        [
+            "dynamic-title",
+            {
+                showIcon: "/favicon.ico",
+                showText: "(/≧▽≦/)咦！又好了！",
+                hideIcon: "/failure.ico",
+                hideText: "(●—●)喔哟，崩溃啦！",
+                recoverTime: 2000
+            }
+        ]
+    ],
     theme: 'reco',
     themeConfig: {
         logo: 'https://doc.yihuiblog.top/logo.png',
@@ -22,6 +47,7 @@ module.exports = {
         sidebar: 'auto',
         subSidebar: 'auto',
         noFoundPageByTencent: false,
+        lastUpdated: 'Last Updated',
         // 博客配置
         blogConfig: {
             category: {

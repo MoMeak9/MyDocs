@@ -10,6 +10,6 @@ inputs:
     error: index.html
   region: ap-guangzhou
   bucketName: my-bucket-3kvq4z8
-  protocol: http
+  protocol: https
   isAutoCiDeploy: false
   replace: false
