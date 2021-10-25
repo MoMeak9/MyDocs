@@ -1,3 +1,13 @@
+---
+title: CommitMessage的Git格式规范
+date: 2021-04-24
+author: MoMeaks
+categories:
+- git
+tags:
+- git
+---
+
 每次提交，Commit message 都包括三个部分：Header，Body 和 Footer。
 
 ```bash
