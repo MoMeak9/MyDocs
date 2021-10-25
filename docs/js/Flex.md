@@ -1,8 +1,16 @@
-> 本文总结自两篇非常不错的Flex布局讲解文章，希望可以帮到你。
+---
+title: Flex 布局
+date: 2021-03-28
+categories:
+- frontEnd
+tags:
+- vue
+---
 
 ## 简介
 
-弹性盒子是 CSS3 的一种新的布局模式。CSS3 弹性盒（ Flexible Box 或 flexbox），是一种当页面需要适应不同的屏幕大小以及设备类型时确保元素拥有恰当的行为的布局方式。引入弹性盒布局模型的目的是提供一种更加有效的方式来对一个容器中的子元素进行排列、对齐和分配空白空间。
+弹性盒子是 CSS3 的一种新的布局模式。CSS3 弹性盒（ Flexible Box 或
+flexbox），是一种当页面需要适应不同的屏幕大小以及设备类型时确保元素拥有恰当的行为的布局方式。引入弹性盒布局模型的目的是提供一种更加有效的方式来对一个容器中的子元素进行排列、对齐和分配空白空间。
 
 弹性盒子由弹性容器(Flex container)和弹性子元素(Flex item)组成。弹性容器通过设置 display 属性的值为 flex 或 inline-flex将其定义为弹性容器。弹性容器内包含了一个或多个弹性子元素。
 
@@ -24,7 +32,8 @@ Flex适用于较高版本浏览器，如果是想要兼容较底版本，则推�
 
 ```css
 .container {
-    display: flex | inline-flex;       //可以有两种取值
+    display: flex | inline-flex;
+/ / 可以有两种取值
 }
 ```
 
@@ -35,12 +44,23 @@ Flex适用于较高版本浏览器，如果是想要兼容较底版本，则推�
 有下面六种属性可以设置在容器上，它们分别是：
 
 ```css
-1. flex-direction
-2. flex-wrap
-3. flex-flow
-4. justify-content
-5. align-items
-6. align-content
+1
+. flex-direction
+
+2
+. flex-wrap
+
+3
+. flex-flow
+
+4
+. justify-content
+
+5
+. align-items
+
+6
+. align-content
 ```
 
 ### 1. flex-direction: 决定主轴的方向(即项目的排列方向)
@@ -87,7 +107,7 @@ Flex适用于较高版本浏览器，如果是想要兼容较底版本，则推�
 
 ```css
 .container {
-    flex-flow: <flex-direction> || <flex-wrap>;
+    flex-flow: < flex-direction > | | < flex-wrap >;
 }
 ```
 
@@ -216,7 +236,7 @@ PS:非常好用，类似自动化编排
 
 ```css
 .item {
-    order: <integer>;
+    order: < integer >;
 }
 ```
 
@@ -228,7 +248,7 @@ PS:非常好用，类似自动化编排
 
 ```css
 .item {
-    flex-basis: <length> | auto;
+    flex-basis: < length > | auto;
 }
 ```
 
@@ -243,7 +263,7 @@ PS:非常好用，类似自动化编排
 
 ```css
 .item {
-    flex-grow: <number>;
+    flex-grow: < number >;
 }
 ```
 
@@ -263,7 +283,7 @@ PS:非常好用，类似自动化编排
 
 ```css
 .item {
-    flex-shrink: <number>;
+    flex-shrink: < number >;
 }
 ```
 
@@ -280,7 +300,7 @@ PS:非常好用，类似自动化编排
 ### **5. flex: flex-grow, flex-shrink 和 flex-basis的简写**
 
 ```css
-.item{
+.item {
     flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
 } 
 ```
@@ -292,7 +312,10 @@ flex 的默认值是以上三个属性值的组合。假设以上三个属性同
 - 当 flex 取值为一个非负数字，则该数字为 flex-grow 值，flex-shrink 取 1，flex-basis 取 0%，如下是等同的：
 
 ```css
-.item {flex: 1;}
+.item {
+    flex: 1;
+}
+
 .item {
     flex-grow: 1;
     flex-shrink: 1;
@@ -303,7 +326,10 @@ flex 的默认值是以上三个属性值的组合。假设以上三个属性同
 - 当 flex 取值为 0 时，对应的三个值分别为 0 1 0%
 
 ```css
-.item {flex: 0;}
+.item {
+    flex: 0;
+}
+
 .item {
     flex-grow: 0;
     flex-shrink: 1;
@@ -314,14 +340,20 @@ flex 的默认值是以上三个属性值的组合。假设以上三个属性同
 - 当 flex 取值为一个长度或百分比，则视为 flex-basis 值，flex-grow 取 1，flex-shrink 取 1，有如下等同情况（注意 0% 是一个百分比而不是一个非负数字）
 
 ```css
-.item-1 {flex: 0%;}
+.item-1 {
+    flex: 0%;
+}
+
 .item-1 {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 0%;
 }
 
-.item-2 {flex: 24px;}
+.item-2 {
+    flex: 24px;
+}
+
 .item-2 {
     flex-grow: 1;
     flex-shrink: 1;
@@ -332,7 +364,10 @@ flex 的默认值是以上三个属性值的组合。假设以上三个属性同
 - 当 flex 取值为两个非负数字，则分别视为 flex-grow 和 flex-shrink 的值，flex-basis 取 0%，如下是等同的：
 
 ```css
-.item {flex: 2 3;}
+.item {
+    flex: 2 3;
+}
+
 .item {
     flex-grow: 2;
     flex-shrink: 3;
@@ -343,7 +378,10 @@ flex 的默认值是以上三个属性值的组合。假设以上三个属性同
 - 当 flex 取值为一个非负数字和一个长度或百分比，则分别视为 flex-grow 和 flex-basis 的值，flex-shrink 取 1，如下是等同的：
 
 ```css
-.item {flex: 11 32px;}
+.item {
+    flex: 11 32px;
+}
+
 .item {
     flex-grow: 11;
     flex-shrink: 1;
