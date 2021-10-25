@@ -4,20 +4,20 @@ module.exports = {
     head: [
         [
             'link', // 设置 favicon.ico，注意图片放在 public 文件夹下
-            {rel: 'icon', href: 'img.png'}
+            {rel: 'icon', href: 'logo.png'}
         ]
     ],
     title: "Yihui's docs",
-    description: '文档管理站点',
+    description: '个人文档管理站点',
     plugins: ['@vuepress/back-to-top'],
     theme: 'reco',
     themeConfig: {
-        logo: 'img.png',
+        logo: 'https://doc.yihuiblog.top/logo.png',
         nav: [
             {text: 'Home', link: '/'},
             {text: 'TimeLine', link: '/timeline/', icon: 'reco-date'},
-            {text: 'External', link: 'https://google.com', target: '_self', rel: ''},
-            {text: 'Guide', link: '/guide/', target: '_blank'}
+            {text: 'Github', link: 'https://github.com/MoMeak9', target: '_self', rel: ''},
+            {text: 'About', link: '/about/', target: '_blank'}
         ],
         sidebar: 'auto',
         subSidebar: 'auto',

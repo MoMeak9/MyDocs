@@ -1,5 +1,5 @@
 ---
-title: JS问题集
+title: NodeJS问题集
 date: 2021-07-28
 author: MoMeaks
 sidebar: 'auto'
@@ -7,7 +7,7 @@ categories:
 - fontEnd
 - wiki
 - intern
-  tags:
+tags:
 - NodeJS
 ---
 

@@ -1,11 +1,11 @@
 ---
-subSidebar: false
+subSidebar: false 
 sidebar: false
 ---
 
 正在向着全栈进发的小白
 
-I am a college student in China 🏫, like to pay attention to current affairs hot spots 🆕, Bilibili users 📺. 
+I am a college student in China 🏫, like to pay attention to current affairs hot spots 🆕, Bilibili users 📺.
 
 - 🏫I'm studying in Fuzhou University/Maynooth University
 
@@ -15,21 +15,25 @@ I am a college student in China 🏫, like to pay attention to current affairs h
   ![](https://img.shields.io/badge/IntelliJ-IDEA-000000?style=flat-square&logo=IntelliJ-IDEA&logoColor=ffffff)
   ![](https://img.shields.io/badge/WebStorm-001010?style=flat-square&logo=WebStorm&logoColor=ffffff)
   ![](https://img.shields.io/badge/Eclipse-IDE-2C2255?style=flat-square&logo=Eclipse-IDE&logoColor=ffffff)
-  
+
 - 💻Work using language:
   ![](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=ffffff)
   ![](https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=ffffff)
   ![](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=ffffff)
   ![](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=ffffff)
   ![](https://img.shields.io/badge/SCSS-CC6699?style=flat-square&logo=SASS&logoColor=ffffff)
-  
+
 - 🖥️Using tools:
   ![](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=Node.js&logoColor=ffffff)
   ![](https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=Vue.js&logoColor=ffffff)
   ![](https://img.shields.io/badge/Webpack-8DD6F9?style=flat-square&logo=Webpack&logoColor=ffffff)
   ![](https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=ESLint&logoColor=ffffff)
-  
+
 - 🍳Learning:
+
+### 在校履历
+
+### 实习经历
 
 ### 技术栈
 

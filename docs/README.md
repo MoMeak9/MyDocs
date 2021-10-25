@@ -1,13 +1,13 @@
 ---
 home: true
-heroImage: /img.png
+heroImage: /logo.png
 heroText: Yihui's docs
 tagline: 我的个人文档库
 actionText: 关于我 →
 actionLink: /blog/about/
 features:
 - title: 个人博客文章
-  details: 收入了部分个人博客文章和总结。
+  details: 收录了部分个人博客文章和技术总结。
 - title: wiki
   details: 个人知识管理库，包含了前端，Python，计算机课程等等
 - title: 项目文档
