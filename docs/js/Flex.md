@@ -7,6 +7,10 @@ tags:
 - vue
 ---
 
+::: tip
+This is a tip
+:::
+
 ## 简介
 
 弹性盒子是 CSS3 的一种新的布局模式。CSS3 弹性盒（ Flexible Box 或

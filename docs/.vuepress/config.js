@@ -1,12 +1,17 @@
 // .vuepress/config.js
 
 module.exports = {
+    head: [
+        [
+            'link', // 设置 favicon.ico，注意图片放在 public 文件夹下
+            {rel: 'icon', href: 'img.png'}
+        ]
+    ],
     title: "Yihui's docs",
     theme: 'reco',
     description: '文档管理站点',
     plugins: ['@vuepress/back-to-top'],
     theme: 'reco',
-    sidebar: 'auto',
     themeConfig: {
         logo: 'img.png',
         nav: [
@@ -23,6 +28,8 @@ module.exports = {
                 ]
             }
         ],
+        sidebar: 'auto',
+        subSidebar: 'auto',
         noFoundPageByTencent: false,
         // 博客配置
         blogConfig: {

@@ -1,3 +1,8 @@
+---
+subSidebar: false
+sidebar: false
+---
+
 # Hey, MoMeak9 here! 🎃 ![](https://visitor-badge.glitch.me/badge?page_id=MoMeak9.readme)
 正在向着全栈进发的小白
 
