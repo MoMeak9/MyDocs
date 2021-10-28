@@ -12,18 +12,17 @@ tags:
 
 ### 01 行列式
 
+![img](https://oimagec8.ydstatic.com/image?id=1535394715121524895&product=xue&format=JPEG&_w=1285&_h=2003)
 
-![img](https://oimageb7.ydstatic.com/image?id=2041760269201654643&product=xue&format=JPEG&_w=1217&_h=2312)
+![img](https://oimagea4.ydstatic.com/image?id=8161508668712368819&product=xue&format=JPEG&_w=1285&_h=1972)
 
-![img](https://oimagea6.ydstatic.com/image?id=4857603125806763518&product=xue&format=JPEG&_w=1217&_h=2368)
+![img](https://oimageb3.ydstatic.com/image?id=-4555084449229367035&product=xue&format=JPEG&_w=1285&_h=2060)
 
-![img](https://oimageb5.ydstatic.com/image?id=-7438112943610541927&product=xue&format=JPEG&_w=1217&_h=2500)
+![img](https://oimagea7.ydstatic.com/image?id=1222515721496206642&product=xue&format=JPEG&_w=1285&_h=2320)
 
-![img](https://oimagec6.ydstatic.com/image?id=2219900862748300944&product=xue&format=JPEG&_w=1217&_h=2480)
+![img](https://oimagea6.ydstatic.com/image?id=1030306012673492407&product=xue&format=JPEG&_w=1285&_h=2280)
 
-![img](https://oimageb3.ydstatic.com/image?id=4558711183895923539&product=xue&format=JPEG&_w=1217&_h=2408)
-
-![img](https://oimageb3.ydstatic.com/image?id=-5471711698401570450&product=xue&format=JPEG&_w=1217&_h=2120)
+![img](https://oimageb8.ydstatic.com/image?id=1975964843907117282&product=xue&format=JPEG&_w=1285&_h=2811)
 
 ### 02 矩阵及其计算
 
