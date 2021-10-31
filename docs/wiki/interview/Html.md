@@ -12,6 +12,7 @@ tags:
 ---
 
 [来源](https://github.com/haizlin/fe-interview/blob/master/category/html.md)
+[H5和微信小程序区别](https://juejin.cn/post/6844903577454936077)
 
 1. 第1天 页面导入样式时，使用link和@import有什么区别？
 
