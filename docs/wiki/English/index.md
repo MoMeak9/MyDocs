@@ -1,14 +1,3 @@
----
-title:英语学习
-date:2021-11-01
-author:MoMeaks
-sidebar:'auto'
-categories:
--大学课程
--wiki
-tags:
--English
----
 
 ## 阅读方法论
 
