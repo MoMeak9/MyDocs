@@ -24,12 +24,11 @@ tags:
 
 ### module.exports
 
-```
+```js
 // 通过如下模块包装得到
 (funciton (exports, require, module, __filename, __dirname) { // 包装头
 
 }); // 包装尾
-复制代码
 ```
 
 ### JSON 文件
@@ -46,11 +45,10 @@ tags:
 
 ### 执行时
 
-```
+```js
 (funciton(exports, require, module, __filename, __dirname) { // 包装头
   console.log('hello world!') // 原始文件
 }); // 包装尾
-复制代码
 ```
 
 ### exports
@@ -62,7 +60,7 @@ tags:
 
 ### 使用
 
-```
+```js
 // module-2.js
 exports.method = function() {
   return 'Hello';
@@ -76,17 +74,15 @@ exports.method2 = function() {
 const module2 = require('./module-2');
 console.log(module2.method()); // Hello
 console.log(module2.method2()); // Hello again
-复制代码
 ```
 
 ## 路径变量
 
-```
+```js
 console.log('__dirname:', __dirname); // 文件夹
 console.log('__filename:', __filename); // 文件
 
 path.join(__dirname, 'views', 'view.html'); // 如果不希望自己手动处理 / 的问题，使用 path.join
-复制代码
 ```
 
 ## console
@@ -101,23 +97,21 @@ path.join(__dirname, 'views', 'view.html'); // 如果不希望自己手动处理
 
 ### 查看 PATH
 
-```
+```js
 node
 
 console.log(process.env.PATH.split(':').join('\n'));
-复制代码
 ```
 
 ### 设置 PATH
 
-```
+```js
 process.env.PATH += ':/a_new_path_to_executables';
-复制代码
 ```
 
 ### 获取信息
 
-```
+```js
 // 获取平台信息
 process.arch // x64
 process.platform // darwin
@@ -132,9 +126,9 @@ process.argv
 
 ### nextTick
 
-process.nextTick 方法允许你把一个回调放在下一次时间轮询队列的头上，这意味着可以用来延迟执行，结果是比 setTimeout 更有效率。
+process.nextTick 方法允许你把一个回调放在下一次事件轮询队列的头上，这意味着可以用来延迟执行，**结果是比 setTimeout 更有效率。**
 
-```
+```js
 const EventEmitter = require('events').EventEmitter;
 
 function complexOperations() {
@@ -150,7 +144,6 @@ function complexOperations() {
 complexOperations().on('success', function () {
   console.log('success!');
 });
-复制代码
 ```
 
 # Buffer
@@ -163,7 +156,7 @@ complexOperations().on('success', function () {
 
 ## data URI
 
-```
+```js
 // 生成 data URI
 const fs = require('fs');
 const mime = 'image/png';
@@ -178,12 +171,11 @@ const uri = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgA...';
 const base64Data = uri.split(',')[1];
 const buf = Buffer(base64Data, 'base64');
 fs.writeFileSync(`${__dirname}/secondmonkey.png`, buf);
-复制代码
 ```
 
 # events
 
-```
+```js
 const EventEmitter = require('events').EventEmitter;
 
 const AudioDevice = {
@@ -223,14 +215,13 @@ setTimeout(function () {
 musicPlayer.on('error', function (err) {
   console.err('Error:', err);
 });
-复制代码
 ```
 
 # util
 
 ## promisify
 
-```
+```js
 const util = require('util');
 const fs = require('fs');
 const readAsync = util.promisify(fs.readFile);
@@ -246,10 +237,9 @@ async function init() {
     console.log(err);
   }
 }
-复制代码
 ```
 
-# 流
+# 流 Stream
 
 ## 理解流
 
@@ -282,7 +272,7 @@ async function init() {
 
 #### 不使用流
 
-```
+```js
 const http = require('http');
 const fs = require('fs');
 
@@ -297,19 +287,17 @@ http.createServer((req, res) => {
     res.end(data);
   });
 }).listen(8000);
-复制代码
 ```
 
 #### 使用流
 
-```
+```js
 const http = require('http');
 const fs = require('fs');
 
 http.createServer((req, res) => {
   fs.createReadStream(`${__dirname}/index.html`).pipe(res);
 }).listen(8000);
-复制代码
 ```
 
 - 更少代码，更加高效
@@ -317,7 +305,7 @@ http.createServer((req, res) => {
 
 #### 使用流 + gzip
 
-```
+```js
 const http = require('http');
 const fs = require('fs');
 const zlib = require('zlib');
@@ -330,12 +318,11 @@ http.createServer((req, res) => {
     .pipe(zlib.createGzip())
     .pipe(res);
 }).listen(8000);
-复制代码
 ```
 
 ### 流的错误处理
 
-```
+```js
 const fs = require('fs');
 const stream = fs.createReadStream('not-found');
 
@@ -344,7 +331,6 @@ stream.on('error', (err) => {
   console.error('Stack:', err.stack);
   console.error('The error raised was:', err);
 });
-复制代码
 ```
 
 ## 使用流基类
@@ -358,7 +344,7 @@ stream.on('error', (err) => {
 
 json-lines.txt
 
-```
+```js
 { "position": 0, "letter": "a" }
 { "position": 1, "letter": "b" }
 { "position": 2, "letter": "c" }
@@ -369,12 +355,11 @@ json-lines.txt
 { "position": 7, "letter": "h" }
 { "position": 8, "letter": "i" }
 { "position": 9, "letter": "j" }
-复制代码
 ```
 
 JSONLineReader.js
 
-```
+```js
 const stream = require('stream');
 const fs = require('fs');
 const util = require('util');
@@ -426,7 +411,6 @@ const jsonLineReader = new JSONLineReader(input); // 创建一个 JSONLineReader
 jsonLineReader.on('object', (obj) => {
   console.log('pos:', obj.position, '- letter:', obj.letter);
 });
-复制代码
 ```
 
 ### 可写流 - 文字变色
@@ -436,14 +420,13 @@ jsonLineReader.on('object', (obj) => {
 - 继承自 `stream.Writable`
 - 实现一个 `_write` 方法向底层源数据发送数据
 
-```
+```shell
 cat json-lines.txt | node stram_writable.js
-复制代码
 ```
 
 stram_writable.js
 
-```
+```js
 const stream = require('stream');
 
 class GreenStream extends stream.Writable {
@@ -458,7 +441,6 @@ class GreenStream extends stream.Writable {
 }
 
 process.stdin.pipe(new GreenStream());
-复制代码
 ```
 
 ### 双工流 - 接受和转换数据
@@ -479,7 +461,7 @@ process.stdin.pipe(new GreenStream());
 
 使用 Node 内置的断言模块测试
 
-```
+```js
 const assert = require('assert');
 const fs = require('fs');
 const CSVParser = require('./csvparser');
@@ -503,7 +485,6 @@ process.on('exit', function () {
 
   assert.deepEqual(expected, actual);
 });
-复制代码
 ```
 
 # 文件系统
@@ -560,12 +541,11 @@ fs.closeSync(fd);
 
 ## 读写流
 
-```
+```js
 const fs = require('fs');
 const readable = fs.createReadStream('./original.txt');
 const writeable = fs.createWriteStream('./copy.txt');
 readable.pipe(writeable);
-复制代码
 ```
 
 ## 文件监控
@@ -576,19 +556,17 @@ readable.pipe(writeable);
 
 同步 fs 的方法应该在第一次初始化应用的时候使用。
 
-```
+```js
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync('./config.json').toString());
 init(config);
-复制代码
 ```
 
 require：
 
-```
+```js
 const config = require('./config.json);
 init(config);
-复制代码
 ```
 
 - 模块会被全局缓冲，其他文件也加载并修改，会影响到整个系统加载了此文件的模块
@@ -608,10 +586,9 @@ init(config);
 
 一个文件描述是 open 以及 openSync 方法调用返回的一个数字
 
-```
+```js
 const fd = fs.openSync('myfile', 'a');
 console.log(typeof fd === 'number'); // true
-复制代码
 ```
 
 ## 文件锁
@@ -633,7 +610,7 @@ Node 实现锁文件
 
 ### 独占标记
 
-```
+```js
 // 所有需要打开文件的方法，fs.writeFile、fs.createWriteStream、fs.open 都有一个 x 标记
 // 这个文件应该已独占打开，若这个文件存在，文件不能被打开
 fs.open('config.lock', 'wx', (err) => {
@@ -650,28 +627,26 @@ fs.writeFile(
     if (err) { return console.error(err) };
   },
 );
-复制代码
 ```
 
 ### mkdir 文件锁
 
 独占标记有个问题，可能有些系统不能识别 `0_EXCL` 标记。另一个方案是把锁文件换成一个目录，PID 可以写入目录中的一个文件。
 
-```
+```js
 fs.mkidr('config.lock', (err) => {
   if (err) { return console.error(err); }
   fs.writeFile(`/config.lock/${process.pid}`, (err) => {
     if (err) { return console.error(err); }
   });
 });
-复制代码
 ```
 
 ### lock 模块实现
 
 [github.com/npm/lockfil…](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fnpm%2Flockfile)
 
-```
+```js
 const fs = require('fs');
 const lockDir = 'config.lock';
 let hasLock = false;
@@ -709,7 +684,6 @@ process.on('exit', function () {
     console.log('removed lock');
   }
 });
-复制代码
 ```
 
 ## 递归文件操作
@@ -718,7 +692,7 @@ process.on('exit', function () {
 
 递归：要解决我们的问题就要先解决更小的相同的问题。
 
-```
+```js
 dir-a
 ├── dir-b
 │   ├── dir-c
@@ -729,12 +703,11 @@ dir-a
 │   └── file-d.txt
 ├── file-a.js
 └── file-b.txt
-复制代码
 ```
 
 查找模块：`find /asset/dir-a -name="file.*"`
 
-```
+```js
 [
   'dir-a/dir-b/dir-c/dir-d/file-e.png',
   'dir-a/dir-b/dir-c/file-e.png',
@@ -812,23 +785,21 @@ exports.find = function (nameRe, startPath, cb) { // cb 可以传入 console.log
 
 console.log(exports.findSync(/file.*/, `${__dirname}/dir-a`));
 console.log(exports.find(/file.*/, `${__dirname}/dir-a`, console.log));
-复制代码
 ```
 
 ## 监视文件和文件夹
 
 想要监听一个文件或者目录，并在文件更改后执行一个动作。
 
-```
+```js
 const fs = require('fs');
 fs.watch('./watchdir', console.log); // 稳定且快
 fs.watchFile('./watchdir', console.log); // 跨平台
-复制代码
 ```
 
 ## 逐行地读取文件流
 
-```
+```js
 const fs = require('fs');
 const readline = require('readline');
 
@@ -841,14 +812,13 @@ rl.on('line', (line) => {
   console.log(`cc ${line}`);
   const extract = line.match(/(\d+\.\d+\.\d+\.\d+) (.*)/);
 });
-复制代码
 ```
 
 # 网络
 
 ## 获取本地 IP
 
-```
+```js
 function get_local_ip() {
   const interfaces = require('os').networkInterfaces();
   let IPAdress = '';
@@ -863,7 +833,6 @@ function get_local_ip() {
   }
   return IPAdress;
 }
-复制代码
 ```
 
 ## TCP 客户端
@@ -872,7 +841,7 @@ NodeJS 使用 `net` 模块创建 TCP 连接和服务。
 
 ### 启动与测试 TCP
 
-```
+```js
 const assert = require('assert');
 const net = require('net');
 let clients = 0;
@@ -915,7 +884,6 @@ function runTest(expectedId, done) {
 
   client.on('end', done);
 }
-复制代码
 ```
 
 ## UDP 客户端
@@ -924,7 +892,7 @@ function runTest(expectedId, done) {
 
 ### 文件发送服务
 
-```
+```js
 const dgram = require('dgram');
 const fs = require('fs');
 const port = 41230;
@@ -972,7 +940,6 @@ if (process.argv[2] === 'client') { // 根据命令行选项确定运行客户�
 } else {
   new Server();
 }
-复制代码
 ```
 
 ## HTTP 客户端
@@ -981,7 +948,7 @@ if (process.argv[2] === 'client') { // 根据命令行选项确定运行客户�
 
 ### 启动与测试 HTTP
 
-```
+```js
 const assert = require('assert');
 const http = require('http');
 
@@ -1007,7 +974,6 @@ const req = http.request({ port: 8000}, function(res) { // 创建请求
 });
 
 req.end();
-复制代码
 ```
 
 ### 重定向
@@ -1022,7 +988,7 @@ HTTP 标准定义了标识重定向发生时的状态码，它也指出了客户
 - 305：使用代理
 - 307：临时重定向
 
-```
+```js
 const http = require('http');
 const https = require('https');
 const url = require('url'); // 有很多接续 URLs 的方法
@@ -1085,7 +1051,6 @@ request.get('http://google.com/', function(err, res) {
     process.exit();
   }
 });
-复制代码
 ```
 
 ### HTTP 代理
@@ -1094,7 +1059,7 @@ request.get('http://google.com/', function(err, res) {
 - 使用缓存代理服务器减少宽带
 - Web 应用程序的 DevOps 利用他们提升应用程序性能
 
-```
+```js
 const http = require('http');
 const url = require('url');
 
@@ -1127,12 +1092,11 @@ http.createServer(function(req, res) {
     proxyRequest.end();
   });
 }).listen(8888); // 监听来自本地浏览器的连接
-复制代码
 ```
 
 ### 封装 request-promise
 
-```
+```js
 const https = require('https');
 const promisify = require('util').promisify;
 
@@ -1154,7 +1118,6 @@ const rp = promisify(https.get);
 
   console.log(body);
 })();
-复制代码
 ```
 
 ## DNS 请求
@@ -1167,7 +1130,7 @@ const rp = promisify(https.get);
 - NS：`dns.resolveNs`，指定域名服务器
 - CNAME：`dns.resolveCname`，相关的域名记录，设置为域名而不是 IP 地址
 
-```
+```js
 const dns = require('dns');
 
 dns.resolve('www.chenng.cn', function (err, addresses) {
@@ -1177,12 +1140,11 @@ dns.resolve('www.chenng.cn', function (err, addresses) {
 
   console.log('Addresses:', addresses);
 });
-复制代码
 ```
 
 ## crypto 库加密解密
 
-```
+```js
 const crypto = require('crypto')
 
 function aesEncrypt(data, key = 'key') {
@@ -1198,7 +1160,6 @@ function aesDecrypt(encrypted, key = 'key') {
   decrypted += decipher.final('utf8')
   return decrypted
 }
-复制代码
 ```
 
 ## 发起 HTTP 请求的方法
@@ -1238,7 +1199,7 @@ function aesDecrypt(encrypted, key = 'key') {
 
 - 会把输出结果缓存好，通过回调返回最后结果或者异常信息
 
-```
+```js
 const cp = require('child_process');
 
 cp.execFile('echo', ['hello', 'world'], (err, stdout, stderr) => {
@@ -1246,7 +1207,6 @@ cp.execFile('echo', ['hello', 'world'], (err, stdout, stderr) => {
   console.log('stdout: ', stdout);
   console.log('stderr: ', stderr);
 });
-复制代码
 ```
 
 ### spawn
@@ -1257,19 +1217,18 @@ cp.execFile('echo', ['hello', 'world'], (err, stdout, stderr) => {
 
 #### 单一任务
 
-```
+```js
 const cp = require('child_process');
 
 const child = cp.spawn('echo', ['hello', 'world']);
 child.on('error', console.error);
 child.stdout.pipe(process.stdout);
 child.stderr.pipe(process.stderr);
-复制代码
 ```
 
 #### 多任务串联
 
-```
+```js
 const cp = require('child_process');
 const path = require('path');
 
@@ -1280,7 +1239,6 @@ const uniq = cp.spawn('uniq');
 cat.stdout.pipe(sort.stdin);
 sort.stdout.pipe(uniq.stdin);
 uniq.stdout.pipe(process.stdout);
-复制代码
 ```
 
 ### exec
@@ -1288,13 +1246,12 @@ uniq.stdout.pipe(process.stdout);
 - 只有一个字符串命令
 - 和 shell 一模一样
 
-```
+```js
 const cp = require('child_process');
 
 cp.exec(`cat ${__dirname}/messy.txt | sort | uniq`, (err, stdout, stderr) => {
   console.log(stdout);
 });
-复制代码
 ```
 
 ### fork
@@ -1306,7 +1263,7 @@ cp.exec(`cat ${__dirname}/messy.txt | sort | uniq`, (err, stdout, stderr) => {
 
 #### 父子通信
 
-```
+```js
 // parent.js
 const cp = require('child_process');
 
@@ -1332,7 +1289,6 @@ process.on('message', function (message) {
 });
 
 console.log(process);
-复制代码
 ```
 
 ## 常用技巧
@@ -1341,7 +1297,7 @@ console.log(process);
 
 - 保留对由 spawn 返回的 ChildProcess 对象的引用，并在退出主进程时将其杀死
 
-```
+```js
 const spawn = require('child_process').spawn;
 const children = [];
 
@@ -1357,7 +1313,6 @@ children.push(spawn('/bin/sleep', ['10']));
 children.push(spawn('/bin/sleep', ['10']));
 
 setTimeout(function () { process.exit(0); }, 3000);
-复制代码
 ```
 
 ## Cluster 的理解
@@ -1389,14 +1344,13 @@ setTimeout(function () { process.exit(0); }, 3000);
 - Node 中有一些 IO 操作（DNS，FS）和一些 CPU 密集计算（Zlib，Crypto）会启用 Node 的线程池
 - 线程池默认大小为 4，可以手动更改线程池默认大小
 
-```
+```js
 process.env.UV_THREADPOOL_SIZE = 64
-复制代码
 ```
 
 ## cluster 多进程
 
-```
+```js
 const cluster = require('cluster');
 const http = require('http');
 const numCPUs = require('os').cpus().length;
@@ -1419,7 +1373,6 @@ if (cluster.isMaster) {
   }).listen(8000);
   console.log(`工作进程 ${process.pid} 已启动`);
 }
-复制代码
 ```
 
 - 一共有 9 个进程，其中一个主进程，cpu 个数 x cpu 核数 = 2 x 4 = 8 个 子进程
@@ -1438,7 +1391,7 @@ if (cluster.isMaster) {
   - parentPort: 在 worker 线程里是表示父进程的 MessagePort 类型的对象，在主线程里为 null
   - workerData: 用于在主进程中向子进程传递数据（data 副本）
 
-```
+```js
 const {
   isMainThread,
   parentPort,
@@ -1473,12 +1426,11 @@ if (isMainThread) {
 } else {
   workerThread();
 }
-复制代码
 ```
 
 ### 线程通信
 
-```
+```js
 const assert = require('assert');
 const {
   Worker,
@@ -1501,7 +1453,6 @@ if (isMainThread) {
     value.hereIsYourPort.close();
   });
 }
-复制代码
 ```
 
 ## 多进程 vs 多线程
@@ -1533,7 +1484,7 @@ if (isMainThread) {
 - 除非开发者记得添加.catch语句，在这些地方抛出的错误都不会被 uncaughtException 事件处理程序来处理，然后消失掉。
 - Node 应用不会奔溃，但可能导致内存泄露
 
-```
+```js
 process.on('uncaughtException', (error) => {
   // 我刚收到一个从未被处理的错误
   // 现在处理它，并决定是否需要重启应用
@@ -1549,7 +1500,6 @@ process.on('unhandledRejection', (reason, p) => {
   // 直接抛出，让它来处理
   throw reason;
 });
-复制代码
 ```
 
 ## 通过 domain 管理异常
@@ -1559,7 +1509,7 @@ process.on('unhandledRejection', (reason, p) => {
 - 任何在这个回调中导致错误的代码都会被 domain 覆盖到
 - 允许我们代码在一个沙盒运行，并且可以使用 res 对象给用户反馈
 
-```
+```js
 const domain = require('domain');
 const audioDomain = domain.create();
 
@@ -1571,12 +1521,11 @@ audioDomain.run(function() {
   const musicPlayer = new MusicPlayer();
   musicPlayer.play();
 });
-复制代码
 ```
 
 ## Joi 验证参数
 
-```
+```js
 const memberSchema = Joi.object().keys({
  password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/),
  birthyear: Joi.number().integer().min(1900).max(2013),
@@ -1589,7 +1538,6 @@ function addNewMember(newMember) {
  
  //other logic here
 }
-复制代码
 ```
 
 ## Kibana 系统监控
@@ -1600,7 +1548,7 @@ function addNewMember(newMember) {
 
 ## 使用 winston 记录日记
 
-```
+```js
 var winston = require('winston');
 var moment = require('moment');
 
@@ -1638,7 +1586,6 @@ module.exports = logger
 // logger.error('error')
 // logger.warm('warm')
 // logger.info('info')
-复制代码
 ```
 
 ## 委托反向代理
@@ -1647,7 +1594,7 @@ Node 处理 CPU 密集型任务，如 gzipping，SSL termination 等，表现糟
 
 虽然 express.js 通过一些 connect 中间件处理静态文件，但你不应该使用它。Nginx 可以更好地处理静态文件，并可以防止请求动态内容堵塞我们的 node 进程。
 
-```
+```js
 # 配置 gzip 压缩
 gzip on;
 gzip_comp_level 6;
@@ -1674,7 +1621,6 @@ server {
   access_log off;
   expires max;
 }
-复制代码
 ```
 
 ## 检测有漏洞的依赖项
@@ -1709,12 +1655,11 @@ server {
     "plugin:you-dont-need-lodash-underscore/compatible"
   ]
 }
-复制代码
 ```
 
 ## benchmark
 
-```
+```js
 const _ = require('lodash'),
   __ = require('underscore'),
   Suite = require('benchmark').Suite,
@@ -1728,20 +1673,18 @@ concatSuite.add('lodash', () => _.concat(array, 3, 4, 5))
   .add('underscore', () => __.concat(array, 3, 4, 5))
   .add('native', () => array.concat(3, 4, 5))
   .run({ 'async': true });
-复制代码
 ```
 
 ## 使用 prof 进行性能分析
 
 - 使用 tick-processor 工具处理分析
 
-```
+```js
 node --prof profile-test.js
-复制代码
+
 npm install tick -g
 
 node-tick-processor
-复制代码
 ```
 
 ## 使用 headdump 堆快照
@@ -1749,9 +1692,9 @@ node-tick-processor
 - 代码加载模块进行快照文件生成
 - Chrome Profiles 加载快照文件
 
-```
+```js
 yarn add heapdump -D
-复制代码
+
 const heapdump = require('heapdump');
 const string = '1 string to rule them all';
 
@@ -1764,7 +1707,6 @@ setInterval(function () {
 setInterval(function () {
   if (heapdump.writeSnapshot()) console.log('wrote snapshot');
 }, 20000);
-复制代码
 ```
 
 # 应用安全清单
@@ -1827,7 +1769,7 @@ DOS 攻击非常流行而且相对容易处理。使用外部服务，比如 clo
 
 密码或机密信息(API 密钥)应该使用安全的 hash + salt 函数([bcrypt](https://link.juejin.cn?target=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fbcrypt))来存储, 因为性能和安全原因, 这应该是其 JavaScript 实现的首选。
 
-```
+```js
 // 使用10个哈希回合异步生成安全密码
 bcrypt.hash('myPassword', 10, function(err, hash) {
   // 在用户记录中存储安全哈希
@@ -1841,7 +1783,6 @@ bcrypt.compare('somePassword', hash, function(err, match) {
    // 密码不匹配
   } 
 });
-复制代码
 ```
 
 ## 转义 HTML、JS 和 CSS 输出
@@ -1856,7 +1797,7 @@ bcrypt.compare('somePassword', hash, function(err, match) {
 
 当使用 JSON Web Tokens(例如, 通过 [Passport.js](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fjaredhanson%2Fpassport)), 默认情况下, 没有任何机制可以从发出的令牌中撤消访问权限。一旦发现了一些恶意用户活动, 只要它们持有有效的标记, 就无法阻止他们访问系统。通过实现一个不受信任令牌的黑名单，并在每个请求上验证，来减轻此问题。
 
-```
+```js
 const jwt = require('express-jwt');
 const blacklist = require('express-jwt-blacklist');
  
@@ -1869,14 +1810,13 @@ app.get('/logout', function (req, res) {
   blacklist.revoke(req.user)
   res.sendStatus(200);
 });
-复制代码
 ```
 
 ## 限制每个用户允许的登录请求
 
 一类保护暴力破解的中间件，比如 express-brute，应该被用在 express 的应用中，来防止暴力/字典攻击；这类攻击主要应用于一些敏感路由，比如 `/admin` 或者 `/login`，基于某些请求属性, 如用户名, 或其他标识符, 如正文参数等。否则攻击者可以发出无限制的密码匹配尝试, 以获取对应用程序中特权帐户的访问权限。
 
-```
+```js
 const ExpressBrute = require('express-brute');
 const RedisStore = require('express-brute-redis');
 
@@ -1913,7 +1853,6 @@ app.post('/login',
     }
   }
 );
-复制代码
 ```
 
 ## 使用非 root 用户运行 Node.js
@@ -1928,7 +1867,6 @@ COPY . .
 EXPOSE 3000
 USER node
 CMD ["node", "server.js"]
-复制代码
 ```
 
 ## 使用反向代理或中间件限制负载大小
@@ -1937,7 +1875,7 @@ CMD ["node", "server.js"]
 
 express：
 
-```
+```js
 const express = require('express');
 
 const app = express();
@@ -1958,12 +1896,11 @@ app.post('/json', (req, res) => {
 });
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
-复制代码
 ```
 
 nginx：
 
-```
+```nginx
 http {
     ...
     # Limit the body size for ALL incoming requests to 1 MB
@@ -1981,14 +1918,13 @@ location /upload {
     # Limit the body size for incoming requests to this route to 1 MB
     client_max_body_size 1m;
 }
-复制代码
 ```
 
 ## 防止 RegEx 让 NodeJS 过载
 
 匹配文本的用户输入需要大量的 CPU 周期来处理。在某种程度上，正则处理是效率低下的，比如验证 10 个单词的单个请求可能阻止整个 event loop 长达6秒。由于这个原因，偏向第三方的验证包，比如[validator.js](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fchriso%2Fvalidator.js)，而不是采用正则，或者使用 [safe-regex](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fsubstack%2Fsafe-regex) 来检测有问题的正则表达式。
 
-```
+```js
 const saferegex = require('safe-regex');
 const emailRegex = /^([a-zA-Z0-9])(([\-.]|[_]+)?([a-zA-Z0-9]+))*(@){1}[a-z0-9]+[.]{1}(([a-z]{2,3})|([a-z]{2,3}[.]{1}[a-z]{2,3}))$/;
 
@@ -1998,7 +1934,6 @@ console.log(saferegex(emailRegex));
 // instead of the regex pattern, use validator:
 const validator = require('validator');
 console.log(validator.isEmail('liran.tal@gmail.com'));
-复制代码
 ```
 
 ## 在沙箱中运行不安全代码
@@ -2009,7 +1944,7 @@ console.log(validator.isEmail('liran.tal@gmail.com'));
 - 一个基于云的无服务框架满足所有沙盒要求，但动态部署和调用Faas方法不是本部分的内容
 - 一些 npm 库，比如 [sandbox](https://link.juejin.cn?target=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fsandbox) 和 [vm2](https://link.juejin.cn?target=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fvm2) 允许通过一行代码执行隔离代码。尽管后一种选择在简单中获胜, 但它提供了有限的保护。
 
-```
+```js
 const Sandbox = require("sandbox");
 const s = new Sandbox();
 
@@ -2029,14 +1964,13 @@ s.run( "while (true) {}", function( output ) {
   console.log(output);
   //output='Timeout'
 })
-复制代码
 ```
 
 ## 隐藏客户端的错误详细信息
 
 默认情况下, 集成的 express 错误处理程序隐藏错误详细信息。但是, 极有可能, 您实现自己的错误处理逻辑与自定义错误对象(被许多人认为是最佳做法)。如果这样做, 请确保不将整个 Error 对象返回到客户端, 这可能包含一些敏感的应用程序详细信息。否则敏感应用程序详细信息(如服务器文件路径、使用中的第三方模块和可能被攻击者利用的应用程序的其他内部工作流)可能会从 stack trace 发现的信息中泄露。
 
-```
+```js
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
@@ -2046,7 +1980,6 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-复制代码
 ```
 
 ## 对 npm 或 Yarn，配置 2FA
@@ -2059,7 +1992,7 @@ app.use(function(err, req, res, next) {
 
 每个 web 框架和技术都有其已知的弱点，告诉攻击者我们使用的 web 框架对他们来说是很大的帮助。使用 session 中间件的默认设置, 可以以类似于 `X-Powered-Byheader` 的方式向模块和框架特定的劫持攻击公开您的应用。尝试隐藏识别和揭露技术栈的任何内容(例如:Nonde.js, express)。否则可以通过不安全的连接发送cookie, 攻击者可能会使用会话标识来标识web应用程序的基础框架以及特定于模块的漏洞。
 
-```
+```js
 // using the express session middleware
 app.use(session({  
  secret: 'youruniquesecret', // secret string used in the signing of the session ID that is stored in the cookie
@@ -2070,14 +2003,13 @@ app.use(session({
    maxAge: 60000*60*24 // set cookie expiry length in ms
  }
 }));
-复制代码
 ```
 
 ## csurf 防止 CSRF
 
 路由层：
 
-```
+```js
 var cookieParser = require('cookie-parser');  
 var csrf = require('csurf');  
 var bodyParser = require('body-parser');  
@@ -2100,26 +2032,24 @@ app.get('/form', csrfProtection, function(req, res) {
 app.post('/process', parseForm, csrfProtection, function(req, res) {  
   res.send('data is being processed');
 });
-复制代码
 ```
 
 展示层：
 
-```
+```html
 <form action="/process" method="POST">  
   <input type="hidden" name="_csrf" value="{{csrfToken}}">
 
   Favorite color: <input type="text" name="favoriteColor">
   <button type="submit">Submit</button>
 </form>  
-复制代码
 ```
 
 # 综合应用
 
 ## watch 服务
 
-```
+```js
 const fs = require('fs');
 const exec = require('child_process').exec;
 
@@ -2134,7 +2064,6 @@ function watch() {
 }
 
 watch();
-复制代码
 ```
 
 ## RESTful web 应用
@@ -2148,7 +2077,7 @@ watch();
 - PUT /pages/10：替换 pages10
 - DELETE /pages/10：删除 pages10
 
-```
+```js
 let app;
 const express = require('express');
 const routes = require('./routes');
@@ -2165,12 +2094,11 @@ app.post('/pages', routes.pages.create);
 app.patch('/pages/:id', routes.pages.patch);
 app.put('/pages/:id', routes.pages.update);
 app.del('/pages/:id', routes.pages.remove);
-复制代码
 ```
 
 ## 中间件应用
 
-```
+```js
 const express = require('express');
 const app = express();
 const Schema = require('validate');
@@ -2227,12 +2155,11 @@ app.post('/pages', checkValidXml, function (req, res) { // 特定的请求校验
 app.use(errorHandler); // 添加错误处理中间件
 
 app.listen(3000);
-复制代码
 ```
 
 ## 通过事件组织应用
 
-```
+```js
 // 监听用户注册成功消息，绑定邮件程序
 const express = require('express');
 const app = express();
@@ -2258,12 +2185,11 @@ module.exports.create = function (req, res, next) {
     res.send('User created');
   });
 };
-复制代码
 ```
 
 ## WebSocket 与 session
 
-```
+```js
 const express = require('express');
 const WebSocketServer = require('ws').Server;
 const parseCookie = express.cookieParser('some secret'); // 加载解析 cookie 中间件，设置密码
@@ -2316,7 +2242,8 @@ webSocketServer.on('connection', function (ws) {
     }
   });
 });
-复制代码
+```
+```
 <!DOCTYPE html>
 <html>
 
@@ -2341,7 +2268,6 @@ webSocketServer.on('connection', function (ws) {
 </body>
 
 </html>
-复制代码
 ```
 
 ## Express4 中间件
@@ -2407,7 +2333,6 @@ Header（头部）.Payload（负载）.Signature（签名）：
   "alg": "HS256", // 签名的算法
   "typ": "JWT" // token 的类型
 }
-复制代码
 ```
 
 ##### Payload
@@ -2425,7 +2350,6 @@ Header（头部）.Payload（负载）.Signature（签名）：
   // 定义私有字段
   "name": "Chenng" 
 }
-复制代码
 ```
 
 ##### Signature
@@ -2435,7 +2359,6 @@ HMACSHA256(
   base64UrlEncode(header) + "." +
   base64UrlEncode(payload),
   secret) # secret 秘钥只有服务器知道
-复制代码
 ```
 
 #### 使用方式
@@ -2466,7 +2389,7 @@ HMACSHA256(
 
 ### 中间件的使用
 
-```
+```js
 const Koa = require('koa');
 
 const app = new Koa();
@@ -2491,12 +2414,11 @@ app.use(mid3);
 
 app.listen(2333);
 // Hi chenng there
-复制代码
 ```
 
 ### 返回媒体资源
 
-```
+```js
 router
   .get('/api/dynamic_image/codewars', async (ctx, next) => {
     const res = await axios.get('https://www.codewars.com/users/ringcrl');
@@ -2515,7 +2437,6 @@ router
     ctx.body = Buffer.from(svg);
     await next();
   });
-复制代码
 ```
 
 ## Web API 设计
@@ -2540,16 +2461,15 @@ API 通用资源网站 ProgrammableWeb（[www.programmableweb.com](https://link.
 
 ### 生成公钥私钥
 
-```
+```js
 利用 openssl 生成公钥私钥 
 生成公钥：openssl genrsa -out rsa_private_key.pem 1024 
 生成私钥：openssl rsa -in rsa_private_key.pem -pubout -out rsa_public_key.pem
-复制代码
 ```
 
 ### crypto 使用
 
-```
+```js
 const crypto = require('crypto');
 const fs = require('fs');
 
@@ -2573,7 +2493,6 @@ const decodeData = crypto.privateDecrypt(
   Buffer.from(encodeData, 'base64'),
 );
 console.log('decode: ', decodeData.toString());
-复制代码
 ```
 
 ## redis 缓存接口
@@ -2583,7 +2502,7 @@ console.log('decode: ', decodeData.toString());
 
 ### redis 使用
 
-```
+```js
 const redis = require('redis');
 const redisClient = redis.createClient();
 const getAsync = promisify(redisClient.get).bind(redisClient);
@@ -2594,12 +2513,11 @@ if (!codewarsRes) {
   codewarsRes = res.data;
   redisClient.set('codewarsRes', JSON.stringify(codewarsRes), 'EX', 86000);
 }
-复制代码
 ```
 
 ### node-schedule 使用
 
-```
+```js
 const schedule = require('node-schedule');
 const axios = require('axios');
 
@@ -2608,7 +2526,6 @@ schedule.scheduleJob('* 23 59 * *', function () {
   axios.get('https://static.chenng.cn/api/dynamic_image/leetcode');
   axios.get('https://static.chenng.cn/api/dynamic_image/codewars');
 });
-复制代码
 ```
 
 # 参考地址
