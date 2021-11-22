@@ -4,7 +4,7 @@
 >
 > 作者：阿宝哥
 
-# 一份不可多得的 TS 学习指南（1.8W字）
+# 一份不可多得的 TS 学习指南
 
 阿宝哥第一次使用 [TypeScript](https://link.juejin.cn/?target=https%3A%2F%2Fwww.typescriptlang.org%2F) 是在 Angular 2.x 项目中，那时候 TypeScript 还没有进入大众的视野。然而现在学习 TypeScript 的小伙伴越来越多了，本文阿宝哥将从 **16** 个方面入手，带你一步步学习 TypeScript，感兴趣的小伙伴不要错过。
 
@@ -387,7 +387,6 @@ value[0][1]; // Error
 ```typescript
 let tupleType: [string, boolean];
 tupleType = ["semlinker", true];
-复制代码
 ```
 
 在上面代码中，我们定义了一个名为 `tupleType` 的变量，它的类型是一个类型数组 `[string, boolean]`，然后我们按照正确的类型依次初始化 tupleType 变量。与数组一样，我们可以通过下标来访问元组中的元素：
@@ -395,7 +394,6 @@ tupleType = ["semlinker", true];
 ```typescript
 console.log(tupleType[0]); // semlinker
 console.log(tupleType[1]); // true
-复制代码
 ```
 
 在元组初始化的时候，如果出现类型不匹配的话，比如：
