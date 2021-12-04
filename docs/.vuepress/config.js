@@ -50,6 +50,11 @@ module.exports = {
             {text: 'Github', link: 'https://github.com/MoMeak9', target: '_self', rel: ''},
             {text: '关于', link: '/blog/about/', target: '_blank'}
         ],
+        // 备案
+        record: '闽ICP备19026932号-1',
+        recordLink: 'https://beian.miit.gov.cn/',
+        // 项目开始时间，只填写年份
+        startYear: '2021',
         searchMaxSuggestions: 10,
         sidebar: 'auto',
         subSidebar: 'auto',
