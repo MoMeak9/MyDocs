@@ -6,7 +6,7 @@ sidebar: 'auto'
 categories:
 - 大学课程
 - wiki
-  tags:
+tags:
 - 设计模式
 ---
 
