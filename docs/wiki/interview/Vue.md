@@ -1162,7 +1162,7 @@ watch: {
 ### 41. computed如何实现传参？
 
 ```js
-// html
+// HTML.md
 <div>{{total(3)}}
 
     // js

@@ -48,7 +48,7 @@ module.exports = {
             {text: '首页', link: '/'},
             {text: '时间轴', link: '/timeline/', icon: 'reco-date'},
             {text: 'Github', link: 'https://github.com/MoMeak9', target: '_self', rel: ''},
-            {text: '关于', link: '/blog/about/', target: '_blank'}
+            {text: '面试题汇总', link: '/wiki/interview/', target: '_blank'}
         ],
         // 备案
         record: '闽ICP备19026932号-1',

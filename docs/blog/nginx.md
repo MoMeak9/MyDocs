@@ -770,12 +770,12 @@ fi
 首先在 `/usr/share/nginx/html` 文件夹下 `mkdir` 分别新建两个文件夹 `PC` 和 `mobile`，`vim` 编辑两个 `index.html` 随便写点内容。
 
 ```bash
-cd /usr/share/nginx/html
+cd /usr/share/nginx/HTML.md
 mkdir pc mobile
 cd pc
-vim index.html   # 随便写点比如 hello pc!
+vim index.HTML.md   # 随便写点比如 hello pc!
 cd ../mobile
-vim index.html   # 随便写点比如 hello mobile!
+vim index.HTML.md   # 随便写点比如 hello mobile!
 复制代码
 ```
 

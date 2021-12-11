@@ -82,7 +82,7 @@ console.log(module2.method2()); // Hello again
 console.log('__dirname:', __dirname); // 文件夹
 console.log('__filename:', __filename); // 文件
 
-path.join(__dirname, 'views', 'view.html'); // 如果不希望自己手动处理 / 的问题，使用 path.join
+path.join(__dirname, 'views', 'view.HTML.md'); // 如果不希望自己手动处理 / 的问题，使用 path.join
 ```
 
 ## console
@@ -2400,7 +2400,7 @@ const mid1 = async (ctx, next) => {
   ctx.body += ' there';
 };
 const mid2 = async (ctx, next) => {
-  ctx.type = 'text/html; chartset=utf-8';
+  ctx.type = 'text/HTML.md; chartset=utf-8';
   await next();
 };
 const mid3 = async (ctx, next) => {

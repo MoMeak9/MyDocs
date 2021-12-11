@@ -519,7 +519,7 @@ tags:
 
      - ```javascript
        const path = require("path");
-       const HtmlWebpackPlugin = require("html-webpack-plugin");
+       const HtmlWebpackPlugin = require("HTML.md-webpack-plugin");
        const { CleanWebpackPlugin } = require("clean-webpack-plugin");
        
        module.exports = {
