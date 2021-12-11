@@ -13,6 +13,12 @@ tags:
 
 ## Adapter 适配器
 
+**适配器模式**是一种结构型设计模式， 它能使接口不兼容的对象能够相互合作。
+
+The adapter pattern is a structural design pattern that enables objects with incompatible interfaces to cooperate.
+
+
+
 <img src="https://refactoringguru.cn/images/patterns/diagrams/adapter/structure-object-adapter-indexed.png" alt="适配器设计模式的结构（对象适配器）" style="zoom:67%;" />
 
 1. **客户端** （Client） 是包含当前程序业务逻辑的类。
@@ -96,6 +102,10 @@ clientCode(adapter);
 ```
 
 ## Bridge 桥接
+
+**桥接模式**是一种结构型设计模式， 可将一个大类或一系列紧密相关的类拆分为抽象和实现两个独立的层次结构， 从而能在开发时分别使用。
+
+The bridging pattern is a structural design pattern that splits a large class or series of closely related classes into two separate hierarchies of abstraction and implementation that can be used separately at development time.
 
 <img src="https://refactoringguru.cn/images/patterns/diagrams/bridge/structure-zh-indexed.png" alt="桥接设计模式" style="zoom:67%;" />
 
@@ -194,9 +204,11 @@ abstraction = new ExtendedAbstraction(implementation);
 clientCode(abstraction);
 ```
 
+## Decorator 装饰器
 
+**装饰模式**是一种结构型设计模式， 允许你通过将对象放入包含行为的特殊封装对象中来为原对象绑定新的行为。
 
-## 装饰器
+Decorator is a structural design pattern that allows you to bind new behavior to an object by putting it into a special wrapper that contains behavior.
 
 <img src="https://refactoringguru.cn/images/patterns/diagrams/decorator/structure-indexed.png" alt="装饰设计模式的结构" style="zoom:67%;" />
 
@@ -290,7 +302,11 @@ clientCode(decorator2);
 
 
 
-## 外观
+## Facade 外观
+
+**外观模式**是一种结构型设计模式， 能为程序库、 框架或其他复杂类提供一个简单的接口。
+
+The facade pattern is a structural design pattern that provides a simple interface to libraries, frameworks, or other complex classes.
 
 <img src="https://refactoringguru.cn/images/patterns/diagrams/facade/structure-indexed.png" alt="外观设计模式的结构" style="zoom:67%;" />
 
@@ -386,6 +402,10 @@ clientCode(facade);
 
 ## Proxy 代理模式
 
+**代理模式**是一种结构型设计模式， 让你能够提供对象的替代品或其占位符。 代理控制着对于原对象的访问， 并允许在将请求提交给对象前后进行一些处理。
+
+Proxy pattern is a structural design pattern that allows you to provide substitutes for objects or placeholders for them. The proxy controls access to the original object and allows some processing before and after the request is submitted to the object.
+
 <img src="https://refactoringguru.cn/images/patterns/diagrams/proxy/structure-indexed.png" alt="代理设计模式的结构" style="zoom:67%;" />
 
 1. **服务接口** （Service Interface） 声明了服务接口。 代理必须遵循该接口才能伪装成服务对象。
@@ -421,6 +441,10 @@ D：
 - [装饰](https://refactoringguru.cn/design-patterns/decorator)和[代理](https://refactoringguru.cn/design-patterns/proxy)有着相似的结构， 但是其意图却非常不同。 这两个模式的构建都基于组合原则， 也就是说一个对象应该将部分工作委派给另一个对象。 两者之间的不同之处在于**代理通常自行管理其服务对象的生命周期， 而装饰的生成则总是由客户端进行控制。**
 
 ## Flyweight 享元
+
+**享元模式**是一种结构型设计模式， 它摒弃了在每个对象中保存所有数据的方式， 通过共享多个对象所共有的相同状态， 让你能在有限的内存容量中载入更多对象。
+
+Flyweight is a structural design pattern that eliminates the need to store all data in each object and allows you to load more objects into limited memory by sharing the same state shared by multiple objects.
 
 <img src="https://refactoringguru.cn/images/patterns/diagrams/flyweight/structure-indexed.png" alt="享元设计模式的结构" style="zoom:67%;" />
 
@@ -531,6 +555,10 @@ factory.listFlyweights();
 ```
 
 ## Composite 组合模式
+
+**组合模式**是一种结构型设计模式， 你可以使用它将对象组合成树状结构， 并且能像使用独立对象一样使用它们。
+
+The composite pattern is a structural design pattern that allows you to combine objects into a tree structure and use them as if they were individual objects.
 
 <img src="https://refactoringguru.cn/images/patterns/diagrams/composite/structure-zh-indexed.png" alt="组合设计模式的结构" style="zoom:67%;" />
 

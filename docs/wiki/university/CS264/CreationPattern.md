@@ -14,6 +14,10 @@ tags:
 
 ## Abstract Factory 抽象工厂
 
+**抽象工厂模式**是一种创建型设计模式， 它能创建一系列相关的对象， 而无需指定其具体类。
+
+The Abstract factory pattern is a creative design pattern that creates a series of related objects without specifying their concrete classes.
+
 <img src="https://refactoringguru.cn/images/patterns/diagrams/abstract-factory/structure-indexed.png" alt="抽象工厂设计模式" style="zoom: 67%;" />
 
 1. **抽象产品** （Abstract Product） 为构成系列产品的一组不同但相关的产品声明接口。
@@ -141,6 +145,10 @@ clientCode(new ConcreteFactory2());
 
 ## Factory Method 工厂方法
 
+**工厂方法模式**是一种创建型设计模式， 其在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型。
+
+The factory method pattern is a creative design pattern that provides a method to create an object in a parent class, allowing subclasses to determine the type of object to instantiate.
+
 <img src="https://refactoringguru.cn/images/patterns/diagrams/factory-method/structure-indexed.png" alt="工厂方法模式结构" style="zoom: 67%;" />
 
 1. **产品** （Product） 将会对接口进行声明。 对于所有由创建者及其子类构建的对象， 这些接口都是通用的。
@@ -239,6 +247,10 @@ clientCode(new ConcreteCreator2());
 ```
 
 ## Builder 生成器
+
+**生成器模式**是一种创建型设计模式， 使你能够分步骤创建复杂对象。 该模式允许你使用相同的创建代码生成不同类型和形式的对象。
+
+Builder pattern is a creative design pattern that allows you to create complex objects in steps. This pattern allows you to generate objects of different types and forms using the same creation code.
 
 <img src="https://refactoringguru.cn/images/patterns/diagrams/builder/structure-indexed.png?id=44b3d763ce91dbada5d8" alt="生成器设计模式结构" style="zoom: 67%;" />
 
@@ -361,6 +373,10 @@ clientCode(director);
 
 ## 原型模式 Prototype (Clone)
 
+**原型模式**是一种创建型设计模式， 使你能够复制已有对象， 而又无需使代码依赖它们所属的类。
+
+The prototype pattern is a creative design pattern that allows you to copy existing objects without having to make your code dependent on the class to which they belong.
+
 <img src="https://refactoringguru.cn/images/patterns/diagrams/prototype/structure-indexed.png?id=0e1c809842f5c43aca05" alt="原型设计模式的结构" style="zoom: 67%;" />
 
 1. **原型** （Prototype） 接口将对克隆方法进行声明。 在绝大多数情况下， 其中只会有一个名为 `clone`克隆的方法。
@@ -453,6 +469,10 @@ clientCode();
 ```
 
 ## Singleton 单例模式 ！
+
+**单例模式**是一种创建型设计模式， 让你能够保证一个类只有一个实例， 并提供一个访问该实例的全局节点。
+
+The singleton pattern is a creative design pattern that allows you to ensure that there is only one instance of a class and provide a global node to access that instance.
 
 <img src="https://refactoringguru.cn/images/patterns/diagrams/singleton/structure-zh-indexed.png?id=3a13ed8879c2a54d0947" alt="单例模式结构" style="zoom: 67%;" />
 
