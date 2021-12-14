@@ -146,62 +146,65 @@ D：
 
 - [桥接模式](https://refactoringguru.cn/design-patterns/bridge)通常会于开发前期进行设计， 使你能够将程序的各个部分独立开来以便开发。 另一方面， [适配器模式](https://refactoringguru.cn/design-patterns/adapter)通常在已有程序中使用， 让相互不兼容的类能很好地合作。
 
-### Code
+### Code:star:
 
-```typescript
-class Abstraction {
-    protected implementation: Implementation;
+```python
+from __future__ import annotations
+from abc import ABC, abstractmethod
 
-    constructor(implementation: Implementation) {
-        this.implementation = implementation;
-    }
 
-    public operation(): string {
-        const result = this.implementation.operationImplementation();
-        return `Abstraction: Base operation with:\n${result}`;
-    }
-}
+class Phone:
+    def __init__(self, implementation: Implementation) -> None:
+        self.implementation = implementation
 
-class ExtendedAbstraction extends Abstraction {
-    public operation(): string {
-        const result = this.implementation.operationImplementation();
-        return `ExtendedAbstraction: Extended operation with:\n${result}`;
-    }
-}
+    def run(self) -> str:
+        return (f"Abstraction Phone: Base operation with:\n"
+                f"{self.implementation.run()}")
 
-interface Implementation {
-    operationImplementation(): string;
-}
 
-class ConcreteImplementationA implements Implementation {
-    public operationImplementation(): string {
-        return 'ConcreteImplementationA: Here\'s the result on the platform A.';
-    }
-}
+class OPPO(Phone):
+    def run(self) -> str:
+        return (f"OPPO: Extended operation with OPPO:\n"
+                f"{self.implementation.run()}")
 
-class ConcreteImplementationB implements Implementation {
-    public operationImplementation(): string {
-        return 'ConcreteImplementationB: Here\'s the result on the platform B.';
-    }
-}
 
-function clientCode(abstraction: Abstraction) {
-    // ..
+class ViVo(Phone):
+    def run(self) -> str:
+        return (f"ViVo: Extended operation with ViVo:\n"
+                f"{self.implementation.run()}")
 
-    console.log(abstraction.operation());
 
-    // ..
-}
+class Implementation(ABC):
 
-let implementation = new ConcreteImplementationA();
-let abstraction = new Abstraction(implementation);
-clientCode(abstraction);
+    @abstractmethod
+    def run(self) -> str:
+        pass
 
-console.log('');
 
-implementation = new ConcreteImplementationB();
-abstraction = new ExtendedAbstraction(implementation);
-clientCode(abstraction);
+class SoftWare(Implementation):
+    def run(self) -> str:
+        return "SoftWare: Here's the result"
+
+
+class Appstore(Implementation):
+    def run(self) -> str:
+        return "Appstore: Here's the result"
+
+
+class Camera(Implementation):
+    def run(self) -> str:
+        return "Camera: Here's the result"
+
+
+if __name__ == "__main__":
+    implementation = SoftWare()
+    abstraction = Phone(implementation)
+    print(abstraction.run())
+    implementation = Camera()
+    abstraction = ViVo(implementation)
+    print(abstraction.run())
+    abstraction = OPPO(implementation)
+    print(abstraction.run())
 ```
 
 ## Decorator 装饰器
@@ -244,60 +247,62 @@ D：
 - [适配器](https://refactoringguru.cn/design-patterns/adapter)能为被封装对象提供不同的接口， [代理模式](https://refactoringguru.cn/design-patterns/proxy)能为对象提供相同的接口， [装饰](https://refactoringguru.cn/design-patterns/decorator)则能为对象提供加强的接口。
 - [装饰](https://refactoringguru.cn/design-patterns/decorator)和[代理](https://refactoringguru.cn/design-patterns/proxy)有着相似的结构， 但是其意图却非常不同。 这两个模式的构建都基于组合原则， 也就是说一个对象应该将部分工作委派给另一个对象。 两者之间的不同之处在于*代理*通常自行管理其服务对象的生命周期， 而*装饰*的生成则总是由客户端进行控制。
 
-### Code
+### Code:star:
 
-```typescript
-interface Component {
-    operation(): string;
-}
+```python
+class Component():
+    def operation(self) -> str:
+        pass
 
-class ConcreteComponent implements Component {
-    public operation(): string {
-        return 'ConcreteComponent';
-    }
-}
 
-class Decorator implements Component {
-    protected component: Component;
+class ConcreteComponent(Component):
+    def operation(self) -> str:
+        return "ConcreteComponent"
 
-    constructor(component: Component) {
-        this.component = component;
-    }
 
-    public operation(): string {
-        return this.component.operation();
-    }
-}
+class Decorator(Component):
+    _component: Component = None
 
-class ConcreteDecoratorA extends Decorator {
-    public operation(): string {
-        return `ConcreteDecoratorA(${super.operation()})`;
-    }
-}
+    def __init__(self, component: Component) -> None:
+        self._component = component
 
-class ConcreteDecoratorB extends Decorator {
-    public operation(): string {
-        return `ConcreteDecoratorB(${super.operation()})`;
-    }
-}
+    @property
+    def component(self) -> str:
+        return self._component
 
-function clientCode(component: Component) {
-    // ...
+    def operation(self) -> str:
+        return self._component.operation()
 
-    console.log(`RESULT: ${component.operation()}`);
 
-    // ...
-}
+class ConcreteDecoratorA(Decorator):
+    def operation(self) -> str:
+        return f"ConcreteDecoratorA({self.component.operation()})"
 
-const simple = new ConcreteComponent();
-console.log('Client: I\'ve got a simple component:');
-clientCode(simple);
-console.log('');
 
-const decorator1 = new ConcreteDecoratorA(simple);
-const decorator2 = new ConcreteDecoratorB(decorator1);
-console.log('Client: Now I\'ve got a decorated component:');
-clientCode(decorator2);
+class ConcreteDecoratorB(Decorator):
+    def operation(self) -> str:
+        return f"ConcreteDecoratorB({self.component.operation()})"
+
+
+def client_code(component: Component) -> None:
+
+    # ...
+
+    print(f"RESULT: {component.operation()}", end="")
+
+    # ...
+
+
+if __name__ == "__main__":
+    simple = ConcreteComponent()
+    print("Client: I've got a simple component:")
+    client_code(simple)
+    print("\n")
+
+    decorator1 = ConcreteDecoratorA(simple)
+    decorator2 = ConcreteDecoratorB(decorator1)
+    print("Client: Now I've got a decorated component:")
+    client_code(decorator2)
 ```
 
 
@@ -473,85 +478,63 @@ D：
 - 你可以使用[享元模式](https://refactoringguru.cn/design-patterns/flyweight)实现[组合模式](https://refactoringguru.cn/design-patterns/composite)树的共享叶节点以节省内存。
 - [享元](https://refactoringguru.cn/design-patterns/flyweight)展示了如何生成大量的小型对象， [外观模式](https://refactoringguru.cn/design-patterns/facade)则展示了如何用一个对象来代表整个子系统。
 
-### Code
+### Code:star:
 
-```typescript
-class Flyweight {
-    private sharedState: any;
+```python
+class Vehicle:
+    def __init__(self, engine, color):
+        self.engine = engine
+        self.color = color
 
-    constructor(sharedState: any) {
-        this.sharedState = sharedState;
-    }
+    def start(self):
+        return 'It start running'
 
-    public operation(uniqueState): void {
-        const s = JSON.stringify(this.sharedState);
-        const u = JSON.stringify(uniqueState);
-        console.log(`Flyweight: Displaying shared (${s}) and unique (${u}) state.`);
-    }
-}
+    def stop(self):
+        return "It didn't running"
 
-class FlyweightFactory {
-    private flyweights: {[key: string]: Flyweight} = <any>{};
+    def get_color(self):
+        return self.color
 
-    constructor(initialFlyweights: string[][]) {
-        for (const state of initialFlyweights) {
-            this.flyweights[this.getKey(state)] = new Flyweight(state);
-        }
-    }
 
-    private getKey(state: string[]): string {
-        return state.join('_');
-    }
+class Car(Vehicle):
+    def start(self):
+        return 'Car start running'
 
-    public getFlyweight(sharedState: string[]): Flyweight {
-        const key = this.getKey(sharedState);
+    def stop(self):
+        return "Car didn't running"
 
-        if (!(key in this.flyweights)) {
-            console.log('FlyweightFactory: Can\'t find a flyweight, creating new one.');
-            this.flyweights[key] = new Flyweight(sharedState);
-        } else {
-            console.log('FlyweightFactory: Reusing existing flyweight.');
-        }
+    def get_color(self):
+        return f"Car's color is {self.color}"
 
-        return this.flyweights[key];
-    }
 
-    public listFlyweights(): void {
-        const count = Object.keys(this.flyweights).length;
-        console.log(`\nFlyweightFactory: I have ${count} flyweights:`);
-        for (const key in this.flyweights) {
-            console.log(key);
-        }
-    }
-}
+class VehicleFactory:
+    def __init__(self):
+        self.hashtable = dict()
 
-const factory = new FlyweightFactory([
-    ['Chevrolet', 'Camaro2018', 'pink'],
-    ['Mercedes Benz', 'C300', 'black'],
-    ['Mercedes Benz', 'C500', 'red'],
-    ['BMW', 'M5', 'red'],
-    ['BMW', 'X6', 'white'],
-    // ...
-]);
-factory.listFlyweights();
+    def get_cars(self, key) -> Car:
+        # Avoid creating cars of the same color repeatedly
+        if key not in self.hashtable:
+            self.hashtable[key] = Car('default Engine', key)
+        return self.hashtable[key]
 
-// ...
+    def get_car_number(self):
+        return len(self.hashtable.keys())
 
-function addCarToPoliceDatabase(
-    ff: FlyweightFactory, plates: string, owner: string,
-    brand: string, model: string, color: string,
-) {
-    console.log('\nClient: Adding a car to database.');
-    const flyweight = ff.getFlyweight([brand, model, color]);
 
-    flyweight.operation([plates, owner]);
-}
+if __name__ == '__main__':
+    factory = VehicleFactory()
+    car1 = factory.get_cars('red')
+    car2 = factory.get_cars('green')
+    car3 = factory.get_cars('green')
 
-addCarToPoliceDatabase(factory, 'CL234IR', 'James Doe', 'BMW', 'M5', 'red');
+    print(car1.start())
+    print(car1.get_color())
+    print(car1.stop())
+    print(car2.start())
+    print(car2.get_color())
+    print(car2.stop())
 
-addCarToPoliceDatabase(factory, 'CL234IR', 'James Doe', 'BMW', 'X1', 'red');
-
-factory.listFlyweights();
+    print(factory.get_car_number())  # 2 car
 ```
 
 ## Composite 组合模式

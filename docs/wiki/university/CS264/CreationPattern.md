@@ -284,91 +284,164 @@ Builder pattern is a creative design pattern that allows you to create complex o
 - 你可以结合使用[生成器](https://refactoringguru.cn/design-patterns/builder)和[桥接模式](https://refactoringguru.cn/design-patterns/bridge)： *主管*类负责抽象工作， 各种不同的*生成器*负责*实现*工作。
 - [抽象工厂](https://refactoringguru.cn/design-patterns/abstract-factory)、 [生成器](https://refactoringguru.cn/design-patterns/builder)和[原型](https://refactoringguru.cn/design-patterns/prototype)都可以用[单例模式](https://refactoringguru.cn/design-patterns/singleton)来实现。
 
-### Code
+### Code:star:
 
-```typescript
-interface Builder {
-    producePartA(): void;
-    producePartB(): void;
-    producePartC(): void;
-}
+> Use the Builder Pattern to generate a Mac computer product and an Lenovo computer. (The computer product has CPU, ram, display and keyboard properties). Write a test class to test the properties of the generated product.
 
-class ConcreteBuilder1 implements Builder {
-    private product: Product1;
+```python
+from __future__ import annotations
+from abc import ABC, abstractmethod
+from typing import Any
 
-    constructor() {
-        this.reset();
-    }
 
-    public reset(): void {
-        this.product = new Product1();
-    }
+class Builder(ABC):
 
-    public producePartA(): void {
-        this.product.parts.push('PartA1');
-    }
+    @property
+    @abstractmethod
+    def product(self) -> None:
+        pass
 
-    public producePartB(): void {
-        this.product.parts.push('PartB1');
-    }
+    @abstractmethod
+    def produce_cpu(self) -> None:
+        pass
 
-    public producePartC(): void {
-        this.product.parts.push('PartC1');
-    }
+    @abstractmethod
+    def produce_ram(self) -> None:
+        pass
 
-    public getProduct(): Product1 {
-        const result = this.product;
-        this.reset();
-        return result;
-    }
-}
+    @abstractmethod
+    def produce_display(self) -> None:
+        pass
 
-class Product1 {
-    public parts: string[] = [];
+    @abstractmethod
+    def produce_keyboard(self) -> None:
+        pass
 
-    public listParts(): void {
-        console.log(`Product parts: ${this.parts.join(', ')}\n`);
-    }
-}
 
-class Director {
-    private builder: Builder;
+class MacComputerBuilder(Builder):
+    def __init__(self) -> None:
+        self._product = MacComputer()
+        self.reset()
 
-    public setBuilder(builder: Builder): void {
-        this.builder = builder;
-    }
+    def reset(self) -> None:
+        pass
 
-    public buildMinimalViableProduct(): void {
-        this.builder.producePartA();
-    }
+    @property
+    def product(self) -> MacComputer:
+        product = self._product
+        self.reset()
+        return product
 
-    public buildFullFeaturedProduct(): void {
-        this.builder.producePartA();
-        this.builder.producePartB();
-        this.builder.producePartC();
-    }
-}
+    def produce_cpu(self) -> None:
+        self._product.set_cpu('A13')
 
-function clientCode(director: Director) {
-    const builder = new ConcreteBuilder1();
-    director.setBuilder(builder);
+    def produce_display(self) -> None:
+        self._product.set_display('Dell')
 
-    console.log('Standard basic product:');
-    director.buildMinimalViableProduct();
-    builder.getProduct().listParts();
+    def produce_keyboard(self) -> None:
+        self._product.set_keyboard('MA887')
 
-    console.log('Standard full featured product:');
-    director.buildFullFeaturedProduct();
-    builder.getProduct().listParts();
+    def produce_ram(self) -> None:
+        self._product.set_ram('9987')
 
-    console.log('Custom product:');
-    builder.producePartA();
-    builder.producePartC();
-    builder.getProduct().listParts();
-}
 
-const director = new Director();
-clientCode(director);
+class LenovoComputerBuilder:
+    def __init__(self) -> None:
+        self._product = LenovoComputer()
+        self.reset()
+
+    def reset(self) -> None:
+        pass
+
+    @property
+    def product(self) -> LenovoComputer:
+        product = self._product
+        self.reset()
+        return product
+
+    def produce_cpu(self) -> None:
+        self._product.set_cpu('IntelI8')
+
+    def produce_display(self) -> None:
+        self._product.set_display('DellAAA')
+
+    def produce_keyboard(self) -> None:
+        self._product.set_keyboard('asd')
+
+    def produce_ram(self) -> None:
+        self._product.set_ram('asd')
+
+
+class Computer:
+    def __init__(self):
+        self.cpu = 'A13'
+        self.ram = ''
+        self.display = ''
+        self.keyboard = ''
+
+    def set_ram(self, ram):
+        self.ram = ram
+
+    def set_cpu(self, cpu):
+        self.cpu = cpu
+
+    def set_display(self, display):
+        self.display = display
+
+    def set_keyboard(self, keyboard):
+        self.keyboard = keyboard
+
+    def list_parts(self) -> None:
+        print(f"Product parts:\n{self.cpu}\n{self.ram}\n{self.display}\n{self.keyboard}")
+
+
+class MacComputer(Computer):
+    def __init__(self) -> None:
+        super().__init__()
+        self.cpu = 'A13'
+
+
+class LenovoComputer(Computer):
+    def __init__(self) -> None:
+        super().__init__()
+        self.cpu = 'Intel_i8'
+
+
+class Director:
+
+    def __init__(self) -> None:
+        self._builder = None
+
+    @property
+    def builder(self) -> Builder:
+        return self._builder
+
+    @builder.setter
+    def builder(self, builder: Builder) -> None:
+        self._builder = builder
+
+    def build_full_computer(self) -> None:
+        self.builder.produce_keyboard()
+        self.builder.produce_ram()
+        self.builder.produce_cpu()
+        self.builder.produce_display()
+
+
+if __name__ == "__main__":
+    director = Director()
+
+    print("Basic product MacComputer")
+    builder = MacComputerBuilder()
+    director.builder = builder
+    director.build_full_computer()
+    builder.product.list_parts()
+
+    print("Basic product LenovoComputer")
+    builder2 = LenovoComputerBuilder()
+    director.builder = builder2
+    director.build_full_computer()
+    builder2.product.list_parts()
+
 ```
 
 ## 原型模式 Prototype (Clone)
@@ -404,68 +477,52 @@ Dis
 - 在许多设计工作的初期都会使用[工厂方法模式](https://refactoringguru.cn/design-patterns/factory-method) （较为简单， 而且可以更方便地通过子类进行定制）， 随后演化为使用[抽象工厂模式](https://refactoringguru.cn/design-patterns/abstract-factory)、 [原型模式](https://refactoringguru.cn/design-patterns/prototype)或[生成器模式](https://refactoringguru.cn/design-patterns/builder) （更灵活但更加复杂）。
 - [原型](https://refactoringguru.cn/design-patterns/prototype)并不基于继承， 因此没有继承的缺点。 另一方面， *原型*需要对被复制对象进行复杂的初始化。 [工厂方法](https://refactoringguru.cn/design-patterns/factory-method)基于继承， 但是它不需要初始化步骤。
 
-### Code
+### Code:star:
 
-```typescript
-class Prototype {
-    public primitive: any;
-    public component: object;
-    public circularReference: ComponentWithBackReference;
+```python
+import copy
 
-    public clone(): this {
-        const clone = Object.create(this);
 
-        clone.component = Object.create(this.component);
+class Log:
+    def clone(self):
+        return copy.deepcopy(self)
 
-        clone.circularReference = {
-            ...this.circularReference,
-            prototype: { ...this },
-        };
 
-        return clone;
-    }
-}
+class WeeklyLog(Log):
+    __name = ""
+    __date = "2000-01-02"
+    __content = ""
 
-class ComponentWithBackReference {
-    public prototype;
+    def __init__(self, name, date, content):
+        self.__name = name
+        self.__date = date
+        self.__content = content
 
-    constructor(prototype: Prototype) {
-        this.prototype = prototype;
-    }
-}
+    def display(self):
+        print(f"{self.__name} {self.__date} {self.__content}")
 
-function clientCode() {
-    const p1 = new Prototype();
-    p1.primitive = 245;
-    p1.component = new Date();
-    p1.circularReference = new ComponentWithBackReference(p1);
+    def set_date(self, date):
+        self.__date = date
 
-    const p2 = p1.clone();
-    if (p1.primitive === p2.primitive) {
-        console.log('Primitive field values have been carried over to a clone. Yay!');
-    } else {
-        console.log('Primitive field values have not been copied. Booo!');
-    }
-    if (p1.component === p2.component) {
-        console.log('Simple component has not been cloned. Booo!');
-    } else {
-        console.log('Simple component has been cloned. Yay!');
-    }
 
-    if (p1.circularReference === p2.circularReference) {
-        console.log('Component with back reference has not been cloned. Booo!');
-    } else {
-        console.log('Component with back reference has been cloned. Yay!');
-    }
+class Client:
+    def operation():
+        a = WeeklyLog('log1', '2000-02-19', 'fail!')
 
-    if (p1.circularReference.prototype === p2.circularReference.prototype) {
-        console.log('Component with back reference is linked to original object. Booo!');
-    } else {
-        console.log('Component with back reference is linked to the clone. Yay!');
-    }
-}
+        b = a.clone()
+        b.set_date('2012-12-21')
 
-clientCode();
+        a.display()
+        b.display()
+
+
+def main():
+    clint = Client
+    clint.operation()
+
+
+if __name__ == '__main__':
+    main()
 ```
 
 ## Singleton 单例模式 ！
