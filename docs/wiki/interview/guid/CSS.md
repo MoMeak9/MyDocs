@@ -231,3 +231,88 @@ p:nth-child(2) 选择属于其父元素的第二个子元素。
 :enabled :disabled 表单控件的禁用状态。
 
 :checked 单选框或复选框被选中。
+
+## 考点 7：样式优先级
+
+**问题：CSS 样式的优先级是怎么样的？**
+
+!important > 内联样式 > ID 选择器 > 伪类 > 属性选择器 > 类选择器 > 标签选择器 > 通配符（*） 。如非特殊情况，慎用!important。因为使用!important 会扰乱原本层叠和权重产生正常的作用顺序，使后期维护带来麻烦。
+
+## 考点 8：单位对比
+
+**问题：请说出你常用的几个 CSS 单位，比如：px，em，rem ,vw等。**
+
+**px**：最常用的，它是相对于显示器屏幕分辨率而言的。
+
+优缺点：比较稳定和精确，但在浏览器中放大或缩放浏览页面时会出现页面混乱的情况。
+
+**em**：相对单位，基准点为父节点字体的大小，如果自身定义了 font-size 按自身来计算（浏览器默认字体是 16px），整个页面内 1em 不是一个固定的值。
+
+优缺点：em 的值并不是固定的，它会继承父级元素的字体大小。
+
+rem：相对单位，基于 root 元素，即根据html 元素的大小来计算，不受容器本身字体大小的影响，全部根据html 的字体大小重新计算。设定根元素\<html> 的font-size 属性，默认为 16px，那么 1rem = 16px。 
+
+优缺点：这个单位可谓集相对大小和绝对大小的优点于一身，通过它既可以做到只修改根元素就成比例地调整所有字体大小，又可以避免字体大小逐层复合的连锁反应。
+
+**vw**：1vw等于屏幕可视区宽度(的可视区域的百分之一。
+
+## 考点 9：技巧题
+
+**问题：用纯 CSS 创建一个三角形的原理是什么？**
+
+技巧：采用的是相邻边框链接处的均分原理，将元素的宽高设为 0，只设置 border , 将任意三条边隐藏掉（颜色设为 transparent ），剩下的就是一个三角形。
+
+```css
+<div class="triangle"></div>
+.triangle{
+	border-color: transparent transparent green transparent; 
+	border-style: solid;
+	border-width: 0px 300px 300px 300px; height: 0px;
+	width: 0px;
+}
+```
+
+**问题：怎么让 Chrome 支持小于 12px 的文字？**
+
+技巧：针对 chrome 浏览器，加webkit 前缀，用transform:scale()这个属性进行放缩
+
+```css
+span{
+    font-size: 12px; 
+    display: inline-block;
+    -webkit-transform:scale(0.8);
+}
+<span>10px 的字体效果</span>
+```
+
+**问题：CSS 如何去除inline-block 元素间的间距？**
+
+我们使用 CSS 把非inline-block 的元素改为inline-block 的时候，元素之间就会产生默认的间距。
+
+技巧：使用font-size:0。这个方法基本上可以解决大部分浏览器下inline-block 元素之间的间，不过Chrome 浏览器默认有最小字体大小限制，因为，考虑到兼容性，我们还需要添加：-webkit-text-size-adjust
+
+```css
+.space {
+    font-size: 0;
+    -webkit-text-size-adjust:none;
+}
+```
+
+**问题：CSS 如何实现单行文本溢出显示省略号？**
+
+技巧：用 text-overflow:ellipsis 属性，还需要加宽度 width 属来兼容部分浏览器。
+
+```css
+p {
+    width: 100px; 
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+}
+<p>这里再长一点就要变成省略号了</p>
+
+```
+
+**问题：CSS 如何实现多行文本溢出显示省略号？（注意是多行）**
+
+P9
