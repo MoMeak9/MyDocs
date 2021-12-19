@@ -1,5 +1,44 @@
 # dafny 手册
 
+## 程序 programms：
+
+Dafny程序长这样：xxxxx.dfy，Dafny文件是以dfy结尾的。
+
+程序主要包含以下几部分：
+
+1. 类型(types)
+2. 方法(methods)
+3. 函数(functions)
+4. 用户自定义的类型包括类（class）和归纳数据类型(inductive class)
+5. 类class本身也包含一组声明(declarations)、介绍字段（introducing fields）、方法(methods)和函数(functions)。
+
+如果有main方法那就从main开始验证程序，没有也没关系，main不是必须的。
+
+注释：// 双斜杠 或者 / *xxxxx* /
+
+### 基本定义
+
+在类中，定义字段x为数据类型(types)T：
+
+**var x: T**
+
+注意事项：
+
+- 数据类型必需手动申明的，不会被自动推断。
+- 通过在声明前加上关键 **ghost** 可以将该字段声明为幽灵（即用于规范**而不是执行**）字段。
+
+Dafny 的9种数据类型包括：
+
+- bool：布尔值
+- int：无界整数
+- string: 字符串
+- class/inductive class: 用户自定义的类和归纳类、
+- set<T>：不可变的无序集合
+- seq<T>：不可变的有序集合
+- array<T>、array2<T>、array3<T>: 多维数组类型
+- object：所有类型的超类
+- nat：范围是int一半，非负整数。
+
 ## Methods
 
 Dafny 在许多方面类似于典型的命令式编程语言。有方法、变量、类型、循环、if 语句、数组、整数等等。任何 Dafny 程序的基本单元之一是方法。方法是一段命令式的、可执行的代码。在其他语言中，它们可能被称为过程或函数，但在 Dafny 中，术语“函数”是为一个不同的概念保留的，我们将在后面介绍。方法的声明方式如下：
@@ -301,6 +340,18 @@ method Find(a: array<int>, key: int) returns (index: int)
    index := -1;
 }
 ```
+
+## Class 类
+
+一个类定义如下：
+
+```ts
+class C {
+// member declarations go here
+}
+```
+
+其中类的成员（字段、方法和函数）在花括号内定义（如上所述）。
 
 ## ==>
 

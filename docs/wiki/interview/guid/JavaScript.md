@@ -268,3 +268,266 @@ JSONP 易于实现，但是也会存在一些安全隐患，如果第三方的�
 
 ## 考点 8：事件模型
 
+**问题：请说说什么是事件流？**
+
+事件是文档或者浏览器窗口中发生的，特定的交互瞬间。
+
+而事件流，描述的是从页面中接收事件的顺序。
+
+**问题：什么是事件冒泡？什么是事件捕获？**
+
+事件捕获阶段：事件从最上一级标签开始往下查找，直到捕获到事件目标(target)。事件冒泡阶段：事件从事件目标(target)开始，往上冒泡直到页面的最上一级标签。
+
+**问题：请说出阻止事件冒泡的几个办法？**
+
+1.	event.stopPropagation();
+事件处理过程中，阻止了事件冒泡，但不会阻击默认行为，比如：点击事件绑定在 a 标签的话，会执行了超链接的跳转。
+2.	return false;
+事件处理过程中，阻止了事件冒泡，也阻止了默认行为。比如：点击事件绑定在 a 标签的话，不会执行超链接的跳转。 
+
+## 考点 9：this 关键字
+
+**this指向问题**
+
+
+
+**问题：执行以下代码的结果是什么？为什么？**
+
+```js
+function foo()
+{ 
+    console.log(this.a)
+}
+var a = 3; 
+var obj = {
+	a: 2,
+	foo: foo
+};
+```
+
+运行结果是 2，因为是 obj 调用的foo，所以 foo 的this 指向了obj，而 obj.a = 2。此题考察对 this 指向的理解。
+
+**问题：执行以下代码的结果是什么？为什么？**
+
+```js
+var name = "windows-name"; 
+function test() {
+	var name = "cherry"; 
+    console.log(this.name);
+}
+test();
+```
+
+运行结果是 windows-name，**因为 this 永远指向最后调用它的那个对象**，最后调用 a 的地方 a()；前面没有调用的对象。那么就是全局对象 window，这就相当于是 window.a()；注意，这里我们没有使用严格模式，如果使用严格模式的话，全局对象就是 undefined。此题考察对 this 指向的理解。
+
+## 考点 10：es6篇
+
+**问题：说说你知道那些es6特性（面试）**
+
+es6地址https://es6.ruanyifeng.com/
+1. let const 
+2. 变量的解构赋值 
+3. symbol 
+4. set和map的数据结构（set主要用于去重）
+5. proxy（vue3的重点） 
+6. promise对象（如何实现，与async，await的区别）
+7. async await（返回值是promise）
+8. generator（react使用比较多）
+9. class,class的继承（node，react主要使用）
+
+主要看文档啃熟悉，与技术官面试才能游刃有余，可以先按上面的9点来啃熟悉，其他稳定里的可以认识就行，因为这9点是重点考察对象
+
+**问题：var、let、const之间的区别（笔试）**
+
+var声明变量可以重复声明，而let不可以重复声明var是不受限于块级的，而let是受限于块级
+
+var会与window相映射（会挂一个属性），而let不与window相映射
+
+var可以在声明的上面访问变量，而let有暂存死区，在声明的上面访问变量会报错const声明之后必须赋值，否则会报错
+
+const定义不可变的量，改变了就会报错
+
+const和let一样不会与window相映射、支持块级作用域、在声明的上面访问变量会报错
+
+**问题：介绍下 Set、Map的区别（比较少被问道，基本问的是set）**
+
+应用场景Set用于数据重组，Map用于数据储存Set
+1.	Map是键值对，Set是值得集合，当然键和值可以是任何的值；
+2.	Map可以通过get方法获取值，而set不能因为它只有值；
+3.	都能通过迭代器进行for...of遍历；
+4.	Set的值是唯一的可以做数组去重，Map由于没有格式限制，可以做数据存储；
+
+**问题：介绍下promise，有用过all方法吗？（重要，百分之90会问到，除非到不了这里就被pass）**
+
+Promise 是异步编程的一种解决方案。Promise对象有以下两个特点，对象的状态不受外界影响和一旦状态改变，就不会再变，任何时候都可以得到这个结果，promise对象有三种状态：pending（进行中）、fulfilled（已成功）和rejected（已失败）。Promise对象是一个构造函数，用来生成Promise实例，Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。promise的方法(有些人叫api)有then， catch，finally，resolve,reject等。
+
+Promise.all()方法可以将多个Promise实例包装成一个新的Promise实例。同时，成功和失败的返回值是不同的，成功的时候返回的是一个结果数组，而失败的时候则返回最先被reject失败状态的值需要特别注意的是，Promise.all获得的成功结果的数组里面的数据顺序和Promise.all接收到的数组顺序是一致的，即p1的结果在前，即便p1的结果获取的比p2要晚。这带来了一个绝大的好处：在前端开发请求数据的过程中，偶尔会遇到发送多个请求并根据请求顺序获取和使用数据的场景，使用Promise.all毫无疑问可以解决这个问题。
+
+**问题：promise和async await的区别(用自己的话总结)**
+
+Promise的出现解决了传统callback函数导致的“地域回调”问题，但它的语法导致了它向纵向发展行成了一个回调链，遇到复杂的业务场景，这样的语法显然也是不美观的。而async await代码看起来会简洁些，使得异步代码看起来像同步代码，await的本质是可以提供等同于”同步效果“的等待异步返回能力的语法糖，只有这一句代码执行完，才会执行下一句。
+
+async await与Promise一样，是非阻塞的。
+
+async await是基于Promise实现的，可以说是改良版的Promise，它不能用于普通的回调函数。
+
+**问题：如何去重？（重要，百分之70，要不笔试，要不面试的时候问）**
+
+[...new set(arr)]
+
+**问题：for in 和for of的区别（面试）**
+
+for...in 语句用于遍历数组或者对象的属性（对数组或者对象的属性进行循环操作）。for in得到对对象的key或数组,字符串的下标
+
+for of和forEach一样,是直接得到值for of不能对象用
+
+**问题：null和undefined的区别（笔试）**
+
+总结来说：null表示没有对象，即该处不应该有值。undefined表示缺少值，即此处应该有值，但没有定义
+
+**问题：操作数组，对象的常用方法有那些（重要）**
+
+数组：
+1.	push() 向数组最里面推一个或多个数据
+2.	unshift()在数组的开头添加一个或多个数据
+3.	pop()在数据的尾部删除一个数据
+4.	shift()在数组的开头删除一个数据
+5.	splice() arr.splice(参数1,参数2,参数3,参数4,参数5,	参数n)，参数1表示要删除的开始位置, 参数2表示删除的
+个数,参数3,参数4,参数5,	参数n,表示在删除位置添加的字符
+6.	concat()把两个或多个数组连接成一个数组
+7.	sort()数组排序方法,默认是按照字符编码逐个字符进行排序
+8.	join()按照我们特定的方式（指定字符）把数组转化成字符串
+9.	split()把字符串转化成数组(按照指定的字符进行分割)
+10.	Array.isArray() 判断数据是否是数组
+11.	forEach() 用于遍历我们的数组,对数组中的每一个元素进行操作,没有返回值
+12.	Map()作用: 对数组进行遍历,进行某个操作,然后返回一个新的数组
+13.	filter() 作用: 用于进行过滤,筛选出符合条件的元素,组成一个新的数组返回
+14.	reduce()作用: 将前一项和后一项的值进行运算,返回累积的结果.
+15.	some()作用: 只要数组中的某一个元素符合指定的条件,就返回真,否则返回假,可以和逻辑运算符或(||)类比
+16.	find:用于查找某个元素,如果找不到undefined,findIndex:用于查找某个元素的索引,如果找不到就返回-1 对象：(面试直接问道对象的比较少，对于经常使用比如create，assign，freeze，is，keys要知道)
+
+**问题：异步加载的方式有那些（重要，笔试，面试）**
+
+数组：
+1.	Defer
+2.	HTML5为<script>元素定义的async属性3.动态创建<script>标签
+
+## 考点 11：编程题
+
+**编程题：编写代码，实现数组扁平化，把[1, [2, [3, 4]]] 转换成 [1, 2, 3, 4]。**
+
+```js
+function flatten(arr)
+{let result = [];
+for (let i = 0; i < arr.length; i++)
+	{if (Array.isArray(arr[i])) {
+		result = result.concat(flatten(arr[i]));
+	} else {
+		result = result.concat(arr[i]);
+		}
+	}
+	return result;
+}
+
+const a = [1, [2, [3, 4]]];
+console.log(flatten(a));
+```
+
+**编程题：编写代码，使用 ES6 特性，实现数组[1, 1, 2, 2]去重。**
+
+```js
+Array.from(new Set([1,1,2,2]))
+```
+
+**编程题：创建 10 个a 标签，点击弹出对应序号。**
+
+```js
+var a
+for (let i = 0; i< 10; i++) {
+a = document.createElement('a'); a.innerHTML = i + "<br>"; a.addEventListener("click", function(e) {
+e.preventDefault(); alert(i);
+})
+document.body.appendChild(a)
+}
+```
+
+**编程题：封装一个冒泡排序的函数。对数组 [11,37,13,92,21,68] 进行排序**
+
+```js
+function sorts(arr){
+	for(var i = 0; i < arr.length-1;i++){ 
+        for(var j = 0; j < arr.length-1-i; j++ ){
+            if(arr[j] > arr[j+1]){ 
+                var temp = arr[j]; 
+                arr[j] =arr[j+1]; 
+                arr[j+1] = temp;
+			}
+		}
+	}
+	return arr;
+}
+
+var arr=[11,37,13,92,21,68];
+```
+
+**编程题：编写一个函数，实现移除数组 arr 中的所有值与 item 相等的元素。不要直接修改数组 arr，结果返回新的数组。**
+
+```js
+function remove(arr, item){
+    var newArr = []; 
+    for(vari=0;i<arr.length;i++){
+        if(arr [i]!=item){
+            newArr.push(arr[i]);
+		}
+	}
+	return newArr;
+}
+var arr = [1,2,3,4,2]; var item = 2;
+remove(arr,item);
+```
+
+**编程题：编写一个函数，实现在数组 arr 中，查找值与 item 相等的元素出现的所有位置。**
+
+```js
+function find(arr, target)
+{var temp = [];
+arr.forEach(function(val,index){
+val !== target || temp.push(index);
+});
+return temp;
+}
+find(['ab','b','a','ac','a'],'a');
+```
+
+**编程题：var arr = [1,2,3,4,5] ; var arr2 = [3,4,9,5,6,7]; 将两数组比较，要求将 arr 里相同的部分与 arr2不同的部分合并得到新数组 [3,5,4,9,6,7]。**
+
+```js
+var arr = [1,2,3,4,5];
+var arr2 = [3,4,9,5,6,7];
+
+var temp1 = arr2.filter((x)=>{return arr.includes(x)
+})
+var temp2 = [];
+for(var i = 0; i < arr2.length; i++)
+{ if(temp1.indexOf(arr2[i]) === -1 )
+{
+temp2.push(arr2[i])
+}
+}
+var last = temp1.concat(temp2);
+```
+
+**编程题：用reduce 统计一个数组 ["apple","orange","apple","orange","pear","orange"] 中单词出现的次数。**
+
+```js
+var arr = ["apple","orange","apple","orange","pear","orange"]; function getWordCnt(){
+return
+arr.reduce(function(prev,next,index,arr){prev[ next] = (prev[next] + 1) || 1;
+return prev;
+},{});
+}
+```
+
+**编程题：分别使用es5的闭包和es6的let**
+
+![image-20211213215809603](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211213215809603.png)
