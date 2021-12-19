@@ -227,77 +227,54 @@ D:
 
 - [工厂方法模式](https://refactoringguru.cn/design-patterns/factory-method)是[模板方法模式](https://refactoringguru.cn/design-patterns/template-method)的一种特殊形式。 同时， *工厂方法*可以作为一个大型*模板方法*中的一个步骤。
 
-### Code
+### Code:star:
 
-```typescript
-abstract class AbstractClass {
-    public templateMethod(): void {
-        this.baseOperation1();
-        this.requiredOperations1();
-        this.baseOperation2();
-        this.hook1();
-        this.requiredOperation2();
-        this.baseOperation3();
-        this.hook2();
-    }
+```python
+from abc import ABC, abstractmethod
 
-    protected baseOperation1(): void {
-        console.log('AbstractClass says: I am doing the bulk of the work');
-    }
 
-    protected baseOperation2(): void {
-        console.log('AbstractClass says: But I let subclasses override some operations');
-    }
+class HouseTemplate(ABC):
+    def buildHouse(self) -> None:
+        self.buildFoundation()
+        self.buildWalls()
+        self.buildWindows()
+        print("House is build")
 
-    protected baseOperation3(): void {
-        console.log('AbstractClass says: But I am doing the bulk of the work anyway');
-    }
+    def buildFoundation(self) -> None:
+        print("Building Glass Windows")
 
-    protected abstract requiredOperations1(): void;
+    @abstractmethod
+    def buildWalls(self) -> None:
+        pass
 
-    protected abstract requiredOperation2(): void;
+    def buildWindows(self) -> None:
+        print("Building foundation with cement,iron rods and sand")
 
-    protected hook1(): void { }
 
-    protected hook2(): void { }
-}
+class WoodenHouseand(HouseTemplate):
+    def buildWalls(self) -> None:
+        print("Building Wooden Walls")
 
-class ConcreteClass1 extends AbstractClass {
-    protected requiredOperations1(): void {
-        console.log('ConcreteClass1 says: Implemented Operation1');
-    }
 
-    protected requiredOperation2(): void {
-        console.log('ConcreteClass1 says: Implemented Operation2');
-    }
-}
+class GlassHouse(HouseTemplate):
+    def buildWalls(self) -> None:
+        print("Building Glass Walls")
 
-class ConcreteClass2 extends AbstractClass {
-    protected requiredOperations1(): void {
-        console.log('ConcreteClass2 says: Implemented Operation1');
-    }
 
-    protected requiredOperation2(): void {
-        console.log('ConcreteClass2 says: Implemented Operation2');
-    }
+def client_code(abstract_class: HouseTemplate) -> None:
+    # ...
+    abstract_class.buildHouse()
+    # ...
 
-    protected hook1(): void {
-        console.log('ConcreteClass2 says: Overridden Hook1');
-    }
-}
 
-function clientCode(abstractClass: AbstractClass) {
-    // ...
-    abstractClass.templateMethod();
-    // ...
-}
+if __name__ == "__main__":
+    print("the result is as following:")
+    client_code(WoodenHouseand())
+    print("")
 
-console.log('Same client code can work with different subclasses:');
-clientCode(new ConcreteClass1());
-console.log('');
+    print("****************")
+    client_code(GlassHouse())
 
-console.log('Same client code can work with different subclasses:');
-clientCode(new ConcreteClass2());
 ```
 
 ## Chain of Responsibility 责任链
@@ -386,7 +363,7 @@ D:
 - 你可以同时使用[备忘录](https://refactoringguru.cn/design-patterns/memento)和[迭代器模式](https://refactoringguru.cn/design-patterns/iterator)来获取当前迭代器的状态， 并且在需要的时候进行回滚。
 - 有时候[原型模式](https://refactoringguru.cn/design-patterns/prototype)可以作为[备忘录](https://refactoringguru.cn/design-patterns/memento)的一个简化版本， 其条件是你需要在历史记录中存储的对象的状态比较简单， 不需要链接其他外部资源， 或者链接可以方便地重建。
 
-### Code
+### Code:star:
 
 ```python
 import math
