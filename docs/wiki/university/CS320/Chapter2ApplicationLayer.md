@@ -1,6 +1,6 @@
 ---
-title: 计算机网络Chapter2 应用层
-date: 2021-12-7
+title: 计算机网络Chapter2 Application Layer 应用层
+date: 2021-12-20
 author: MoMeaks
 sidebar: 'auto'
 categories:

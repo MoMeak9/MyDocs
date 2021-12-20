@@ -1,6 +1,6 @@
 ---
 title: 计算机网络Chapter1
-date: 2021-12-7
+date: 2021-12-20
 author: MoMeaks
 sidebar: 'auto'
 categories:
@@ -11,14 +11,6 @@ tags:
 ---
 
 # L1
-
-## TCP/IP五层模型
-
-- Physical layer 
-- Link layer 
-- Network layer 
-- Transport layer 
-- Application layer
 
 ## computer networks
 
@@ -186,23 +178,35 @@ packet switching is a switching technique in which the packets are transferred f
 
   Most packet switches use store-and-forward transmission at the inputs to the links
 
-## Delay 迟延
+## :star:Delay 迟延
+
+往返时延RTT
 
 ![image-20211102144332625](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211102144332625.png)
 
+
+
 **Processing Delay 处理:** The time required to examine the packet’s header and determine where to direct the packet is part of the processing delay.
+
+PS：**处理时延**（检错，找出口）
 
 <img src="https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211102145822255.png" alt="image-20211102145822255" style="zoom: 67%;" />
 
 **Queueing delay 排队:** At the queue, the packet experiences a queuing delay as it waits to be transmitted onto the link. The length of the queuing delay of a specific packet will depend on the number of earlier-arriving packets that are queued and waiting for transmission onto the link.
 
+PS：**排队时延**
+
 <img src="https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211102145835308.png" alt="image-20211102145835308" style="zoom:67%;" />
 
 **Transmission delay 传输:** This is the amount of time required to transmit  the packet bits from the node into the out link buffer.  The transmission delay is L/R. 
 
+PS：对标**发送时延（传输时延）**，计算机开始发送分组，数据量/带宽
+
 <img src="https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211102145850223.png" alt="image-20211102145850223" style="zoom:67%;" />
 
 **Propagation delay 传播:** Once a bit is transmitted into the link, it needs to  propagate to router B. The time required to propagate from the  beginning of the link to router B is the propagation delay. 在链路上传播
+
+PS：**传播时延**
 
 <img src="https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211102145900489.png" alt="image-20211102145900489" style="zoom:67%;" />
 
