@@ -55,92 +55,105 @@ The Abstract factory pattern is a creative design pattern that creates a series 
 
 ### Code
 
-```typescript
-interface AbstractFactory {
-    createProductA(): AbstractProductA;
-    createProductB(): AbstractProductB;
-}
+```python
+from __future__ import annotations
+from abc import ABC, abstractmethod
 
-class ConcreteFactory1 implements AbstractFactory {
-    public createProductA(): AbstractProductA {
-        return new ConcreteProductA1();
-    }
 
-    public createProductB(): AbstractProductB {
-        return new ConcreteProductB1();
-    }
-}
+class AbstractFactory(ABC):
+    
+    @abstractmethod
+    def create_product_a(self) -> AbstractProductA:
+        pass
 
-class ConcreteFactory2 implements AbstractFactory {
-    public createProductA(): AbstractProductA {
-        return new ConcreteProductA2();
-    }
+    @abstractmethod
+    def create_product_b(self) -> AbstractProductB:
+        pass
 
-    public createProductB(): AbstractProductB {
-        return new ConcreteProductB2();
-    }
-}
 
-interface AbstractProductA {
-    usefulFunctionA(): string;
-}
+class ConcreteFactory1(AbstractFactory):
 
-class ConcreteProductA1 implements AbstractProductA {
-    public usefulFunctionA(): string {
-        return 'The result of the product A1.';
-    }
-}
+    def create_product_a(self) -> AbstractProductA:
+        return ConcreteProductA1()
 
-class ConcreteProductA2 implements AbstractProductA {
-    public usefulFunctionA(): string {
-        return 'The result of the product A2.';
-    }
-}
+    def create_product_b(self) -> AbstractProductB:
+        return ConcreteProductB1()
 
-interface AbstractProductB {
-    usefulFunctionB(): string;
-    anotherUsefulFunctionB(collaborator: AbstractProductA): string;
-}
 
-class ConcreteProductB1 implements AbstractProductB {
+class ConcreteFactory2(AbstractFactory):
 
-    public usefulFunctionB(): string {
-        return 'The result of the product B1.';
-    }
+    def create_product_a(self) -> AbstractProductA:
+        return ConcreteProductA2()
 
-    public anotherUsefulFunctionB(collaborator: AbstractProductA): string {
-        const result = collaborator.usefulFunctionA();
-        return `The result of the B1 collaborating with the (${result})`;
-    }
-}
+    def create_product_b(self) -> AbstractProductB:
+        return ConcreteProductB2()
 
-class ConcreteProductB2 implements AbstractProductB {
 
-    public usefulFunctionB(): string {
-        return 'The result of the product B2.';
-    }
+class AbstractProductA(ABC):
 
-    public anotherUsefulFunctionB(collaborator: AbstractProductA): string {
-        const result = collaborator.usefulFunctionA();
-        return `The result of the B2 collaborating with the (${result})`;
-    }
-}
+    @abstractmethod
+    def useful_function_a(self) -> str:
+        pass
+    
 
-function clientCode(factory: AbstractFactory) {
-    const productA = factory.createProductA();
-    const productB = factory.createProductB();
+class ConcreteProductA1(AbstractProductA):
+    def useful_function_a(self) -> str:
+        return "The result of the product A1."
 
-    console.log(productB.usefulFunctionB());
-    console.log(productB.anotherUsefulFunctionB(productA));
-}
 
-console.log('Client: Testing client code with the first factory type...');
-clientCode(new ConcreteFactory1());
+class ConcreteProductA2(AbstractProductA):
+    def useful_function_a(self) -> str:
+        return "The result of the product A2."
 
-console.log('');
 
-console.log('Client: Testing the same client code with the second factory type...');
-clientCode(new ConcreteFactory2());
+class AbstractProductB(ABC):
+    
+    @abstractmethod
+    def useful_function_b(self) -> None:
+        """
+        Product B is able to do its own thing...
+        """
+        pass
+
+    @abstractmethod
+    def another_useful_function_b(self, collaborator: AbstractProductA) -> None:
+        pass
+
+    
+class ConcreteProductB1(AbstractProductB):
+    def useful_function_b(self) -> str:
+        return "The result of the product B1."
+
+    def another_useful_function_b(self, collaborator: AbstractProductA) -> str:
+        result = collaborator.useful_function_a()
+        return f"The result of the B1 collaborating with the ({result})"
+
+
+class ConcreteProductB2(AbstractProductB):
+    def useful_function_b(self) -> str:
+        return "The result of the product B2."
+
+    def another_useful_function_b(self, collaborator: AbstractProductA):
+        result = collaborator.useful_function_a()
+        return f"The result of the B2 collaborating with the ({result})"
+
+
+def client_code(factory: AbstractFactory) -> None:
+    product_a = factory.create_product_a()
+    product_b = factory.create_product_b()
+
+    print(f"{product_b.useful_function_b()}")
+    print(f"{product_b.another_useful_function_b(product_a)}", end="")
+
+
+if __name__ == "__main__":
+    print("Client: Testing client code with the first factory type:")
+    client_code(ConcreteFactory1())
+
+    print("\n")
+
+    print("Client: Testing the same client code with the second factory type:")
+    client_code(ConcreteFactory2())
 ```
 
 ## Factory Method 工厂方法

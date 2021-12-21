@@ -241,7 +241,7 @@ PS：**传播时延**
 - MAN(Metropolitan Area Network) 城域网
 - WAN(Wide Area Network) 广域网
 
-## Bus topology
+## Topology type
 
 Network topology 网络拓扑
 

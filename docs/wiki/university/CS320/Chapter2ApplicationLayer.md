@@ -134,63 +134,58 @@ If IP address is 192.168.1.32,
 #### Three major components:
 1. user agents 
 
-2. mail servers (帮忙代收答案) 
+2. mail servers (帮忙代收邮件) 
 
-3. SMTP (simple mail transfer protocol)
+3. **SMTP** (simple mail transfer protocol) 
 
    user to mail server
 
    mail server to server
 
-## SMTP
+### SMTP 
 
 <img src="https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211104101651020.png" alt="image-20211104101651020" style="zoom:67%;" />
 
 Post Office Protocol—Version 3 (POP3), Internet Mail  Access Protocol (IMAP), and HTTP
 
-## DNS 域名系统
+## :star:DNS 域名系统
 
 domain name system, application-layer protocol
+
+why use?
 
 - People prefer the hostname identifier more，更简单容易记住
 - DNS is a directory service that provides a mapping between the name of a host on the network and its IP address
 
-**DNS services hostname to IP address translation:**
+:star:**DNS services hostname to IP address translation:**
 
-❖ The IP address of www.someschool.edu. This is done as
-follows.
-❖ 1. The same user machine runs the client side of the DNS
-application.
-❖ 2. The browser extracts the hostname, www.someschool.edu,
-from the URL and passes the hostname to the client side of
-the DNS application.
-❖ 3. The DNS client sends a query containing the hostname to
-a DNS server.
-❖ 4. The DNS client eventually receives a reply, which includes
-the IP address for the hostname.
-❖ 5. Once the browser receives the IP address from DNS, it
-can initiate a TCP connection to the HTTP server process
-located at port 80 at that IP address
+❖ The IP address of www.someschool.edu. This is done as follows.
+❖ 1. The same user machine runs the client side of the DNS application.
+❖ 2. The browser extracts the hostname, www.someschool.edu, **from the URL and passes the hostname to the client side of**
+**the DNS application.**
+❖ 3. **The DNS client sends a query containing the hostname to a DNS server.**
+❖ 4. The DNS client eventually receives a reply, which includes the IP address for the hostname.
+❖ 5. Once the browser receives the IP address from DNS, it can initiate a TCP connection to the HTTP server process located at port 80 at that IP address
 
 **Three different  sections:**
 
-i. generic domains,  ii. country domains,  iii. and inverse domain(反解析)
+i. generic domains 通用（顶级）域名,  ii. country domains 国家（顶级）域名,  iii. and inverse domain(反解析，由IP映射到域名)
 
 ## P2P Applications
 
 ### BitTorrent（BT）
 
-- peers participating in the  distribution of a particular file is called a torrent.
-- file divided into 256Kb chunks
-- peers in torrent send/receive file chunks
+**下载速度取决于参与者的数量，提供上行带宽Uplink bandwidth给下载者，已经下载的数据又提供给其他人共享下载**
 
-下载速度取决于参与者的数量，提供上行带宽Uplink bandwidth给下载者，已经下载的数据又提供给其他人共享下载
+Download speed depends on the number of participants, providing Uplink bandwidth to downloaders and sharing the downloaded data with others
 
 ## CDN 
 
 Content Distribution Network 内容分发网络
 
-A CDN is essentially **a group of servers that are strategically placed across the globe** with the purpose of accelerating the delivery of web content.
+A CDN is essentially **a group of servers that are placed all over the globe** with the purpose of accelerating the delivery of web content.
+
+ 遍布全球的一组服务器，加速网络内容交付
 
 **Work：**
 
@@ -206,14 +201,16 @@ A CDN is essentially **a group of servers that are strategically placed across t
 ▪ UDP: unreliable segment
 ▪ TCP: reliable, connection-oriented segments capturing a continuous byte-stream
 
-### UDP
+### UDP：Connectionless
 
 -  no “connection” between client & server
 - transmitted data may be lost or received out-of order
 - UDP provides **unreliable** transfer of groups of bytes  (“datagrams”) between client and server (不可靠传输)
 
-### TCP
+### TCP：Connection-Oriented
 
 - client must contact server
 
 - 三次握手（连接三次），可靠传输 TCP provides reliable, in-order byte-stream transfer (“pipe”)  between client and server
+
+详细见传输层

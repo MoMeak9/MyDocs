@@ -1,5 +1,7 @@
 **在 Java 或其它[面向对象设计模式](https://www.zhihu.com/search?q=面向对象设计模式&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"article"%2C"sourceId"%3A24576502})中，类与类之间主要有 6 种关系，他们分别为：依赖，关联，聚合，组合，继承，实现。他们的耦合度依次增强。**
 
+# UML图关系详解
+
 ## 1. 依赖 (Dependency)
 
 [依赖关系](https://www.zhihu.com/search?q=依赖关系&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"article"%2C"sourceId"%3A24576502})的定义为：对于两个相对独立的对象，当一个对象负责构造另一个对象的实例，或者依赖另一个对象的服务时，这两个对象之间主要体现为依赖关系。
