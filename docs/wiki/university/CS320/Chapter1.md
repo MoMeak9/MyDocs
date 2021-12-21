@@ -253,5 +253,11 @@ Ring topology 环形拓扑
 
 Tree topology 树形拓扑
 
+## 五层模型
 
+- application layer
+- transport layer
+- network layer
+- link layer
+- physical layer
 
