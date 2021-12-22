@@ -14,13 +14,21 @@ tags:
 
 ## 3.2 multiplexing and demultiplexing
 
-**Multiplexing at sender： 多路复用**
+**Multiplexing at sender： 多路复用在发送方**
 
-handle data from multiple sockets, add transport header  (later used for demultiplexing)
+- gathering data chunks at the source host from different sockets.
 
-处理来自多个套接字的数据，添加传输头(稍后用于解复用)
+- gathering data chunks at the source host from different sockets, encapsulating each data chunk(collection of bits) with header information (that will later be used in demultiplexing) to create segments
 
-**Demultiplexing at receiver：多路分解**
+- passing the segments to the network layer.
+
+- 在源主机上从不同的socket收集数据块。
+
+- 在源主机上从不同的套接字收集数据块，用头信息(稍后将用于解复用)封装每个数据块(位的集合)来创建段
+
+- 将网段传递给网络层。
+
+**Demultiplexing at receiver：接收方多路分解**
 
 use header info to deliver received segments to correct  socket
 
@@ -68,11 +76,12 @@ TCP利用滑动窗口机制实现流量控制。
 
 ## 3.5 TCP congestion control TCP拥塞控制
 
-- 慢开始
-- 拥塞避免
-- 快重传
-- 快恢复
+- 慢开始 Slow start
+- 拥塞避免 Congestion avoidance
 
 ![image-20211220171514255](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211220171514255.png)
+
+- 快重传 fast retransmission
+- 快恢复 quick recovery  
 
 ![image-20211220171524665](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211220171524665.png)

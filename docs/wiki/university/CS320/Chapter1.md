@@ -156,11 +156,22 @@ unlike DSL, which has dedicated access to central office
 1. routing: determines sourcedestination route taken by  packets(by routing algorithms)
 2. forwarding: move packets from  router ’s input to appropriate  router output
 
-#### Circuit switching
+#### Circuit switching 电路交换 :star:
 
--  Circuit establishment 电路建立
-- Data transfer
-- Circuit disconnect
+优点：Real-time, low delay, low exchange cost
+
+缺点：Low line utilization, long circuit connection time, low communication efficiency, different types of terminal users can not communicate with each other.
+
+Circuit switching is suitable for communication between fixed users with large amount of information and long messages.
+
+线路利用低，电路接续时间长，通信效率低，不同类型终端用户之间不能通信等缺点。 
+电路交换比较适用于信息量大、长报文，经常使用的固定用户之间的通信。
+
+#### Packet switching 分组交换:star:
+
+Packet switching has higher circuit **utilization rate** than circuit switching
+
+分组交换比电路交换的电路利用率更高
 
 ##### Frequency Division Multiplexing (TDM) 分频多路复用
 
@@ -241,7 +252,7 @@ PS：**传播时延**
 - MAN(Metropolitan Area Network) 城域网
 - WAN(Wide Area Network) 广域网
 
-## Bus topology
+## Topology type
 
 Network topology 网络拓扑
 
