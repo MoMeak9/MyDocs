@@ -1,5 +1,5 @@
 ---
-title: 计算机网络Chapter3 无线网络与加密
+title: 计算机网络Chapter6 无线网络与加密
 date: 2021-12-19
 author: MoMeaks
 sidebar: 'auto'
