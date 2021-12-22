@@ -20,6 +20,8 @@ tags:
 
 **Parity Check** 奇偶校验码
 
+![image-20211222104051102](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211222104051102.png)
+
 奇偶校验，校验1的个数为奇数或偶数，符合则接受
 
 <img src="https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211207144450174.png" alt="image-20211207144450174" style="zoom:80%;" />
@@ -28,7 +30,13 @@ tags:
 
 Only an odd number of bits can be detected, and the error detection capability is 50%
 
-**Checksum** 校验和
+### Checksum 校验和 :star:
+
+运用反码运算求和：1s  complement of the sum 
+
+反码算数运算：两个数进行二进制反码求和的运算很简单。它的规则是从低位到高位逐列进行计算。0和0相加是0，0和1相加是1，1和1相加是0，但要产生一个进位1，加到下一列。**如果最高位相加后产生进位，则最后得到的结果要加1。**
+
+
 
 **Cyclic Redundancy Check (CRC)** 循环冗余码
 
