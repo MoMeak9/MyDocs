@@ -17,16 +17,12 @@ tags:
 ### TCP/IP
 
 - These protocols describe the data transmission between the source and destination over the internet
+
+  这些协议描述了在internet上源和目的地之间的数据传输
+
 - Among these layers, application layer is the 1st layer. 
 
-**Application Layer:**
-
-- The application layer in the TCP/IP model is the closest layer
-  to the end user
-- It means that the application layer and end user can interact
-  directly with the software application
-- The application layer programs are based on client and
-  servers
+是四层协议，认为物理层和数据链路层统一为 **网络接入层 Network access layer**
 
 **Two different architectures are used in modern network  applications:**
 
@@ -35,21 +31,25 @@ tags:
 
 ### FTP File Transfer Protocol
 
-- FTP is a standard network protocol **provided by TCP/IP** and it is used for exchanging the files from one host to another.
-- It is also used for downloading the files to computer from other servers.
-- FTP is built on client-server architecture
+- FTP is a standard network protocol **provided by TCP/IP** and it is used for exchanging the files from one host to another. 用于在主机之间交换文件
+- It is also used for **downloading** the files to computer from other servers.
+- FTP is built on **client-server architecture**
 
  Types of File Transfer Protocol(FTP):
 
-Control Connection 逐行传输，随时关闭
+**Control Connection 逐行传输，随时关闭**
 
-Data Connection 进程连结，指令开启，传输完关闭
+**Data Connection 进程连结，指令开启，传输完关闭**
 
 ### Socket
 
 - A process sends messages into, and receives messages from, the network through a software interface called a socket.
 
-- socket is the door between the client/server  process and the TCP connection
+  进程通过一个称为套接字的软件接口向网络发送消息，并从网络接收消息。
+
+- socket is the door between the client/server  process and the TCP connection.
+
+  socket是客户端/服务器进程和TCP连接之间的门户
 
 ### IP
 
@@ -87,9 +87,13 @@ If IP address is 192.168.1.32,
 
 #### HTTP
 
-1. **Non-persistent HTTP**
+1. **Non-persistent HTTP** 非持久性
 
-2. **Persistent HTTP（1.1）**
+   
+
+2. **Persistent HTTP（1.1）**持久性
+
+   
 
 **two types of HTTP messages:** request, response
 

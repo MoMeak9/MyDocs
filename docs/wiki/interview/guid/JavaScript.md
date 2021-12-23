@@ -287,9 +287,61 @@ JSONP 易于实现，但是也会存在一些安全隐患，如果第三方的�
 
 ## 考点 9：this 关键字
 
-**this指向问题**
+**问题：this指向的四种情况？**
 
+- 1、**new操作符创建实例**
 
+```js
+function Person(name) {
+  this.name = name
+  console.log(this)
+}
+// this指向当前person实例对象
+const person = new Person('Sunshine_Lin')
+```
+
+- 2、**指向window**
+
+```js
+function fn() {
+  console.log(this)
+}
+fn() // 浏览器window，node里global
+```
+
+- 3、对象调用方法
+
+```js
+const target = {
+  fn: function () { console.log(this) }
+}
+target.fn() // target
+
+// 这种就是改变了this了
+const fn = target.fn
+fn() // 浏览器window，node里global
+```
+
+- 4、call、apply、bind改变this
+
+```js
+const obj1 = {
+  name: '林三心',
+  sayName: function() {
+    console.log(this.name)
+  }
+}
+const obj2 = {
+  name: 'Sunshin_Lin'
+}
+// 改变sayName的this指向obj2
+obj1.sayName.call(obj2) // Sunshin_Lin
+// 改变sayName的this指向obj2
+obj1.sayName.apply(obj2) // Sunshin_Lin
+// 改变sayName的this指向obj2
+const fn = obj1.sayName.bind(obj2)
+fn() // Sunshin_Lin
+```
 
 **问题：执行以下代码的结果是什么？为什么？**
 
