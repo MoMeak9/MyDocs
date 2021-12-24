@@ -46,7 +46,9 @@ How demultiplexing works:
 
 ![image-20211220170415926](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211220170415926.png)
 
-校验：
+**校验：**注意反码运算 1‘s compomect 最高位溢出则结果加一
+
+校验和为结果值的反码
 
 ![image-20211220170540770](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211220170540770.png)
 
@@ -56,11 +58,33 @@ How demultiplexing works:
 
 ![image-20211220170553343](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211220170553343.png)
 
-### TCP 连接建立
+### TCP 连接建立（三次握手）
+
+seq:请求确认信息，ack:确认信息并依赖于ack
+
+1. 客户机发起：**SYN=1,seq=x**
+2. 服务器响应并返回确认信息：**SYN=1,ACK=1,ack=x+1,seq=y**
+3. 客户端收到并返回确认信息：**ACK=1,ack=y+1,seq=x+1**
 
 ![image-20211220170702372](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211220170702372.png)
 
-### TCP连接释放
+### TCP连接释放（四次握手）
+
+1. 客户机主动发起连接释放报文段，停止发送数据，主动关闭TCP连接The client initiates a connection to release the packet segment, stops sending data, and closes the TCP connection：
+
+   **FIN = 1,seq = u**
+
+2. 服务器收到连接释放报文段后确认The server acknowledges the connection release packet after receiving the segment：
+
+   **ACK = 1,seq = v,ack=u+1**
+
+3. 服务器通知客户端释放连接The server notifies the client to release the connection：
+
+   **FIN = 1, ACK=1,seq=w,ack=u+1**
+
+4. 客户端收到连接释放报文后，发出确认After receiving the connection release packet, the client sends an acknowledgement：
+
+   **ACK=1,seq=u+1,ack=w+1**
 
 ![image-20211220170736189](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211220170736189.png)
 
@@ -68,9 +92,13 @@ How demultiplexing works:
 
 TCP利用滑动窗口机制实现流量控制。
 
-:star:在通信过程中，接收方根据自己接收缓存的大小，动态地调整发送方的发送窗口大小，即接收窗口rwnd （接收方设置确认报文段的窗口字段来将rwnd通知给发送方） ，发送方的发送窗口取**接收窗口rwnd**和**拥塞窗口cwnd**的最小值
+:star:在通信过程中，接收方根据自己接收缓存的大小，动态地调整发送方的发送窗口大小，即接收窗口rwnd （接收方设置确认报文段的窗口字段来将rwnd通知给发送方） ，发送方的**发送窗口**取**接收窗口rwnd**和**拥塞窗口cwnd**的最小值min
 
-**作用：**
+**接收窗口rwnd：**
+
+**拥塞窗口cwnd：**
+
+**作用：**（为什么要通知窗口大小）
 
 - 防止接收方内存溢出，分组丢失 **Prevent receiver memory overflow and packet loss**
 
