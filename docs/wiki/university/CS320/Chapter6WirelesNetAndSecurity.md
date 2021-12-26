@@ -44,7 +44,7 @@ tags:
 安全
 
 - Access Control 访问控制
-- Antivirus and Anti-malware Software: 杀毒软件
+- Antivirus Software: 杀毒软件
 - Cloud Security 云安全
 
 病毒
@@ -55,8 +55,8 @@ tags:
 
 ### 密码 Cryptographic
 
-- Symmetric Key Cryptographic 对称密钥加密
-- Public Key Cryptographic 公钥加密
+- Symmetric Key Cryptographic 对称密钥加密 **SKC**
+- Public Key Cryptographic 公钥加密 **PKC**
 
 ## 6.4 Mobility management 移动管理
 

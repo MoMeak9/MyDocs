@@ -15,7 +15,7 @@ tags:
 
 ### 路由选择routing（确定哪一条路径）
 
-The routing table is constructed according to the specific routing protocol, and the routing table is constantly updated and maintained by exchanging routing information with neighboring routers. 
+The routing table is constructed according to the specific routing **protocol**, and the routing table is constantly updated and maintained by exchanging routing information with neighboring routers. 
 
 路由表是根据特定的路由协议构建的，通过与相邻路由器交换路由信息，不断更新和维护路由表。
 
@@ -49,12 +49,6 @@ routes change more  quickly，Improves performance and flow control性能增强�
 
 目的：determine “good” paths  (equivalently, routes), from sending hosts to  receiving host, through network of routers.
 
-#### :star:Bellman-Ford equation(dynamic programming) 距离向量方程(动态规划)
-
-**重要**
-
-<img src="https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211206165221062.png" alt="image-20211206165221062" style="zoom:50%;" />
-
 #### :star:link state 链路状态路由算法  Dijkstra's Algorithm SPF
 
 **c(x,y): 节点x到节点y的链路开销; 如果不是直接邻居=∞**
@@ -63,7 +57,13 @@ routes change more  quickly，Improves performance and flow control性能增强�
 
 **N': 已知最小代价路径的节点集**
 
-![image-20211220163456245](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211220163456245.png)
+<img src="https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211220163456245.png" alt="image-20211220163456245" style="zoom:67%;" />
+
+#### :star:Bellman-Ford equation(dynamic programming) （贝尔曼-福德）距离向量方程(动态规划) RIP
+
+**重要**
+
+<img src="https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211206165221062.png" alt="image-20211206165221062" style="zoom: 50%;" />
 
 #### :star:distance vector 距离-向量路由算法 RIP
 
@@ -71,7 +71,7 @@ routes change more  quickly，Improves performance and flow control性能增强�
 
 ![image-20211220153834655](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211220153834655.png)
 
-第二布，将无限符号替换为来自其他表的数据，并对自己本身列区最小值优化，最后的表格则为综合了第二部三个表的最优解的答案（内容完全相同）
+第二布，将无限符号替换为来自其他表的数据，并对自己本身行区域最小值优化，最后的表格则为综合了第二部三个表的最优解的答案（内容完全相同）
 
 #### :star:link cost changes 链路消耗变化会发生什么？
 
@@ -82,3 +82,11 @@ t0,t1,t2...
 ![image-20211220155156549](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211220155156549.png)
 
 在变成静态之前算法迭代两次
+
+
+
+t0: y检测到链路开销的变化，更新DV，通知邻居。
+
+t1: z收到y的更新，更新它的表，计算x的新最小成本，给它的邻居发送DV。
+
+t2: y收到z的更新，更新它的距离表。Y的最小代价不变，所以Y不会向z发送消息。自动终止

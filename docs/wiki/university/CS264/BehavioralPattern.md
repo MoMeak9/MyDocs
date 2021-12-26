@@ -15,7 +15,7 @@ tags:
 
 **访问者模式**是一种行为设计模式， 它能将算法与其所作用的对象隔离开来。
 
-The visitor pattern is a behavior design pattern that isolates an algorithm from the object it works on.
+The visitor pattern is a behavior design pattern that **isolates** an algorithm from the object it works on.
 
 <img src="https://refactoringguru.cn/images/patterns/diagrams/visitor/structure-zh-indexed.png" alt="访问者设计模式的结构" style="zoom:80%;" />
 
@@ -27,7 +27,7 @@ The visitor pattern is a behavior design pattern that isolates an algorithm from
 
 ### 场景
 
-- 如果你需要对一个复杂对象结构 （例如对象树） 中的所有元素执行某些操作， 可使用访问者模式。
+- 如果你需要对一个复杂对象结构 （例如对象树） 中的所有元素执行某些操作， 可使用访问者模式。If you need to perform certain operations on all elements in a complex object structure, such as a tree of objects, use the Visitor pattern.
 - 可使用访问者模式来清理辅助行为的业务逻辑。
 - 当某个行为仅在类层次结构中的一些类中有意义， 而在其他类中没有意义时， 可使用该模式。
 
@@ -47,7 +47,7 @@ The visitor pattern is a behavior design pattern that isolates an algorithm from
 
 **观察者模式**是一种行为设计模式， 允许你定义一种订阅机制， 可在对象事件发生时通知多个 “观察” 该对象的其他对象。
 
-The Observer pattern is a behavior design pattern that allows you to define a subscription mechanism that notifies multiple other objects that "observe" an object when an event occurs.
+The Observer pattern is a behavior design pattern that allows you to define a **subscription mechanism** that notifies multiple other objects that "**observe**" an object when an **event happen**.
 
 <img src="https://refactoringguru.cn/images/patterns/diagrams/observer/structure-indexed.png" alt="观察者设计模式的结构" style="zoom:80%;" />
 
@@ -61,6 +61,9 @@ The Observer pattern is a behavior design pattern that allows you to define a su
 ### 场景
 
 - 当一个对象状态的改变需要改变其他对象， 或实际对象是事先未知的或动态变化的时， 可使用观察者模式。
+
+  The observer mode can be used when a change in the state of one object requires changes to other objects, or when the actual object is previously unknown or dynamically changing.
+
 - 当应用中的一些对象必须观察其他对象时， 可使用该模式。 但仅能在有限时间内或特定情况下使用。
 
 ### 优缺点
@@ -76,12 +79,12 @@ D：
 
 What is the difference between the observer pattern and the chain of responsibility pattern in the notification delivery?
 
-- **责任链 **按照顺序将请求动态传递给一系列的潜在接收者， 直至其中一名接收者对请求进行处理。
-- **观察者 **允许接收者动态地订阅或取消接收请求。
+- **责任链 **按照顺序将请求动态传递给一系列的潜在接收者， 直至其中一名接收者对请求进行处理。**Chain of responsibility **Requests are dynamically passed in order to a series of potential recipients until one of them processes the request.
+- **观察者 **允许接收者动态地订阅或取消接收请求。Allows the receiver to dynamically subscribe or unsubscribe from receiving requests.
 
 ## Iterator 迭代器
 
-**迭代器模式**是一种行为设计模式， 让你能在不暴露集合底层表现形式 （列表、 栈和树等） 的情况下遍历集合中所有的元素。The iterator pattern is a behavioral design pattern that lets you iterate through all the elements of a collection without exposing the underlying representation of the collection (lists, stacks, trees, etc.).
+**迭代器模式**是一种行为设计模式， 让你能在不暴露集合底层表现形式 （列表、 栈和树等） 的情况下遍历集合中所有的元素。The iterator pattern is a behavioral design pattern that lets you iterate through all the elements of a collection **without exposing the underlying representation of the collection** (lists, stacks, trees, etc.).
 
 <img src="https://refactoringguru.cn/images/patterns/diagrams/iterator/structure-indexed.png" alt="迭代器设计模式的结构" style="zoom:80%;" />
 

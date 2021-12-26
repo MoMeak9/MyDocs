@@ -34,7 +34,7 @@ use header info to deliver received segments to correct  socket
 
 How demultiplexing works:
 
-- host receives IP datagrams  (message, data)
+- host receives IP datagrams 数据报  (message, data)
   - i. each datagram has source IP address, 
     destination IP address
   - ii. each datagram carries one transportlayer segment (packets)
@@ -54,7 +54,7 @@ How demultiplexing works:
 
 ## 3.4 connection-oriented transport: TCP
 
-面向连接传输（可靠传输 reliable data transfer）
+面向连接传输（可靠传输 reliable data transport）
 
 ![image-20211220170553343](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211220170553343.png)
 
