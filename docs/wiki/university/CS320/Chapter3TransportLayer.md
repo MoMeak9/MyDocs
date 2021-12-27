@@ -68,6 +68,10 @@ seq:请求确认信息，ack:确认信息并依赖于ack
 
 ![image-20211220170702372](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211220170702372.png)
 
+### 数据传输
+
+![image-20211226183606034](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211226183606034.png)
+
 ### TCP连接释放（四次握手）
 
 1. 客户机主动发起连接释放报文段，停止发送数据，主动关闭TCP连接The client initiates a connection to release the packet segment, stops sending data, and closes the TCP connection：
@@ -102,6 +106,8 @@ TCP利用滑动窗口机制实现流量控制。
 
 - 防止接收方内存溢出，分组丢失 **Prevent receiver memory overflow and packet loss**
 
+![image-20211226184114391](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211226184114391.png)
+
 ## 3.5 TCP congestion control TCP拥塞控制
 
 - 慢开始 Slow start
@@ -110,6 +116,9 @@ TCP利用滑动窗口机制实现流量控制。
 ![image-20211220171514255](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211220171514255.png)
 
 - 快重传 fast retransmission
+
+  <img src="https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211226184434588.png" alt="image-20211226184434588" style="zoom: 67%;" />
+
 - 快恢复 quick recovery  
 
 ![image-20211220171524665](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211220171524665.png)
