@@ -240,7 +240,18 @@ window.setInterval(函数，时间) 无限执行
 一共有 5 个步骤，如下：
 
 ```js
-
+//1.创建 XMLHttpRequest 对象
+var ajax = new XMLHttpRequest();
+//2. 规定请求的类型、URL 以及是否异步处理请求。   
+ajax.open('GET',url,true);
+//3. 发送信息至服务器时内容编码类型
+ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//4. 发送请求ajax.send(null);
+//5. 接受服务器响应数据
+ajax.onreadystatechange = function () {
+	if (obj.readyState == 4 && (obj.status == 200 || obj.status == 304)) {
+	}
+};
 ```
 
 **问题：什么情况造成跨域？**
@@ -276,18 +287,20 @@ JSONP 易于实现，但是也会存在一些安全隐患，如果第三方的�
 
 **问题：什么是事件冒泡？什么是事件捕获？**
 
-事件捕获阶段：事件从最上一级标签开始往下查找，直到捕获到事件目标(target)。事件冒泡阶段：事件从事件目标(target)开始，往上冒泡直到页面的最上一级标签。
+事件捕获阶段：事件从最上一级标签开始往下查找，直到捕获到事件目标(target)。
+
+事件冒泡阶段：事件从事件目标(target)开始，往上冒泡直到页面的最上一级标签。
 
 **问题：请说出阻止事件冒泡的几个办法？**
 
 1.	event.stopPropagation();
-事件处理过程中，阻止了事件冒泡，但不会阻击默认行为，比如：点击事件绑定在 a 标签的话，会执行了超链接的跳转。
+事件处理过程中，阻止了事件冒泡，但**不会阻击默认行为**，比如：点击事件绑定在 a 标签的话，会执行了超链接的跳转。
 2.	return false;
-事件处理过程中，阻止了事件冒泡，也阻止了默认行为。比如：点击事件绑定在 a 标签的话，不会执行超链接的跳转。 
+事件处理过程中，**阻止了事件冒泡，也阻止了默认行为**。比如：点击事件绑定在 a 标签的话，不会执行超链接的跳转。 
 
 ## 考点 9：this 关键字
 
-**问题：this指向的四种情况？**
+**问题：this指向的几种情况？**
 
 - 1、**new操作符创建实例**
 
@@ -309,20 +322,20 @@ function fn() {
 fn() // 浏览器window，node里global
 ```
 
-- 3、对象调用方法
+- 3、**对象调用方法**
 
 ```js
 const target = {
   fn: function () { console.log(this) }
 }
-target.fn() // target
+target.fn() // target 直接提供对象调用方法
 
-// 这种就是改变了this了
+// 给对象调用方法赋值并调用，这种就是改变了this了
 const fn = target.fn
 fn() // 浏览器window，node里global
 ```
 
-- 4、call、apply、bind改变this
+- **4、call、apply、bind改变this**
 
 ```js
 const obj1 = {
@@ -342,6 +355,22 @@ obj1.sayName.apply(obj2) // Sunshin_Lin
 const fn = obj1.sayName.bind(obj2)
 fn() // Sunshin_Lin
 ```
+
+- **5、箭头函数中的this**
+
+1. 默认绑定外层this，**箭头函数会默认帮我们绑定外层this的值，所以在箭头函数中this的值和外层的this是一样的。**
+2. 不能用call方法修改里面的this
+
+```js
+const obj = {
+    a: () => {
+        console.log(this)
+    }
+}
+obj.a()  //打出来的是window
+```
+
+**总言之：this 永远指向最后调用它的那个对象**
 
 **问题：执行以下代码的结果是什么？为什么？**
 
@@ -391,11 +420,15 @@ es6地址https://es6.ruanyifeng.com/
 
 **问题：var、let、const之间的区别（笔试）**
 
-var声明变量可以重复声明，而let不可以重复声明var是不受限于块级的，而let是受限于块级
+var声明变量可以重复声明，而let不可以重复声明
+
+var是不受限于块级的，而let是受限于块级
 
 var会与window相映射（会挂一个属性），而let不与window相映射
 
-var可以在声明的上面访问变量，而let有暂存死区，在声明的上面访问变量会报错const声明之后必须赋值，否则会报错
+var可以在声明的上面访问变量，而**let有暂存死区**，在声明的上面访问变量会报错
+
+const声明之后必须赋值，否则会报错
 
 const定义不可变的量，改变了就会报错
 
@@ -403,39 +436,49 @@ const和let一样不会与window相映射、支持块级作用域、在声明的
 
 **问题：介绍下 Set、Map的区别（比较少被问道，基本问的是set）**
 
-应用场景Set用于数据重组，Map用于数据储存Set
+应用场景Set用于数据重组，Map用于数据储存
 1.	Map是键值对，Set是值得集合，当然键和值可以是任何的值；
 2.	Map可以通过get方法获取值，而set不能因为它只有值；
-3.	都能通过迭代器进行for...of遍历；
-4.	Set的值是唯一的可以做数组去重，Map由于没有格式限制，可以做数据存储；
+3.	都能通过**迭代器**进行for...of遍历；
+4.	**Set的值是唯一的可以做数组去重，Map由于没有格式限制，可以做数据存储；**
 
 **问题：介绍下promise，有用过all方法吗？（重要，百分之90会问到，除非到不了这里就被pass）**
 
-Promise 是异步编程的一种解决方案。Promise对象有以下两个特点，对象的状态不受外界影响和一旦状态改变，就不会再变，任何时候都可以得到这个结果，promise对象有三种状态：pending（进行中）、fulfilled（已成功）和rejected（已失败）。Promise对象是一个构造函数，用来生成Promise实例，Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。promise的方法(有些人叫api)有then， catch，finally，resolve,reject等。
+Promise 是异步编程的一种解决方案。Promise对象有以下两个特点，对象的状态不受外界影响和一旦状态改变，就不会再变，任何时候都可以得到这个结果，**promise对象有三种状态：pending（进行中）、fulfilled（已成功）和rejected（已失败）**。Promise对象是一个构造函数，用来生成Promise实例，Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。**promise的方法(有些人叫api)有then， catch，finally，resolve,reject**等。
 
-Promise.all()方法可以将多个Promise实例包装成一个新的Promise实例。同时，成功和失败的返回值是不同的，成功的时候返回的是一个结果数组，而失败的时候则返回最先被reject失败状态的值需要特别注意的是，Promise.all获得的成功结果的数组里面的数据顺序和Promise.all接收到的数组顺序是一致的，即p1的结果在前，即便p1的结果获取的比p2要晚。这带来了一个绝大的好处：在前端开发请求数据的过程中，偶尔会遇到发送多个请求并根据请求顺序获取和使用数据的场景，使用Promise.all毫无疑问可以解决这个问题。
+**Promise.all()方法可以将多个Promise实例包装成一个新的Promise实例。**同时，**成功和失败的返回值是不同的，成功的时候返回的是一个结果数组，而失败的时候则返回最先被reject失败状态的值**。
+
+需要特别注意的是，Promise.all**获得的成功结果的数组里面的数据顺序和Promise.all接收到的数组顺序是一致的**，即p1的结果在前，即便p1的结果获取的比p2要晚。这带来了一个绝大的好处：在前端开发请求数据的过程中，偶尔会遇到发送多个请求并根据请求顺序获取和使用数据的场景，使用Promise.all毫无疑问可以解决这个问题。
 
 **问题：promise和async await的区别(用自己的话总结)**
 
-Promise的出现解决了传统callback函数导致的“地域回调”问题，但它的语法导致了它向纵向发展行成了一个回调链，遇到复杂的业务场景，这样的语法显然也是不美观的。而async await代码看起来会简洁些，使得异步代码看起来像同步代码，await的本质是可以提供等同于”同步效果“的等待异步返回能力的语法糖，只有这一句代码执行完，才会执行下一句。
+Promise的出现解决了传统callback函数导致的“地域回调”问题，**但它的语法导致了它向纵向发展行成了一个回调链**，遇到复杂的业务场景，这样的语法显然也是不美观的。而async await代码看起来会简洁些，使得异步代码看起来像同步代码，**await的本质是可以提供等同于”同步效果“的等待异步返回能力的语法糖，只有这一句代码执行完，才会执行下一句。**
 
 async await与Promise一样，是非阻塞的。
 
-async await是基于Promise实现的，可以说是改良版的Promise，它不能用于普通的回调函数。
+**async await是基于Promise实现的，可以说是改良版的Promise，它不能用于普通的回调函数**。
+
+
 
 **问题：如何去重？（重要，百分之70，要不笔试，要不面试的时候问）**
 
 [...new set(arr)]
 
+
+
 **问题：for in 和for of的区别（面试）**
 
-for...in 语句用于遍历数组或者对象的属性（对数组或者对象的属性进行循环操作）。for in得到对对象的key或数组,字符串的下标
+for...in 语句用于**遍历数组或者对象的属性**（对数组或者对象的属性进行循环操作）。for in得到对对象的**key**或数组,字符串的**下标**
 
-for of和forEach一样,是直接得到值for of不能对象用
+for of和forEach一样,是直接得到**值**；for of不能对对象用
+
+
 
 **问题：null和undefined的区别（笔试）**
 
 总结来说：null表示没有对象，即该处不应该有值。undefined表示缺少值，即此处应该有值，但没有定义
+
+
 
 **问题：操作数组，对象的常用方法有那些（重要）**
 

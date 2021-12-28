@@ -163,8 +163,8 @@ Hash 模式：vue-router 默认 hash 模式，使用 URL 的 hash 来模拟一�
 
 **问题：$route和$router的区别是什么**
 
-router为VueRouter的实例，是一个全局路由对象，包含了路由跳转的方法、钩子函数等。
-route 是路由信息对象||跳转的路由对象，每一个路由都会有一个route对象，是一个局部对象，包含path,params,hash,query,fullPath,matched,name等路由信息参数。
+router为VueRouter的**实例**，是一个全局路由对象，包含了路由跳转的方法、钩子函数等。
+route 是<u>路由信息对象</u>||跳转的路由对象，<u>每一个路由都会有一个route对象，是一个局部对象</u>，包含path,params,hash,query,fullPath,matched,name等路由信息参数。
 
 **问题：Router的传参方式有哪些，有什么区别**
 
