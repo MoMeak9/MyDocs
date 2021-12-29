@@ -206,57 +206,58 @@ The factory method pattern is a creative design pattern that provides a method t
 
 ### Code
 
-```typescript
-abstract class Creator {
-    public abstract factoryMethod(): Product;
+```python
+from abc import ABC, abstractmethod
 
-    public someOperation(): string {
-        const product = this.factoryMethod();
-        return `Creator: The same creator's code has just worked with ${product.operation()}`;
-    }
-}
 
-class ConcreteCreator1 extends Creator {
-    public factoryMethod(): Product {
-        return new ConcreteProduct1();
-    }
-}
+class Creator(ABC):
+    @abstractmethod
+    def factory_method(self):
+        pass
 
-class ConcreteCreator2 extends Creator {
-    public factoryMethod(): Product {
-        return new ConcreteProduct2();
-    }
-}
+    def some_operation(self) -> str:
+        product = self.factory_method()
+        result = f"Creator: The same creator's code has just worked with {product.operation()}"
+        return result
 
-interface Product {
-    operation(): string;
-}
+class ConcreteCreator1(Creator):
+    def factory_method(self) -> Product:
+        return ConcreteProduct1()
 
-class ConcreteProduct1 implements Product {
-    public operation(): string {
-        return '{Result of the ConcreteProduct1}';
-    }
-}
 
-class ConcreteProduct2 implements Product {
-    public operation(): string {
-        return '{Result of the ConcreteProduct2}';
-    }
-}
+class ConcreteCreator2(Creator):
+    def factory_method(self) -> Product:
+        return ConcreteProduct2()
 
-function clientCode(creator: Creator) {
-    // ...
-    console.log('Client: I\'m not aware of the creator\'s class, but it still works.');
-    console.log(creator.someOperation());
-    // ...
-}
 
-console.log('App: Launched with the ConcreteCreator1.');
-clientCode(new ConcreteCreator1());
-console.log('');
+class Product(ABC):
+    @abstractmethod
+    def operation(self) -> str:
+        pass
 
-console.log('App: Launched with the ConcreteCreator2.');
-clientCode(new ConcreteCreator2());
+
+class ConcreteProduct1(Product):
+    def operation(self) -> str:
+        return "{Result of the ConcreteProduct1}"
+
+
+class ConcreteProduct2(Product):
+    def operation(self) -> str:
+        return "{Result of the ConcreteProduct2}"
+
+
+def client_code(creator: Creator) -> None:
+    print(f"Client: I'm not aware of the creator's class, but it still works.\n"
+          f"{creator.some_operation()}", end="")
+
+
+if __name__ == "__main__":
+    print("App: Launched with the ConcreteCreator1.")
+    client_code(ConcreteCreator1())
+    print("\n")
+
+    print("App: Launched with the ConcreteCreator2.")
+    client_code(ConcreteCreator2())
 ```
 
 ## Builder 生成器
@@ -575,7 +576,7 @@ Disadvantage
   1. 只会有一个单例实体， 但是*享元*类可以有多个实体， 各实体的内在状态也可以不同。
   2. 单例对象可以是可变的。 享元对象是不可变的。
 
-### Code
+### Code:star:
 
 ```typescript
 class Singleton {

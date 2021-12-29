@@ -53,52 +53,59 @@ Dis
 
 ### Code
 
-```typescript
-class Target {
-    public request(): string {
-        return 'Target: The default target\'s behavior.';
-    }
-}
+```python
+class Target:
+    """
+    The Target defines the domain-specific interface used by the client code.
+    """
 
-class Adaptee {
-    public specificRequest(): string {
-        return '.eetpadA eht fo roivaheb laicepS';
-    }
-}
+    def request(self) -> str:
+        return "Target: The default target's behavior."
 
-class Adapter extends Target {
-    private adaptee: Adaptee;
 
-    constructor(adaptee: Adaptee) {
-        super();
-        this.adaptee = adaptee;
-    }
+class Adaptee:
+    """
+    The Adaptee contains some useful behavior, but its interface is incompatible
+    with the existing client code. The Adaptee needs some adaptation before the
+    client code can use it.
+    """
 
-    public request(): string {
-        const result = this.adaptee.specificRequest().split('').reverse().join('');
-        return `Adapter: (TRANSLATED) ${result}`;
-    }
-}
+    def specific_request(self) -> str:
+        return ".eetpadA eht fo roivaheb laicepS"
 
-function clientCode(target: Target) {
-    console.log(target.request());
-}
 
-console.log('Client: I can work just fine with the Target objects:');
-const target = new Target();
-clientCode(target);
+class Adapter(Target, Adaptee):
+    """
+    The Adapter makes the Adaptee's interface compatible with the Target's
+    interface via multiple inheritance.
+    """
 
-console.log('');
+    def request(self) -> str:
+        return f"Adapter: (TRANSLATED) {self.specific_request()[::-1]}"
 
-const adaptee = new Adaptee();
-console.log('Client: The Adaptee class has a weird interface. See, I don\'t understand it:');
-console.log(`Adaptee: ${adaptee.specificRequest()}`);
 
-console.log('');
+def client_code(target: "Target") -> None:
+    """
+    The client code supports all classes that follow the Target interface.
+    """
 
-console.log('Client: But I can work with it via the Adapter:');
-const adapter = new Adapter(adaptee);
-clientCode(adapter);
+    print(target.request(), end="")
+
+
+if __name__ == "__main__":
+    print("Client: I can work just fine with the Target objects:")
+    target = Target()
+    client_code(target)
+    print("\n")
+
+    adaptee = Adaptee()
+    print("Client: The Adaptee class has a weird interface. "
+          "See, I don't understand it:")
+    print(f"Adaptee: {adaptee.specific_request()}", end="\n\n")
+
+    print("Client: But I can work with it via the Adapter:")
+    adapter = Adapter()
+    client_code(adapter)
 ```
 
 ## Bridge 桥接
@@ -344,63 +351,92 @@ The facade pattern is a structural design pattern that provides a simple interfa
 
 ### Code
 
-```typescript
-class Facade {
-    protected subsystem1: Subsystem1;
+```python
+class Facade:
+    """
+    The Facade class provides a simple interface to the complex logic of one or
+    several subsystems. The Facade delegates the client requests to the
+    appropriate objects within the subsystem. The Facade is also responsible for
+    managing their lifecycle. All of this shields the client from the undesired
+    complexity of the subsystem.
+    """
 
-    protected subsystem2: Subsystem2;
+    def __init__(self, subsystem1: Subsystem1, subsystem2: Subsystem2) -> None:
+        """
+        Depending on your application's needs, you can provide the Facade with
+        existing subsystem objects or force the Facade to create them on its
+        own.
+        """
 
-    constructor(subsystem1: Subsystem1 = null, subsystem2: Subsystem2 = null) {
-        this.subsystem1 = subsystem1 || new Subsystem1();
-        this.subsystem2 = subsystem2 || new Subsystem2();
-    }
+        self._subsystem1 = subsystem1 or Subsystem1()
+        self._subsystem2 = subsystem2 or Subsystem2()
 
-    public operation(): string {
-        let result = 'Facade initializes subsystems:\n';
-        result += this.subsystem1.operation1();
-        result += this.subsystem2.operation1();
-        result += 'Facade orders subsystems to perform the action:\n';
-        result += this.subsystem1.operationN();
-        result += this.subsystem2.operationZ();
+    def operation(self) -> str:
+        """
+        The Facade's methods are convenient shortcuts to the sophisticated
+        functionality of the subsystems. However, clients get only to a fraction
+        of a subsystem's capabilities.
+        """
 
-        return result;
-    }
-}
+        results = []
+        results.append("Facade initializes subsystems:")
+        results.append(self._subsystem1.operation1())
+        results.append(self._subsystem2.operation1())
+        results.append("Facade orders subsystems to perform the action:")
+        results.append(self._subsystem1.operation_n())
+        results.append(self._subsystem2.operation_z())
+        return "\n".join(results)
 
-class Subsystem1 {
-    public operation1(): string {
-        return 'Subsystem1: Ready!\n';
-    }
 
-    // ...
+class Subsystem1:
+    """
+    The Subsystem can accept requests either from the facade or client directly.
+    In any case, to the Subsystem, the Facade is yet another client, and it's
+    not a part of the Subsystem.
+    """
 
-    public operationN(): string {
-        return 'Subsystem1: Go!\n';
-    }
-}
+    def operation1(self) -> str:
+        return "Subsystem1: Ready!"
 
-class Subsystem2 {
-    public operation1(): string {
-        return 'Subsystem2: Get ready!\n';
-    }
+    # ...
 
-    public operationZ(): string {
-        return 'Subsystem2: Fire!';
-    }
-}
+    def operation_n(self) -> str:
+        return "Subsystem1: Go!"
 
-function clientCode(facade: Facade) {
-    // ...
 
-    console.log(facade.operation());
+class Subsystem2:
+    """
+    Some facades can work with multiple subsystems at the same time.
+    """
 
-    // ...
-}
+    def operation1(self) -> str:
+        return "Subsystem2: Get ready!"
 
-const subsystem1 = new Subsystem1();
-const subsystem2 = new Subsystem2();
-const facade = new Facade(subsystem1, subsystem2);
-clientCode(facade);
+    # ...
+
+    def operation_z(self) -> str:
+        return "Subsystem2: Fire!"
+
+
+def client_code(facade: Facade) -> None:
+    """
+    The client code works with complex subsystems through a simple interface
+    provided by the Facade. When a facade manages the lifecycle of the
+    subsystem, the client might not even know about the existence of the
+    subsystem. This approach lets you keep the complexity under control.
+    """
+
+    print(facade.operation(), end="")
+
+
+if __name__ == "__main__":
+    # The client code may have some of the subsystem's objects already created.
+    # In this case, it might be worthwhile to initialize the Facade with these
+    # objects instead of letting the Facade create new instances.
+    subsystem1 = Subsystem1()
+    subsystem2 = Subsystem2()
+    facade = Facade(subsystem1, subsystem2)
+    client_code(facade)
 ```
 
 
@@ -579,101 +615,156 @@ D：
 
 ### Code
 
-```typescript
-abstract class Component {
-    protected parent: Component;
+```python
+from abc import ABC, abstractmethod
+from typing import List
 
-    public setParent(parent: Component) {
-        this.parent = parent;
-    }
 
-    public getParent(): Component {
-        return this.parent;
-    }
+class Component(ABC):
+    @property
+    def parent(self) -> Component:
+        return self._parent
 
-    public add(component: Component): void { }
+    @parent.setter
+    def parent(self, parent: Component):
+        """
+        Optionally, the base Component can declare an interface for setting and
+        accessing a parent of the component in a tree structure. It can also
+        provide some default implementation for these methods.
+        """
 
-    public remove(component: Component): void { }
+        self._parent = parent
 
-    public isComposite(): boolean {
-        return false;
-    }
+    """
+    In some cases, it would be beneficial to define the child-management
+    operations right in the base Component class. This way, you won't need to
+    expose any concrete component classes to the client code, even during the
+    object tree assembly. The downside is that these methods will be empty for
+    the leaf-level components.
+    """
 
-    public abstract operation(): string;
-}
+    def add(self, component: Component) -> None:
+        pass
 
-class Leaf extends Component {
-    public operation(): string {
-        return 'Leaf';
-    }
-}
+    def remove(self, component: Component) -> None:
+        pass
 
-class Composite extends Component {
-    protected children: Component[] = [];
+    def is_composite(self) -> bool:
+        """
+        You can provide a method that lets the client code figure out whether a
+        component can bear children.
+        """
 
-    public add(component: Component): void {
-        this.children.push(component);
-        component.setParent(this);
-    }
+        return False
 
-    public remove(component: Component): void {
-        const componentIndex = this.children.indexOf(component);
-        this.children.splice(componentIndex, 1);
+    @abstractmethod
+    def operation(self) -> str:
+        """
+        The base Component may implement some default behavior or leave it to
+        concrete classes (by declaring the method containing the behavior as
+        "abstract").
+        """
 
-        component.setParent(null);
-    }
+        pass
 
-    public isComposite(): boolean {
-        return true;
-    }
 
-    public operation(): string {
-        const results = [];
-        for (const child of this.children) {
-            results.push(child.operation());
-        }
+class Leaf(Component):
+    """
+    The Leaf class represents the end objects of a composition. A leaf can't
+    have any children.
 
-        return `Branch(${results.join('+')})`;
-    }
-}
+    Usually, it's the Leaf objects that do the actual work, whereas Composite
+    objects only delegate to their sub-components.
+    """
 
-function clientCode(component: Component) {
-    // ...
+    def operation(self) -> str:
+        return "Leaf"
 
-    console.log(`RESULT: ${component.operation()}`);
 
-    // ...
-}
+class Composite(Component):
+    """
+    The Composite class represents the complex components that may have
+    children. Usually, the Composite objects delegate the actual work to their
+    children and then "sum-up" the result.
+    """
+    def __init__(self) -> None:
+        self._children: List[Component] = []
 
-const simple = new Leaf();
-console.log('Client: I\'ve got a simple component:');
-clientCode(simple);
-console.log('');
+    """
+    A composite object can add or remove other components (both simple or
+    complex) to or from its child list.
+    """
 
-const tree = new Composite();
-const branch1 = new Composite();
-branch1.add(new Leaf());
-branch1.add(new Leaf());
-const branch2 = new Composite();
-branch2.add(new Leaf());
-tree.add(branch1);
-tree.add(branch2);
-console.log('Client: Now I\'ve got a composite tree:');
-clientCode(tree);
-console.log('');
+    def add(self, component: Component) -> None:
+        self._children.append(component)
+        component.parent = self
 
-function clientCode2(component1: Component, component2: Component) {
-    // ...
+    def remove(self, component: Component) -> None:
+        self._children.remove(component)
+        component.parent = None
 
-    if (component1.isComposite()) {
-        component1.add(component2);
-    }
-    console.log(`RESULT: ${component1.operation()}`);
+    def is_composite(self) -> bool:
+        return True
 
-    // ...
-}
+    def operation(self) -> str:
+        """
+        The Composite executes its primary logic in a particular way. It
+        traverses recursively through all its children, collecting and summing
+        their results. Since the composite's children pass these calls to their
+        children and so forth, the whole object tree is traversed as a result.
+        """
 
-console.log('Client: I don\'t need to check the components classes even when managing the tree:');
-clientCode2(tree, simple);
+        results = []
+        for child in self._children:
+            results.append(child.operation())
+        return f"Branch({'+'.join(results)})"
+
+
+def client_code(component: Component) -> None:
+    """
+    The client code works with all of the components via the base interface.
+    """
+
+    print(f"RESULT: {component.operation()}", end="")
+
+
+def client_code2(component1: Component, component2: Component) -> None:
+    """
+    Thanks to the fact that the child-management operations are declared in the
+    base Component class, the client code can work with any component, simple or
+    complex, without depending on their concrete classes.
+    """
+
+    if component1.is_composite():
+        component1.add(component2)
+
+    print(f"RESULT: {component1.operation()}", end="")
+
+
+if __name__ == "__main__":
+    # This way the client code can support the simple leaf components...
+    simple = Leaf()
+    print("Client: I've got a simple component:")
+    client_code(simple)
+    print("\n")
+
+    # ...as well as the complex composites.
+    tree = Composite()
+
+    branch1 = Composite()
+    branch1.add(Leaf())
+    branch1.add(Leaf())
+
+    branch2 = Composite()
+    branch2.add(Leaf())
+
+    tree.add(branch1)
+    tree.add(branch2)
+
+    print("Client: Now I've got a composite tree:")
+    client_code(tree)
+    print("\n")
+
+    print("Client: I don't need to check the components classes even when managing the tree:")
+    client_code2(tree, simple)
 ```
-

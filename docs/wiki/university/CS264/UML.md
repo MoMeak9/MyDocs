@@ -15,7 +15,7 @@
 **具体 UML 类图表现为：
 **
 
-![img](https://pic2.zhimg.com/80/v2-dce9c2eb387354bb7de9a3a47d5f3ed5_720w.png)
+<img src="https://pic2.zhimg.com/80/v2-dce9c2eb387354bb7de9a3a47d5f3ed5_720w.png" alt="img" style="zoom:67%;" />
 
 Java 代码：
 
@@ -69,7 +69,7 @@ class Driver {
 
 **用 UML 类图表示为:**
 
-![img](https://pic3.zhimg.com/80/v2-2b4dad2a2fa58923eaf6cec0460eea72_720w.png)
+<img src="https://pic3.zhimg.com/80/v2-2b4dad2a2fa58923eaf6cec0460eea72_720w.png" alt="img" style="zoom:67%;" />
 
 **双向关联的话箭头可以省略。**
 
@@ -103,7 +103,7 @@ class Car {
 
 **用 UML 类图表示为：**
 
-![img](https://pic3.zhimg.com/80/v2-ac8ead9f8e60ed1abebf847d65c1633e_720w.png)
+<img src="https://pic3.zhimg.com/80/v2-ac8ead9f8e60ed1abebf847d65c1633e_720w.png" alt="img" style="zoom:67%;" />
 
 Java 代码:
 
@@ -137,7 +137,7 @@ class Car {
 
 
 
-![img](https://pic1.zhimg.com/80/v2-35f373e86c1f44ba4f3ff020ff52ff8c_720w.png)
+<img src="https://pic1.zhimg.com/80/v2-35f373e86c1f44ba4f3ff020ff52ff8c_720w.png" alt="img" style="zoom:67%;" />
 
 Java 代码:
 
@@ -165,7 +165,7 @@ class Car {
 **用 UML 类图表示为
 **
 
-![img](https://pic3.zhimg.com/80/v2-86ac2db5174fcf34875a9e872ed4d27e_720w.png)
+<img src="https://pic3.zhimg.com/80/v2-86ac2db5174fcf34875a9e872ed4d27e_720w.png" alt="img" style="zoom:67%;" />
 
 ## 5. 继承 (Generalization)
 
@@ -177,7 +177,7 @@ class Car {
 
 **用 UML 类图表示为:**
 
-![img](https://pic1.zhimg.com/80/v2-a5ab6c82e96b2119bf658f489886e888_720w.png)
+<img src="https://pic1.zhimg.com/80/v2-a5ab6c82e96b2119bf658f489886e888_720w.png" alt="img" style="zoom:67%;" />
 
 Java 代码表示为:
 
@@ -199,7 +199,7 @@ class People extends Animal {
 
 **用 UML 类图表示为：**
 
-![img](https://pic1.zhimg.com/80/v2-f489103646695deda45ac115321d7634_720w.png)
+<img src="https://pic1.zhimg.com/80/v2-f489103646695deda45ac115321d7634_720w.png" alt="img" style="zoom: 67%;" />
 
 
 
