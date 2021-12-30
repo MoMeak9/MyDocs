@@ -69,9 +69,26 @@ HTTP 的连接很简单，是无状态的。HTTPS 协议是由 SSL+HTTP 协议�
 
 四．HTTP请求
 
-五．相应请求
+五．响应请求
 
 六．页面渲染
+
+**页面渲染流程**
+
+- 解析HTML，构建 DOM 树
+
+- 解析 CSS ，生成 CSS 规则树
+
+- 合并 DOM 树和 CSS 规则，生成 render 树
+
+- 布局 render 树（ Layout / reflow ），负责各元素尺寸、位置的计算
+
+- 绘制 render 树（ paint ），绘制页面像素信息
+
+- 浏览器会将各层的信息发送给 GPU，GPU 会将各层合成（ composite ），显示在屏幕上
+
+  <img src="https://mmbiz.qpic.cn/mmbiz_png/gH31uF9VIibSTR1KCaM1nUSzrQoUicIrAjccXNpFMPG2eFLNwgxZ5d5OdZ6LExktwAB8R6azTSicbq9V3I7HQ1QSQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片" style="zoom: 80%;" />
+
 
 详细了解：https://mp.weixin.qq.com/s/pb2Qk0dEsowFnPPUIXV4Qg
 
