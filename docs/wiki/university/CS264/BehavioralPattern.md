@@ -9,7 +9,7 @@ categories:
 tags:
 - 设计模式
 ---
-# 行为模式
+# Behavior Pattern 行为模式
 
 ## Visitor 访问者
 
@@ -43,44 +43,147 @@ The visitor pattern is a behavior design pattern that **isolates** an algorithm 
 - 你可以使用[访问者](https://refactoringguru.cn/design-patterns/visitor)对整个[组合模式](https://refactoringguru.cn/design-patterns/composite)树执行操作。
 - 可以同时使用[访问者](https://refactoringguru.cn/design-patterns/visitor)和[迭代器模式](https://refactoringguru.cn/design-patterns/iterator)来遍历复杂数据结构， 并对其中的元素执行所需操作， 即使这些元素所属的类完全不同。
 
-## Command 命令模式
+## Command 命令模式 :star:
 
-**观察者模式**是一种行为设计模式， 允许你定义一种订阅机制， 可在对象事件发生时通知多个 “观察” 该对象的其他对象。
+**命令模式**是一种行为设计模式， 它可将请求转换为一个包含与请求相关的所有信息的独立对象。 该转换让你能根据不同的请求将方法参数化、 延迟请求执行或将其放入队列中， 且能实现可撤销操作。
 
-The Observer pattern is a behavior design pattern that allows you to define a **subscription mechanism** that notifies multiple other objects that "**observe**" an object when an **event happen**.
+**Command pattern** is a behavior design pattern that transforms a request into a single object that contains all the information associated with the request. This transformation allows you to parameterize methods, delay request execution, or queue them based on different requests, and implement undoable operations.
 
-<img src="https://refactoringguru.cn/images/patterns/diagrams/observer/structure-indexed.png" alt="观察者设计模式的结构" style="zoom:80%;" />
+<img src="https://refactoringguru.cn/images/patterns/diagrams/command/structure-indexed.png" alt="命令设计模式的结构" style="zoom: 80%;" />
 
-1. **发布者** （Publisher） 会向其他对象发送值得关注的事件。 事件会在发布者自身状态改变或执行特定行为后发生。 发布者中包含一个允许新订阅者加入和当前订阅者离开列表的订阅构架。
-2. 当新事件发生时， 发送者会遍历订阅列表并调用每个订阅者对象的通知方法。 该方法是在订阅者接口中声明的。
-3. **订阅者** （Subscriber） 接口声明了通知接口。 在绝大多数情况下， 该接口仅包含一个 `update`更新方法。 该方法可以拥有多个参数， 使发布者能在更新时传递事件的详细信息。
-4. **具体订阅者** （Concrete Subscribers） 可以执行一些操作来回应发布者的通知。 所有具体订阅者类都实现了同样的接口， 因此发布者不需要与具体类相耦合。
-5. 订阅者通常需要一些上下文信息来正确地处理更新。 因此， 发布者通常会将一些上下文数据作为通知方法的参数进行传递。 发布者也可将自身作为参数进行传递， 使订阅者直接获取所需的数据。
-6. **客户端** （Client） 会分别创建发布者和订阅者对象， 然后为订阅者注册发布者更新。
+1. **发送者** （Sender）——亦称 “触发者 （Invoker）”——类负责对请求进行初始化， 其中必须包含一个成员变量来存储对于命令对象的引用。 发送者触发命令， 而不向接收者直接发送请求。 注意， 发送者并不负责创建命令对象： 它通常会通过构造函数从客户端处获得预先生成的命令。
+
+2. **命令** （Command） 接口通常仅声明一个执行命令的方法。
+
+3. **具体命令** （Concrete Commands） 会实现各种类型的请求。 具体命令自身并不完成工作， 而是会将调用委派给一个业务逻辑对象。 但为了简化代码， 这些类可以进行合并。
+
+   接收对象执行方法所需的参数可以声明为具体命令的成员变量。 你可以将命令对象设为不可变， 仅允许通过构造函数对这些成员变量进行初始化。
+
+4. **接收者** （Receiver） 类包含部分业务逻辑。 几乎任何对象都可以作为接收者。 绝大部分命令只处理如何将请求传递到接收者的细节， 接收者自己会完成实际的工作。
+
+5. **客户端** （Client） 会创建并配置具体命令对象。 客户端必须将包括接收者实体在内的所有请求参数传递给命令的构造函数。 此后， 生成的命令就可以与一个或多个发送者相关联了。
 
 ### 场景
 
-- 当一个对象状态的改变需要改变其他对象， 或实际对象是事先未知的或动态变化的时， 可使用观察者模式。
-
-  The observer mode can be used when a change in the state of one object requires changes to other objects, or when the actual object is previously unknown or dynamically changing.
-
-- 当应用中的一些对象必须观察其他对象时， 可使用该模式。 但仅能在有限时间内或特定情况下使用。
+-  如果你需要通过操作来参数化对象， 可使用命令模式。
+- 如果你想要将操作放入队列中、 操作的执行或者远程执行操作， 可使用命令模式。
+- 如果你想要实现操作回滚功能， 可使用命令模式。
 
 ### 优缺点
 
-- ***开闭原则 The open closed principle***。 你无需修改发布者代码就能引入新的订阅者类 （如果是发布者接口则可轻松引入发布者类）。
--  你可以在运行时建立对象之间的联系。
+-  *单一职责原则*。 你可以解耦触发和执行操作的类。
+-  *开闭原则*。 你可以在不修改已有客户端代码的情况下在程序中创建新的命令。
+-  你可以实现撤销和恢复功能。
+-  你可以实现操作的延迟执行。
+-  你可以将一组简单命令组合成一个复杂命令。
 
-D：
+D:
 
-- 订阅者的通知顺序是随机的。
+- 代码可能会变得更加复杂， 因为你在发送者和接收者之间增加了一个全新的层次。
 
 ### 关系
 
-What is the difference between the observer pattern and the chain of responsibility pattern in the notification delivery?
+- [责任链模式](https://refactoringguru.cn/design-patterns/chain-of-responsibility)、 [命令模式](https://refactoringguru.cn/design-patterns/command)、 [中介者模式](https://refactoringguru.cn/design-patterns/mediator)和[观察者模式](https://refactoringguru.cn/design-patterns/observer)用于处理请求发送者和接收者之间的不同连接方式：
 
-- **责任链 **按照顺序将请求动态传递给一系列的潜在接收者， 直至其中一名接收者对请求进行处理。**Chain of responsibility **Requests are dynamically passed in order to a series of potential recipients until one of them processes the request.
-- **观察者 **允许接收者动态地订阅或取消接收请求。Allows the receiver to dynamically subscribe or unsubscribe from receiving requests.
+  - *责任链*按照顺序将请求动态传递给一系列的潜在接收者， 直至其中一名接收者对请求进行处理。
+  - *命令*在发送者和请求者之间建立单向连接。
+  - *中介者*清除了发送者和请求者之间的直接连接， 强制它们通过一个中介对象进行间接沟通。
+  - *观察者*允许接收者动态地订阅或取消接收请求。
+
+- [责任链](https://refactoringguru.cn/design-patterns/chain-of-responsibility)的管理者可使用[命令模式](https://refactoringguru.cn/design-patterns/command)实现。 在这种情况下， 你可以对由请求代表的同一个上下文对象执行许多不同的操作。
+
+  还有另外一种实现方式， 那就是请求自身就是一个*命令*对象。 在这种情况下， 你可以对由一系列不同上下文连接而成的链执行相同的操作。
+
+- 你可以同时使用[命令](https://refactoringguru.cn/design-patterns/command)和[备忘录模式](https://refactoringguru.cn/design-patterns/memento)来实现 “撤销”。 在这种情况下， 命令用于对目标对象执行各种不同的操作， 备忘录用来保存一条命令执行前该对象的状态。
+
+- [命令](https://refactoringguru.cn/design-patterns/command)和[策略模式](https://refactoringguru.cn/design-patterns/strategy)看上去很像， 因为两者都能通过某些行为来参数化对象。 但是， 它们的意图有非常大的不同。
+
+  - 你可以使用*命令*来将任何操作转换为对象。 操作的参数将成为对象的成员变量。 你可以通过转换来延迟操作的执行、 将操作放入队列、 保存历史命令或者向远程服务发送命令等。
+  - 另一方面， *策略*通常可用于描述完成某件事的不同方式， 让你能够在同一个上下文类中切换算法。
+
+- [原型模式](https://refactoringguru.cn/design-patterns/prototype)可用于保存[命令](https://refactoringguru.cn/design-patterns/command)的历史记录。
+
+- 你可以将[访问者模式](https://refactoringguru.cn/design-patterns/visitor)视为[命令模式](https://refactoringguru.cn/design-patterns/command)的加强版本， 其对象可对不同类的多种对象执行操作。
+
+### Code
+
+```python
+from abc import ABC, abstractmethod
+
+
+class Command(ABC):
+
+    @abstractmethod
+    def execute(self) -> None:
+        pass
+
+
+class SimpleCommand(Command):
+
+    def __init__(self, payload: str) -> None:
+        self._payload = payload
+
+    def execute(self) -> None:
+        print(f"SimpleCommand: See, I can do simple things like printing"
+              f"({self._payload})")
+
+
+class ComplexCommand(Command):
+
+    def __init__(self, receiver: Receiver, a: str, b: str) -> None:
+        self._receiver = receiver
+        self._a = a
+        self._b = b
+
+    def execute(self) -> None:
+        print("ComplexCommand: Complex stuff should be done by a receiver object", end="")
+        self._receiver.do_something(self._a)
+        self._receiver.do_something_else(self._b)
+
+
+class Receiver:
+    
+    def do_something(self, a: str) -> None:
+        print(f"\nReceiver: Working on ({a}.)", end="")
+
+    def do_something_else(self, b: str) -> None:
+        print(f"\nReceiver: Also working on ({b}.)", end="")
+
+
+class Invoker:
+    
+    _on_start = None
+    _on_finish = None
+
+    def set_on_start(self, command: Command):
+        self._on_start = command
+
+    def set_on_finish(self, command: Command):
+        self._on_finish = command
+
+    def do_something_important(self) -> None:
+        print("Invoker: Does anybody want something done before I begin?")
+        if isinstance(self._on_start, Command):
+            self._on_start.execute()
+
+        print("Invoker: ...doing something really important...")
+
+        print("Invoker: Does anybody want something done after I finish?")
+        if isinstance(self._on_finish, Command):
+            self._on_finish.execute()
+
+
+if __name__ == "__main__":
+    invoker = Invoker()
+    invoker.set_on_start(SimpleCommand("Say Hi!"))
+    receiver = Receiver()
+    invoker.set_on_finish(ComplexCommand(
+        receiver, "Send email", "Save report"))
+
+    invoker.do_something_important()
+```
+
+
 
 ## Iterator 迭代器
 
@@ -532,9 +635,11 @@ The Observer pattern is a behavior design pattern that allows you to define a su
 ### 优缺点
 
 - *开闭原则*。 你无需修改发布者代码就能引入新的订阅者类 （如果是发布者接口则可轻松引入发布者类）。
--  你可以在运行时建立对象之间的联系。
+- 你可以在运行时建立对象之间的联系。
 
--  订阅者的通知顺序是随机的。
+D:
+
+- 订阅者的通知顺序是随机的。
 
 
 
