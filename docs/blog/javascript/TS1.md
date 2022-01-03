@@ -120,7 +120,7 @@ tags:
     I'll be ${age + 1} years old next month.`;
     ```
 
-- 字面量
+- **字面量**
 
   - 也可以使用字面量去指定变量的类型，通过字面量可以确定变量的取值范围
 
@@ -129,7 +129,7 @@ tags:
     let num: 1 | 2 | 3 | 4 | 5;
     ```
 
-- any
+- **any**
 
   - ```typescript
     let d: any = 4;
@@ -137,20 +137,20 @@ tags:
     d = true;
     ```
 
-- unknown
+- **unknown**
 
   - ```typescript
     let notSure: unknown = 4;
     notSure = 'hello';
     ```
 
-- void
+- **void**
 
   - ```typescript
     let unusable: void = undefined;
     ```
 
-- never
+- **never**
 
   - ```typescript
     function error(message: string): never {
@@ -171,14 +171,14 @@ tags:
     let list: Array<number> = [1, 2, 3];
     ```
 
-- tuple
+- **tuple**
 
   - ```typescript
     let x: [string, number];
     x = ["hello", 10]; 
     ```
 
-- enum
+- **enum**
 
   - ```typescript
     enum Color {

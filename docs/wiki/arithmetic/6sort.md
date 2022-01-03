@@ -17,7 +17,7 @@
 
 这个名字的由来是向泡泡一样`浮`起来，脑补一下，就是每次比较相邻的两个元素大小，然后慢慢'漂浮'起来，我瞎掰的，看思路吧。
 
-**「时间复杂度O(n\*n)」**
+**「时间复杂度O(n^2)」**
 
 ### 思路
 
@@ -78,7 +78,7 @@ console.log(BubbleSort(arr))
 
 ```js
 // 计数排序
-let countingSort = function(arr, flag = 0) {
+let countingSort = function(arr) {
     let min = arr[0],
         max = arr[0],
         len = arr.length;
@@ -106,6 +106,7 @@ let countingSort = function(arr, flag = 0) {
         sum += countArray[i]
         countArray[i] = sum;
     }
+    
     let res = new Array(len)
     // 4.遍历原始数组,从统计数组中找到正确位置,输出到结果数组
     for(let i = 0; i < len; i++){
@@ -113,7 +114,7 @@ let countingSort = function(arr, flag = 0) {
         res[ countArray[demp] -1 ] = arr[i]
         countArray[demp] --;
     }
-    return flag ? res.reverse() : res
+    return res
 }
 
 let arr = [2, 9, 6, 7, 4, 3, 1, 7,0,-1,-2]
@@ -232,7 +233,7 @@ console.log(mergeSort(arr))
 
 顾名思义：通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。
 
-**「时间复杂度: O(n\*n)」**
+**「时间复杂度: O(n^2)」**
 
 ### 思路
 
@@ -244,17 +245,18 @@ console.log(mergeSort(arr))
 
 ### 动画
 
-![插入排序](https://user-images.githubusercontent.com/34484322/89124203-c2541880-d507-11ea-9859-e964f5463a86.gif)插入排序
+![插入排序](https://user-images.githubusercontent.com/34484322/89124203-c2541880-d507-11ea-9859-e964f5463a86.gif)
 
 ### 代码实现
 
 ```js
 let insertionSort = function (arr) {
     let len = arr.length
-
+    // 双指针，当前和前一个
     for (let i = 0; i < len; i++) {
         let preIndex = i - 1,
             cur = arr[i];
+        // 第一个元素无前一个元素，可以直接赋值
         while (preIndex >= 0 && arr[preIndex] > cur) {
             arr[preIndex + 1] = arr[preIndex]
             preIndex--;
@@ -267,16 +269,15 @@ let insertionSort = function (arr) {
 
 let arr = [2, 9, 6, 7, 4, 3, 1, 7, 0, -1, -2]
 console.log(insertionSort(arr))
-复制代码
 ```
 
 ------
 
 ## 选择排序
 
-思路：每一次从待排序的数组元素中选择最大(最小)的一个元素作为首元素,直到排完为止
+思路：每一次从待排序的数组元素中选择**最大(最小)的一个元素作为首元素**,直到排完为止
 
-**「时间复杂度O(n\*n)」**
+**「时间复杂度O(n^2)」**
 
 ### 思路
 
@@ -288,17 +289,17 @@ console.log(insertionSort(arr))
 
 ### 动画
 
-![选择排序](https://user-images.githubusercontent.com/34484322/89124365-0398f800-d509-11ea-9573-6a24820cfd81.gif)选择排序
+![选择排序](https://user-images.githubusercontent.com/34484322/89124365-0398f800-d509-11ea-9573-6a24820cfd81.gif)
 
 ### 代码实现
 
 ```js
-let selectSort = function (arr, flag = 0) {
+let selectSort = function (arr) {
     let len = arr.length,
         temp = 0;
-
     // 一共需要排序len-1次
     for (let i = 0; i < len - 1; i++) {
+        // 设定替换目标，从数组的第一个开始
         temp = i;
         for (let j = i + 1; j < len; j++) {
             if (arr[j] < arr[temp])
@@ -310,12 +311,11 @@ let selectSort = function (arr, flag = 0) {
         }
     }
 
-    return flag ? arr.reverse() : arr
+    return arr
 }
 
 
-
 let arr = [2, 9, 6, 7, 4, 3, 1, 7, 0, -1, -2]
-console.log(selectSort(arr, 1))
+console.log(selectSort(arr))
 ```
 

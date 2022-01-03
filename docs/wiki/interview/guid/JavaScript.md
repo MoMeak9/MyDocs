@@ -626,3 +626,6 @@ return prev;
 **编程题：分别使用es5的闭包和es6的let**
 
 ![image-20211213215809603](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/image-20211213215809603.png)
+
+
+
