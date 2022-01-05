@@ -1047,7 +1047,7 @@ isnumber(url(...)); // false
 
 #### 3、变量的作用域也不一样
 
-```
+```css
 Less-作用域
 @color: #00c; /* 蓝色 */
 #header {
@@ -1081,9 +1081,12 @@ Sass-作用域编译后
 #header{border:1px solid #c00}
 #footer{border:1px solid #c00}
 
-我们可以看出来，less和scss中的变量会随着作用域的变化而不一样。
-复制代码
+
 ```
+
+Less区分上下级作用域，SCSS为就近原则
+
+我们可以看出来，less和scss中的变量会随着作用域的变化而不一样。
 
 #### 4、输出设置不同
 
