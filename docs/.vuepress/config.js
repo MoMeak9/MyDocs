@@ -11,13 +11,13 @@ module.exports = {
         // 引入jquery
         ["script", {
             "language": "javascript",
-            "type": "text/javascript",
+            "type": "text/JavaScript",
             "src": "https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"
         }],
         // 引入鼠标点击脚本
         ["script", {
             "language": "javascript",
-            "type": "text/javascript",
+            "type": "text/JavaScript",
             "src": "/js/MouseClickEffect.js"
         }]
     ],
