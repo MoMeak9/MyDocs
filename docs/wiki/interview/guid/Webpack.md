@@ -105,19 +105,19 @@ Plugin 在 plugins 中单独配置，类型为数组，每一项是一个 Plugin
 
 Webpack 的运行流程是一个串行的过程，从启动到结束会依次执行以下流程：
 
-1. 初始化参数：从配置文件和 Shell 语句中读取与合并参数，得出最终的参数
+1. **初始化参数**：从配置文件和 Shell 语句中读取与合并参数，得出最终的参数
 
-2. 开始编译：用上一步得到的参数初始化 Compiler 对象，加载所有配置的插件，执行对象的 run 方法开始执行编译
+2. **开始编译**：用上一步得到的参数初始化 Compiler 对象，加载所有配置的插件，执行对象的 run 方法开始执行编译
 
-3. 确定入口：根据配置中的 entry 找出所有的入口文件
+3. **确定入口**：根据配置中的 entry 找出所有的入口文件
 
-4. 编译模块：从入口文件出发，调用所有配置的 Loader 对模块进行翻译，再找出该模块依赖的模块，再递归本步骤直到所有入口依赖的文件都经过了本步骤的处理
+4. **编译模块**：从入口文件出发，调用所有配置的 Loader 对模块进行翻译，再找出该模块依赖的模块，再递归本步骤直到所有入口依赖的文件都经过了本步骤的处理
 
-5. 完成模块编译：在经过第4步使用 Loader 翻译完所有模块后，得到了每个模块被翻译后的最终内容以及它们之间的依赖关系
+5. **完成模块编译**：在经过第4步使用 Loader 翻译完所有模块后，得到了每个模块被翻译后的最终内容以及它们之间的依赖关系
 
-6. 输出资源：根据入口和模块之间的依赖关系，组装成一个个包含多个模块的 Chunk，再把每个 Chunk 转换成一个单独的文件加入到输出列表，这步是可以修改输出内容的最后机会
+6. **输出资源**：**根据入口和模块之间的依赖关系，组装成一个个包含多个模块的 Chunk**，再把每个 Chunk 转换成一个单独的文件加入到输出列表，这步是可以修改输出内容的最后机会
 
-7. 输出完成：在确定好输出内容后，根据配置确定输出的路径和文件名，把文件内容写入到文件系统
+7. **输出完成**：在确定好输出内容后，根据配置确定输出的路径和文件名，把文件内容写入到文件系统
 
 **简单说:**
 
@@ -181,17 +181,17 @@ HMR的核心就是客户端从服务端拉去更新后的文件，准确的说�
 
 后续的部分(拿到增量更新之后如何处理？哪些状态该保留？哪些又需要更新？)由 HotModulePlugin 来完成，提供了相关 API 以供开发者针对自身场景进行处理，像react-hot-loader 和 vue-loader 都是借助这些 API 实现 HMR。
 
-## 10.     如何对bundle体积进行监控和分析？
+## 10.如何对bundle体积进行监控和分析？
 
 VSCode 中有一个插件 Import Cost 可以帮助我们对引入模块的大小进行实时监测，还可以使用 webpack-bundle-analyzer 生成 bundle 的模块组成图，显示所占体积。
 
 bundlesize 工具包可以进行自动化资源体积监控。
 
-## 11.     在实际工程中，配置文件上百行乃是常事，如何保证各个loader按照预想方式工作？
+## 11.在实际工程中，配置文件上百行乃是常事，如何保证各个loader按照预想方式工作？
 
 可以使用 enforce 强制执行 loader 的作用顺序，pre 代表在所有正常 loader 之前执行，post 是所有 loader 之后执行。(inline 官方不推荐使用)
 
-## 12.     如何优化 Webpack 的构建速度？:star:
+## 12.如何优化 Webpack 的构建速度？:star:
 
 1. 使用高版本的 Webpack 和 Node.js
 
@@ -273,21 +273,21 @@ purgecss-webpack-plugin 和 mini-css-extract-plugin配合使用(建议)
 
 建议采用 polyfill-service 只给用户返回需要的polyfill，社区维护。(部分国内奇葩浏览器UA可能无法识别，但可以降级返回所需全部polyfill)
 
-## 13.     是否写过Loader？简单描述一下编写loader的思路？
+## 13.是否写过Loader？简单描述一下编写loader的思路？
 
 Loader 支持链式调用，所以开发上需要严格遵循“单一职责”，每个 Loader 只负责自己需要负责的事情。
 
-\1. Loader 运行在 Node.js 中，我们可以调用任意 Node.js 自带的 API 或者安装第三方模块进行调用
+1. Loader 运行在 Node.js 中，我们可以调用任意 Node.js 自带的 API 或者安装第三方模块进行调用
 
-\2. Webpack 传给 Loader 的原内容都是 UTF-8 格式编码的字符串，当某些场景下 Loader 处理二进制文件时，需要通过 exports.raw = true 告诉 Webpack 该 Loader 是否需要二进制数据
+2. Webpack 传给 Loader 的原内容都是 UTF-8 格式编码的字符串，当某些场景下 Loader 处理二进制文件时，需要通过 exports.raw = true 告诉 Webpack 该 Loader 是否需要二进制数据
 
-\3. 尽可能的异步化 Loader，如果计算量很小，同步也可以
+3. 尽可能的异步化 Loader，如果计算量很小，同步也可以
 
-\4. Loader 是无状态的，我们不应该在 Loader 中保留状态
+4. Loader 是无状态的，我们不应该在 Loader 中保留状态
 
-\5. 使用 loader-utils 和 schema-utils 为我们提供的实用工具
+5. 使用 loader-utils 和 schema-utils 为我们提供的实用工具
 
-\6.  加载本地 Loader 方法:Npm link和ResolveLoader。
+6. 加载本地 Loader 方法:Npm link和ResolveLoader。
 
 ## 14.     是否写过Plugin？简单描述一下编写Plugin的思路？
 
@@ -295,26 +295,49 @@ webpack在运行的生命周期中会广播出许多事件，Plugin 可以监听
 
 Plugin的API 可以去官网查阅
 
-\1. compiler 暴露了和 Webpack 整个生命周期相关的钩子
+1. compiler 暴露了和 Webpack 整个生命周期相关的钩子
 
-\2. compilation 暴露了与模块和依赖有关的粒度更小的事件钩子
+2. compilation 暴露了与模块和依赖有关的粒度更小的事件钩子
 
-\3. 插件需要在其原型上绑定apply方法，才能访问 compiler 实例
+3. 插件需要在其原型上绑定apply方法，才能访问 compiler 实例
 
-\4. 传给每个插件的 compiler 和 compilation对象都是同一个引用，若在一个插件中修改了它们身上的属性，会影响后面的插件
+4. 传给每个插件的 compiler 和 compilation对象都是同一个引用，若在一个插件中修改了它们身上的属性，会影响后面的插件
 
-\5. 找出合适的事件点去完成想要的功能。emit 事件发生时，可以读取到最终输出的资源、代码块、模块及其依赖，并进行修改(emit 事件是修改 Webpack 输出资源的最后时机)。watch-run 当依赖的文件发生变化时会触发
+5. 找出合适的事件点去完成想要的功能。emit 事件发生时，可以读取到最终输出的资源、代码块、模块及其依赖，并进行修改(emit 事件是修改 Webpack 输出资源的最后时机)。watch-run 当依赖的文件发生变化时会触发
 
-\6. 异步的事件需要在插件处理完任务时调用回调函数通知 Webpack 进入下一个流程，不然会卡住
+6. 异步的事件需要在插件处理完任务时调用回调函数通知 Webpack 进入下一个流程，不然会卡住
 
-## 15.     聊一聊Babel原理吧？
+## 15. 聊一聊Babel原理吧？
 
 大多数JavaScript Parser遵循 estree 规范，Babel 最初基于 acorn 项目(轻量级现代 JavaScript 解析器) Babel大概分为三大部分：
 
-解析：将代码转换成 AST词法分析：将代码(字符串)分割为token流，即语法单元成的数组
+**解析：**将代码转换成 AST词法分析：将代码(字符串)分割为token流，即语法单元成的数组
 
-语法分析：分析token流(上面生成的数组)并生成 AST
+**语法分析：**分析token流(上面生成的数组)并生成 AST
 
-转换：访问 AST 的节点进行变换操作生产新的 ASTTaro就是利用 babel 完成的小程序语法转换
+**转换：**访问 AST 的节点进行变换操作生产新的 ASTTaro就是利用 babel 完成的小程序语法转换
 
-生成：以新的 AST 为基础生成代码
+**生成：**以新的 AST 为基础生成代码
+
+## Webpack 和 vite 有什么区别？
+
+如果应用过于复杂，使用Webpack 的开发过程会出现以下问题
+
+1. Webpack Dev Server 冷启动时间会比较长
+2. Webpack HMR 热更新的反应速度比较慢
+
+vite的特点
+
+1. 轻量
+2. 按需打包
+3. HMR (热渲染依赖）
+
+webpack dev server 在启动时需要先build一遍，而这个过程需要消耗很多时间
+
+![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e3fecbe47be9400ea4cf206d71a34f9c~tplv-k3u1fbpfcp-watermark.awebp)
+
+而Vite 不同的是 执行vite serve 时，内部直接启动了web Server, 并不会先编译所有的代码文件。
+
+![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6dce39d902264a5a8aba4936b48c65ec~tplv-k3u1fbpfcp-watermark.awebp)
+
+但是webpack 这类工具的做法是将所有模块提前编译、打包进bundle里，换句话说，不管模块是否会被执行，都要被编译和打包到bundle里。随着项目越来越大，打包后的bundle也越来越大，打包的速度自然会越来越慢。
