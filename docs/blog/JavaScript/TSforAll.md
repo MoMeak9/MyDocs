@@ -248,7 +248,6 @@ const enum Direction {
 }
 
 let dir: Direction = Direction.NORTH;
-复制代码
 ```
 
 以上代码对应的 ES5 代码如下：
@@ -256,7 +255,6 @@ let dir: Direction = Direction.NORTH;
 ```javascript
 "use strict";
 var dir = 0 /* NORTH */;
-复制代码
 ```
 
 ##### 4.异构枚举
