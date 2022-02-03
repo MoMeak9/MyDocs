@@ -5,19 +5,19 @@ title: 前端面试题汇总
 
 ## 个人整理
 
-[CSS问题集](/wiki/interview/CSS)
+[CSS问题集](/wiki/interview/guid/CSS)
 
-[HTML问题集](/wiki/interview/Html)
+[HTML问题集](/wiki/interview/guid/Html)
 
 [HTML+CSS+CSS3问题集](/wiki/interview/HTML_CSS_CSS3)
 
-[Http问题集](/wiki/interview/Http)
+[Http问题集](/wiki/interview/guid/Http)
 
-[JS问题集](/wiki/interview/JS)
+[JS问题集](/wiki/interview/guid/JavaScript)
 
-[Nodejs问题集](/wiki/interview/Nodejs)
+[Nodejs问题集](/wiki/interview/guid/Nodejs)
 
-[Vue问题集](/wiki/interview/Vue)
+[Vue问题集](/wiki/interview/guid/Vue)
 
 ## 面试指南
 
