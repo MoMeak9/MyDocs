@@ -3,6 +3,8 @@ title: C语言训练营Chaptrt07
 date: 2022-01-28
 author: MoMeaks
 sidebar: 'auto'
+categories:
+- 408
 ---
 
 ### 6.2 顺序查找与折半查找

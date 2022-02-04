@@ -1,4 +1,5 @@
 // .vuepress/config.js
+const sidebar  = require('./config/sidebar')
 
 module.exports = {
     head: [
@@ -43,6 +44,7 @@ module.exports = {
     ],
     theme: 'reco',
     themeConfig: {
+        authorAvatar: '/logo.png',
         logo: 'https://doc.yihuiblog.top/logo.png',
         nav: [
             {text: '首页', link: '/'},
@@ -56,7 +58,6 @@ module.exports = {
         // 项目开始时间，只填写年份
         startYear: '2021',
         searchMaxSuggestions: 10,
-        sidebar: 'auto',
         subSidebar: 'auto',
         noFoundPageByTencent: false,
         lastUpdated: 'Last Updated',
@@ -74,6 +75,8 @@ module.exports = {
                 {icon: 'reco-github', link: 'https://github.com/recoluan'},
                 {icon: 'reco-npm', link: 'https://www.npmjs.com/~reco_luan'}
             ],
-        }
+        },
+        // 侧边栏
+        sidebar: sidebar
     }
 }
