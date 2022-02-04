@@ -8,6 +8,7 @@
 
 - Vuepress 渲染Markdown文档
 - 使用腾讯云的Serverless 部署（这个快）
+- 腾讯云的CDN给静态源站资源加速
 - 使用主题 [vuepress-theme-reco](https://vuepress-theme-reco.recoluan.com/)
 - 部分特效来自Vue组件和jQuery
 
@@ -24,3 +25,7 @@
 ### Wiki 文章
 
 wiki内容更多是需要我查阅的工具类文档和面试题（八股文），个人总结部分的较少，主要是工具人的角色，以防我忘记些什么......
+
+### 项目文档
+
+存放个人项目，在校团队项目，比赛项目等的描述文档。
