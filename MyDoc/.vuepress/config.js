@@ -26,12 +26,8 @@ module.exports = config({
 
     locales: {
         "/": {
-            lang: "en-US",
-        },
-        "/zh/": {
-            title: "Theme Demo",
-            description: "vuepress-theme-hope 的 demo",
-        },
+            lang: "zh-CN",
+        }
     },
 
     themeConfig: {
