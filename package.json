@@ -1,20 +1,16 @@
 {
-  "name": "vuepress",
+  "name": "my-doc",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "A project of vuepress-theme-hope",
   "license": "MIT",
-  "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.8.2",
-    "@vuepress/plugin-blog": "^1.9.4",
-    "vuepress": "^1.8.2",
-    "vuepress-plugin-dynamic-title": "^1.0.0",
-    "vuepress-plugin-nuggets-style-copy": "^1.0.3"
-  },
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build MyDoc",
+    "docs:clean-dev": "vuepress dev MyDoc --no-cache",
+    "docs:dev": "vuepress dev MyDoc",
+    "docs:eject-theme": "vuepress eject-hope MyDoc"
   },
-  "dependencies": {
-    "vuepress-theme-reco": "^1.6.6"
+  "devDependencies": {
+    "vuepress": "^1.9.7",
+    "vuepress-theme-hope": "^1.27.3"
   }
 }
