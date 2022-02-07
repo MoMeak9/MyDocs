@@ -1,5 +1,4 @@
 // .vuepress/config.js
-const sidebar  = require('./config/sidebar')
 
 module.exports = {
     head: [
@@ -77,6 +76,27 @@ module.exports = {
             ],
         },
         // 侧边栏
-        sidebar: sidebar
+        sidebar: {
+            "/408/":[
+                {
+                    title: "C语言训练营",
+                    path:"/408/Cpp",
+                    collapsable:false,
+                    sidebarDepth: 1,
+                    children: [
+                        "/408/Cpp/chapter1",
+                        "/408/Cpp/chapter2",
+                        "/408/Cpp/chapter3",
+                        "/408/Cpp/chapter4",
+                        "/408/Cpp/chapter6"
+                    ],
+                },
+                {
+                    title: "计算机网络",
+                    collapsable:false,
+                    children: ["", "chapter1", "chapter3", "chapter6"],
+                }
+            ]
+        }
     }
 }
