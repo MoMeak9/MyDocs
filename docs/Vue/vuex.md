@@ -86,10 +86,11 @@ export default {
 1.1中的方法虽然引入的时候方便了，但是computed中定义的代码还是很多，而这时候vuex又给我们提供了更简便的方法mapState方法
 
 ```js
-import {mapState} from 'vuex'
+import {mapState} from 'docs/Vue/vuex'
+
 export default {
-  name: 'home',
-  computed: mapState(['nickname','age','gender'])
+    name: 'home',
+    computed: mapState(['nickname', 'age', 'gender'])
 }
 ```
 

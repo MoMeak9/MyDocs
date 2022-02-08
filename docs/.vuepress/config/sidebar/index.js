@@ -1,4 +1,11 @@
+const universitySidebar = require("./university")
+const javaScriptSidebar = require("./javaScript")
+const interviewSidebar = require("./interview")
+
 module.exports = {
+    ...universitySidebar,
+    ...javaScriptSidebar,
+    ...interviewSidebar,
     "/408/": [
         {
             title: "C语言训练营",
@@ -12,11 +19,6 @@ module.exports = {
                 "/408/Cpp/chapter4",
                 "/408/Cpp/chapter6"
             ],
-        },
-        {
-            title: "计算机网络",
-            collapsable: false,
-            children: ["", "chapter1", "chapter3", "chapter6"],
         }
     ],
     "/arithmetic/": [
@@ -45,35 +47,7 @@ module.exports = {
             ],
         }
     ],
-    "/interview/":[
-        {
-            title: "面试题汇总",
-            collapsable: false,
-            children: [
-                "/interview/CSS",
-                "/interview/CSS",
-                "/interview/CSS",
-                "/interview/CSS",
-                "/interview/safe",
-                "/interview/TS",
-                "/interview/Vue",
-            ],
-        },
-        {
-            title: "面试指南",
-            collapsable: false,
-            children: [
-                "/interview/guid/Browser",
-                "/interview/guid/JavaScript",
-                "/interview/guid/MySQL",
-                "/interview/guid/Nodejs",
-                "/interview/guid/Optimize",
-                "/interview/guid/Vue",
-                "/interview/guid/Webpack",
-            ],
-        },
-    ],
-    "/wiki/":[
+    "/wiki/": [
         {
             title: "面试指南",
             collapsable: false,

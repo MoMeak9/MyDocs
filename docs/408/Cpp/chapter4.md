@@ -230,7 +230,7 @@ bool GetTop(SqStack &S,ElemType &x)
 
 **队列方法 queue.cpp**
 
-```c++
+```c
 #include "function.h"
 //带头结点的队列
 void InitQueue(LinkQueue &Q)

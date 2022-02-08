@@ -144,7 +144,7 @@ function instance_of (L, R) {
     L = L.__proto__;  // 没找到继续向上一层原型链查找
   }
 }
-复制代码
+复制代
 ```
 
 我们再来看下面这段代码：
@@ -157,7 +157,6 @@ var f = new Foo('nick')
 
 f instanceof Foo // true
 f instanceof Object // true
-复制代码
 ```
 
 上述代码判断流程大致如下：
