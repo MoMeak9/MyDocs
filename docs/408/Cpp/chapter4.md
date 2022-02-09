@@ -1,11 +1,178 @@
 ---
-title: C语言训练营Chaptrt04
+title: C语言训练营Chaptrt04 数组
 date: 2022-01-28
 author: MoMeaks
 sidebar: 'auto'
 categories:
 - 408
 ---
+
+### 4.1 一维数组
+
+```cpp
+#include <stdio.h> // 标准输入输出（standard input/output）
+
+//打印数组里的每一个元素,数组在传递时，元素个数传递不过去
+//print是我们自定义的一个函数
+void print(int b[],int len)
+{
+	int i;
+	for (i = 0; i < len; i++)
+	{
+		printf("a[%d]=%d\n", i, b[i]);
+	}
+	b[4] = 20;//在子函数中修改数组元素
+}
+int main()
+{
+	//定义数组就是写一个变量名，后面加上方括号，方括号内写上整型常量
+	//定义数组的一瞬间，数组占据的空间大小就确定下来了
+	int j = 10;
+	int a[5] = {1,2,3,4,5};
+	int i = 3;
+	//a[5] = 20;//访问越界，访问了不属于你自己的空间
+	//a[6] = 21;
+	//a[7] = 22;
+	//printf("j=%d\n", j);
+	print(a,5);//调用函数
+	printf("a[4]=%d\n", a[4]);
+	return 0;
+}
+```
+
+
+
+### 4.2 字符数组
+
+```cpp
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+//初始化字符数组时，一定要让字符数组的大小比看到的字符串的长度多1
+int main()
+{
+	char c[6] = { 'h','e','l','l','o' };
+	char d[5] = "how";
+	printf("%s----%s\n", c, d);//printf的%s，对应后面要写的是字符数组名，字符串常量
+	char e[20],f[20];
+	scanf("%s%s", e,f);
+	printf("%s---%s\n", e,f);
+}
+```
+
+
+
+### 4.3 day8 作业
+
+```cpp
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+
+int main()
+{
+	int n;
+	int a[20];
+	scanf("%d", &n);
+	int i;
+	for (i = 0; i < n; i++)
+	{
+		scanf("%d", &a[i]);
+	}
+	int m = 0;
+	for (i = 0; i < n; i++)
+	{
+		if (a[i] == 2)
+		{
+			m++;
+		}
+	}
+	printf("%d\n", m);
+}
+```
+
+
+
+### 4.4 字符数组传递
+
+```cpp
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+//我们把d称为形参
+void print(char d[])
+{
+	int i = 0;
+	while (d[i])
+	{
+		printf("%c", d[i]);//字符数组去输出某一个元素时，用%c
+		i++;
+	}
+	printf("\n");
+	//修改字符数组中的字符串的内容，把首字母变大写
+	d[0] = d[0] - 32;
+}
+
+int main()
+{
+	char c[10] = "hello";//c里边是10，或者20都可以，只要大于等于6即可
+	print(c);//我们把c称为实参，调用print函数时，是d=c
+	printf("%s\n", c);
+	return 0;
+}
+```
+
+
+
+### 4.5 gets and puts
+
+```cpp
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{
+	char c[20];//字符数组的数组名里存的就是字符数组的起始地址，类型是字符指针
+	//不能使用gets的VS，VS2017 请使用下面操作
+	//fgets(c, sizeof(c), stdin);//gets(c)是一样的
+	gets(c);//当一次读取一行时，使用gets
+	puts(c);//等价于printf("%s\n",c);
+	return 0;
+}
+```
+
+
+
+### 4.6 str函数使用
+
+#include <string.h>
+
+`strlen(),strcpy(),strcat()`
+
+```cpp
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+
+//char* strcpy(char* to, const char* from); 有const修饰代表这个地方可以放一个字符串常量
+
+int main()
+{
+	char c[20] = "wangdao";
+	printf("数组c内字符串的长度=%d\n", strlen(c));
+	char d[20];
+	strcpy(d, "study");
+	puts(d);
+	//下面是看strcmp,两个字符串比较，是比较对应字符位置的ascii码值
+	int ret = strcmp("hello", "how");
+	printf("两个字符串比较后的结果=%d\n", ret);
+	//下面看strcat,拼接两个字符串,目标数组要能够容纳拼接后的字符串
+	strcat(c, d);
+	puts(c);
+	return 0;
+}
+```
+
+
 
 ### 4.3.2 二叉树遍历
 

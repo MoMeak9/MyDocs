@@ -1,5 +1,5 @@
 ---
-title: C语言训练营Chaptrt07
+title: C语言训练营Chaptrt07 结构体
 date: 2022-01-28
 author: MoMeaks
 sidebar: 'auto'
@@ -7,7 +7,78 @@ categories:
 - 408
 ---
 
-### 6.2 顺序查找与折半查找
+### 7.1 结构体
+
+```cpp
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+//结构体所占用空间是68个字节，因为存在对齐，对齐的目的是
+//为了提高cpu访问内存的效率
+struct student {
+	int num;//num是结构体成员
+	char name[20];
+	char sex;
+	int age;
+	float score;
+	char addr[30];
+};  //结构体类型声明，注意最后一定要加分号
+
+int main()
+{
+	struct student s = {1001,"lele",'m',20,98.5,"Shenzhen"};
+	struct student sarr[3]; // 结构体数组
+	int i;
+	printf("%d %s %c %d %5.2f %s\n", s.num,s.name,s.sex,s.age,s.score,s.addr);
+	for (i = 0; i < 3; i++)
+	{
+		scanf("%d%s %c%d%f%s", &sarr[i].num, sarr[i].name, &sarr[i].sex, &sarr[i].age, &sarr[i].score, sarr[i].addr);
+	}
+	for (i = 0; i < 3; i++)
+	{
+		printf("%d %s %c %d %f %s\n", sarr[i].num, sarr[i].name, sarr[i].sex, sarr[i].age, sarr[i].score, sarr[i].addr);
+	}
+
+	return 0;
+}
+```
+
+### 7.1.2 结构体指针
+
+```cpp
+#include <stdio.h>
+#include <stdlib.h>
+
+//结构体指针
+struct student {
+	int num;
+	char name[20];
+	char sex;
+};
+
+int main()
+{
+	struct student s = { 1001,"wangle",'M' };
+	struct student* p;
+	p = &s;
+	printf("%d %s %c\n", (*p).num, (*p).name, (*p).sex);
+	printf("%d %s %c\n", p->num,p->name,p->sex);//指针的成员选择，很重要
+	//结构体初始化
+	struct student sarr[3] = { 1001,"lilei",'M',1005,"zhangsan",'M',1007,"lili",'F' };
+	int num;
+	p = sarr;
+	printf("------------------------------\n");//下面一部分不重要
+	num = p->num++;//num=p->num;p->num++
+	printf("num=%d,p->num=%d\n", num, p->num);//1001,1002
+	num = p++->num;//num=p->num;p++;
+	printf("num=%d,p->num=%d\n", num, p->num);//1002,1005
+	return 0;
+}
+```
+
+
+
+### 7.2 顺序查找与折半查找
 
 **顺序查找**
 
@@ -108,5 +179,5 @@ int compare(const void *left,const void *right)//left，right是任意两个元�
 }
 ```
 
-### 6.5 字符串模式匹配
+### 7.5 字符串模式匹配
 
