@@ -78,6 +78,62 @@ int main()
 
 
 
+### 7.1.3 typedef 的使用
+
+```cpp
+#include <stdio.h>
+
+//给结构体类型起别名，叫stu，起了结构体指针类型的别名，叫pstu，不用带*
+typedef struct student {
+	int num;
+	char name[20];
+	char sex;
+}stu, * pstu;
+
+typedef int INTEGER;
+int main()
+{
+	stu s= { 1001,"wangle",'M' };
+	pstu p;//stu* p1,那么p1也是一个结构体指针
+	INTEGER i = 10;
+	p = &s;
+	printf("i=%d,p->num=%d\n", i, p->num);
+	return 0;
+}
+```
+
+
+
+### 7.1.4 C++的引用
+
+```cpp
+#include <stdio.h>
+#include <stdlib.h>
+//把&写到形参的位置是C++的语法，称为引用,这个时候操作b和在主函数里边使用a等价的
+void modify_num(int& b)
+{
+	++b;
+}
+
+void modify_pointer(int*& p)//在子函数内操作p和主函数操作p手法一致
+{
+	p = (int*)malloc(20);
+	p[0] = 5;
+}
+int main()
+{
+	int a = 10;
+	modify_num(a);
+	printf("a=%d\n", a);
+	int* p = NULL;
+	modify_pointer(p);
+	printf("p[0]=%d\n", p[0]);
+	return 0;
+}
+```
+
+
+
 ### 7.2 顺序查找与折半查找
 
 **顺序查找**
