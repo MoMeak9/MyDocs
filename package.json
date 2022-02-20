@@ -12,7 +12,8 @@
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "deploy":"serverless deploy"
   },
   "dependencies": {
     "vuepress-theme-reco": "^1.6.6"

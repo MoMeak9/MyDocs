@@ -1,23 +1,23 @@
 // .vuepress/config.js
-
+const sidebar = require("./config/sidebar")
 module.exports = {
     head: [
         [
             'link', // 设置 favicon.ico，注意图片放在 public 文件夹下
-            {rel: 'icon', href: '/logo.png'}
+            {rel: 'icon', href: '/favicon.ico'}
         ],
         // 移动栏优化
         ['meta', {name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no'}],
         // 引入jquery
         ["script", {
             "language": "javascript",
-            "type": "text/javascript",
+            "type": "text/JavaScript",
             "src": "https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"
         }],
         // 引入鼠标点击脚本
         ["script", {
             "language": "javascript",
-            "type": "text/javascript",
+            "type": "text/JavaScript",
             "src": "/js/MouseClickEffect.js"
         }]
     ],
@@ -43,6 +43,7 @@ module.exports = {
     ],
     theme: 'reco',
     themeConfig: {
+        authorAvatar: '/logo.png',
         logo: 'https://doc.yihuiblog.top/logo.png',
         nav: [
             {text: '首页', link: '/'},
@@ -56,7 +57,6 @@ module.exports = {
         // 项目开始时间，只填写年份
         startYear: '2021',
         searchMaxSuggestions: 10,
-        sidebar: 'auto',
         subSidebar: 'auto',
         noFoundPageByTencent: false,
         lastUpdated: 'Last Updated',
@@ -74,6 +74,8 @@ module.exports = {
                 {icon: 'reco-github', link: 'https://github.com/recoluan'},
                 {icon: 'reco-npm', link: 'https://www.npmjs.com/~reco_luan'}
             ],
-        }
+        },
+        // 侧边栏
+        sidebar: sidebar
     }
 }
