@@ -1,7 +1,9 @@
 ### 8.2 插入排序
 
+1. **直接插入排序**
+
 ```cpp
-//插入排序，从小到大排序，升序
+//插入排序，从小到大排序，升序 有哨兵的
 void InsertSort(ElemType A[],int n)
 {
 	int i,j;
@@ -19,7 +21,33 @@ void InsertSort(ElemType A[],int n)
 }
 ```
 
+2. **折半插入排序**
 
+```cpp
+//折半查找 插入排序，考的很少
+void MidInsertSort(ElemType A[],int n)
+{
+	int i,j,low,high,mid;
+	for(i=2;i<=n;i++)
+	{
+		A[0]=A[i];
+		low=1;high=i-1;//low有序序列的开始，high有序序列的最后
+		while(low<=high)//先通过二分查找找到待插入位置
+		{
+			mid=(low+high)/2;
+			if(A[mid]>A[0])
+				high=mid-1;
+			else
+				low=mid+1;
+		}
+		for(j=i-1;j>=high+1;--j)
+			A[j+1]=A[j];
+		A[high+1]=A[0];
+	}
+}
+```
+
+3. **希尔排序**
 
 ### 8.3 交换排序（冒泡排序）
 
@@ -133,4 +161,8 @@ int main()
 	system("pause");
 }
 ```
+
+
+
+### 快速排序
 
