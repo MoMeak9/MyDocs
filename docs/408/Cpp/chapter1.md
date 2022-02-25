@@ -320,3 +320,149 @@ int main()
 ![image-20220128144806843](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/202201281448904.png)
 
 ![image-20220128144855469](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/202201281448535.png)
+
+
+
+内存展示
+
+```cpp
+#include <stdio.h>
+
+void show_memory(void *start,int memory_len)
+{
+	int i;
+	char* p = (char*)start;
+	for (i = 0; i < memory_len; i++)
+	{
+		printf("%x ",p[i]);
+		if ((i + 1) % 4 == 0)
+		{
+			printf("\n");
+		}
+	}
+}
+int main()
+{
+	float f = 1.456;
+	int arr[3] = { 1,2,3 };
+	//show_memory(&f,sizeof(f));
+	show_memory(arr, sizeof(arr));
+	return 0;
+}
+```
+
+
+
+**浮点数精度丢失**
+
+```cpp
+#include <stdio.h>
+
+int main()
+{
+    // float
+	double a = 1.23456789e10;//赋值的一瞬间发生 精度丢失
+	double b;
+	b = a + 20;//精度丢失
+	printf("b=%f\n", b);//%f即可以输出float，也可以输出double类型
+	return 0;
+}
+```
+
+
+
+**转义字符**
+
+![image-20220225192440192](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/202202251924298.png)
+
+```cpp
+#include <stdio.h>
+
+int main()
+{
+	printf("abc\rd\n");//dbc
+	printf("abc\bd\n");//abd
+	printf("\123\n");
+	return 0;
+}
+```
+
+参照 shell 输入方式
+
+
+
+### 位运算（不同于JS）
+
+![image-20220225193932422](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/202202251939500.png)
+
+0x7385
+
+0111 0011 1000 0101
+
+左移时，正数可能变为负数，负数可能变为正数
+
+0x8011
+
+1000 0000 0001 0001 
+
+0000 0000 0010 0010
+
+
+
+### 大端/小端
+
+大小端模式介绍**大端（存储）模式**：是指一个数据的低位字节序的内容放在高地址处，高位字节序存的内容放在低地址处。 **小端（存储）模式**：是指一个数据的低位字节序内容存放在低地址处，高位字节序的内容存放在高地址处。
+
+![img](https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/202202251948600.png)
+
+
+
+### const
+
+两种指针修饰：
+
+- `char* const ptr = str`ptr指针指向不可变，指针空间内容可以改变
+- `const char* ptr = str;`ptr指针所指空间内容不可变，可以重新指向新的地址
+
+```cpp
+#include <stdio.h>
+#include <stdlib.h>
+
+void const_two()
+{
+	char str[] = "hello world";
+	char str1[] = "how do you do";
+	char* const ptr = str;//和普通变量一致，代表ptr被修改
+	str[0] = 'H';
+	puts(ptr);
+	ptr[0] = 'n';  //合法
+	puts(ptr);
+	//ptr = "world";  //非法，编译错误，error C2166: 左值指定const对象
+
+}
+
+int main()
+{
+	const int i = 5;//i在下面的代码中不能修改，是常量
+	char str[] = "hello world";
+	const char* ptr = str;//这里代表ptr指向的空间不能被修改
+	str[0] = 'H';  //操作合法
+	puts(ptr);
+	ptr = "world";
+	//ptr[0] = 'n';  //操作非法，编译错误，提示error C2166: 左值指定const对象
+	puts(ptr);
+	//const修饰指针的第二种情况
+	const_two();
+	return 0;
+}
+```
+
+
+
+## 汇编语言
+
+[文档asm](./408/asm)
+
+1、机器码中所有的变量名都不在了
+
+2、任何一个函数都是自己独立的栈空间，运行这个函数时就有自己的栈基指针
