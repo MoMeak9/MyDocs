@@ -49,6 +49,33 @@ void MidInsertSort(ElemType A[],int n)
 
 3. **希尔排序**
 
+```cpp
+//希尔排序  
+//多轮插入排序，考大题的概率约等于零，因为编写起来复杂，同时效率并不如快排，堆排
+//小题主要考步长的变化是如何的
+void ShellSort(ElemType A[],int n)
+{
+	int dk,i,j;
+	// 73 29 74 51 29 90 37 48 72 54 83
+	for(dk=n/2;dk>=1;dk=dk/2)//步长变化，步长变化
+	{
+		for(i=dk+1;i<=n;++i)//以dk为步长进行插入排序
+		{
+			if(A[i]<A[i-dk])
+			{
+				A[0]=A[i];
+				for(j=i-dk;j>0&&A[0]<A[j];j=j-dk)
+					A[j+dk]=A[j];
+				A[j+dk]=A[0];
+			}
+		}
+	}
+}
+
+```
+
+
+
 ### 8.3 交换排序（冒泡排序）
 
 ```cpp
@@ -113,6 +140,102 @@ void swap(ElemType &a,ElemType &b)
 }
 ```
 
+#### 堆排序
+
+```cpp
+//调整某个父亲节点
+void AdjustDown(ElemType A[],int k,int len)
+{
+	int i;
+	A[0]=A[k]; // 作为临时变量
+	for(i=2*k;i<=len;i*=2)
+	{
+		if(i<len&&A[i]<A[i+1])//左子节点与右子节点比较大小
+			i++;
+		if(A[0]>=A[i])
+			break;
+		else{
+			A[k]=A[i];
+			k=i;
+		}
+	}
+	A[k]=A[0];
+}
+//用数组去表示树   层次建树
+void BuildMaxHeap(ElemType A[],int len)
+{
+	for(int i=len/2;i>0;i--)
+	{
+		AdjustDown(A,i,len);
+	}
+}
+void HeapSort(ElemType A[],int len)
+{
+	int i;
+	BuildMaxHeap(A,len);//建立大顶堆
+	for(i=len;i>1;i--)
+	{
+		swap(A[i],A[1]);
+		AdjustDown(A,1,i-1);
+	}
+}
+
+
+//调整子树
+void AdjustDown1(ElemType A[], int k, int len)
+{
+	int dad = k;
+	int son = 2 * dad + 1; //左孩子下标
+	while (son<=len)
+	{
+		if (son + 1 <= len && A[son] < A[son + 1])//看下有没有右孩子，比较左右孩子选大的
+		{
+			son++;
+		}
+		if (A[son] > A[dad])//比较孩子和父亲
+		{
+			swap(A[son], A[dad]);
+			dad = son;
+			son = 2 * dad + 1;
+		}
+		else {
+			break;
+		}
+	}
+}
+void HeapSort1(ElemType A[], int len)
+{
+	int i;
+	//建立大顶堆
+	for (i = len / 2; i >= 0; i--)
+	{
+		AdjustDown1(A, i, len);
+	}
+	swap(A[0], A[len]);//交换顶部和数组最后一个元素
+	for (i = len - 1; i > 0; i--)
+	{
+		AdjustDown1(A, 0, i);//剩下元素调整为大根堆
+		swap(A[0], A[i]);
+	}
+}
+
+//《王道C督学营》课程
+//选择排序与堆排序
+int main()
+{
+	SSTable ST;
+	ElemType A[10]={ 64, 94, 95, 79, 69, 84, 18, 22, 12 ,99};
+	ST_Init(ST,10);//初始化
+	memcpy(ST.elem,A,sizeof(A));
+	ST_print(ST);
+	//SelectSort(ST.elem,10);
+	HeapSort(ST.elem, 9);//王道书零号元素不参与排序
+	//HeapSort1(ST.elem,9);//所有元素参与排序
+	ST_print(ST);
+	system("pause");
+}
+```
+
 
 
 ### 8.5 归并排序
@@ -165,4 +288,10 @@ int main()
 
 
 ### 快速排序
+
+
+
+
+
+### 
 
