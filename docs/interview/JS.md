@@ -225,7 +225,7 @@ NNUSB 基本数据类型
 - boolean：布尔值类型
 - undefined：未定义类型
 - null：空值类型
-- object：对象类型
+- object：引用类型
 - symbol：symbol类型
 - bigint：大数字类型
 
@@ -237,7 +237,6 @@ console.log(Number.MAX_SAFE_INTEGER)
 
 console.log(Number.MIN_SAFE_INTEGER)
 // -9007199254740991
-复制代码
 ```
 
 3、深拷贝与浅拷贝的区别？
