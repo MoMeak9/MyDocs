@@ -1,6 +1,8 @@
 ## 简介
 
-这个公共库是我个人的临时的基于Vuepress的文档管理库，因为个人Blog一直没有太多时间去迭代更新，所以暂时使用这个进行代替。
+**本项目不再更新，后续博客文章均发布在[yihuiblog.top](http://yihuiblog.top/);仓库地址：[MoMeak9/MyBlogDoc](https://github.com/MoMeak9/MyBlogDoc)**
+
+这个公共库是我个人的临时的基于Vuepress的文档管理库，早先用于替代Blog。
 
 [在线地址](https://doc.yihuiblog.top/)
 
