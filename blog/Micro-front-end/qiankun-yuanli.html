@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>原理解析 | Yihui&#39;s docs</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/favicon.ico">
+    <script language="javascript" type="text/JavaScript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script language="javascript" type="text/JavaScript" src="/js/MouseClickEffect.js"></script>
+    <meta name="description" content="个人文档管理站点">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.4caa756d.css" as="style"><link rel="preload" href="/assets/js/app.862b4c32.js" as="script"><link rel="preload" href="/assets/js/3.9cc2b3a1.js" as="script"><link rel="preload" href="/assets/js/1.8c30e9e6.js" as="script"><link rel="preload" href="/assets/js/70.71ef19c6.js" as="script"><link rel="prefetch" href="/assets/js/10.89bf3c25.js"><link rel="prefetch" href="/assets/js/100.7133c3a8.js"><link rel="prefetch" href="/assets/js/101.932098af.js"><link rel="prefetch" href="/assets/js/102.c704e352.js"><link rel="prefetch" href="/assets/js/103.b291d6db.js"><link rel="prefetch" href="/assets/js/104.f0885496.js"><link rel="prefetch" href="/assets/js/105.b472b4cf.js"><link rel="prefetch" href="/assets/js/106.5449e0d1.js"><link rel="prefetch" href="/assets/js/107.712cb568.js"><link rel="prefetch" href="/assets/js/108.6bbb646f.js"><link rel="prefetch" href="/assets/js/109.23e9a01a.js"><link rel="prefetch" href="/assets/js/11.2c9469b3.js"><link rel="prefetch" href="/assets/js/110.5377dfc7.js"><link rel="prefetch" href="/assets/js/111.203e1bf9.js"><link rel="prefetch" href="/assets/js/112.515caa39.js"><link rel="prefetch" href="/assets/js/113.2211fb61.js"><link rel="prefetch" href="/assets/js/114.b078b81a.js"><link rel="prefetch" href="/assets/js/115.dda65b61.js"><link rel="prefetch" href="/assets/js/116.18f9570c.js"><link rel="prefetch" href="/assets/js/117.4542ab00.js"><link rel="prefetch" href="/assets/js/118.a8770ae0.js"><link rel="prefetch" href="/assets/js/119.d5e17064.js"><link rel="prefetch" href="/assets/js/12.a58abcfb.js"><link rel="prefetch" href="/assets/js/120.ec5a3762.js"><link rel="prefetch" href="/assets/js/121.1cbf0d1a.js"><link rel="prefetch" href="/assets/js/122.80d54e33.js"><link rel="prefetch" href="/assets/js/123.793b4d4f.js"><link rel="prefetch" href="/assets/js/124.0b9a9ddf.js"><link rel="prefetch" href="/assets/js/125.ec19248f.js"><link rel="prefetch" href="/assets/js/126.ea0acb20.js"><link rel="prefetch" href="/assets/js/127.31295f9c.js"><link rel="prefetch" href="/assets/js/128.da7ace80.js"><link rel="prefetch" href="/assets/js/129.a233f6d3.js"><link rel="prefetch" href="/assets/js/13.fa825284.js"><link rel="prefetch" href="/assets/js/130.9cb3b41f.js"><link rel="prefetch" href="/assets/js/131.ff462882.js"><link rel="prefetch" href="/assets/js/132.86e32433.js"><link rel="prefetch" href="/assets/js/133.54f255af.js"><link rel="prefetch" href="/assets/js/134.ef93a475.js"><link rel="prefetch" href="/assets/js/135.0cbdb5bc.js"><link rel="prefetch" href="/assets/js/136.87d608fc.js"><link rel="prefetch" href="/assets/js/137.433d1ac4.js"><link rel="prefetch" href="/assets/js/138.d2e8d969.js"><link rel="prefetch" href="/assets/js/139.da348669.js"><link rel="prefetch" href="/assets/js/14.6ef12044.js"><link rel="prefetch" href="/assets/js/140.7efcb7cf.js"><link rel="prefetch" href="/assets/js/141.d3c21f17.js"><link rel="prefetch" href="/assets/js/142.e458f722.js"><link rel="prefetch" href="/assets/js/143.757b1062.js"><link rel="prefetch" href="/assets/js/144.b1e6765e.js"><link rel="prefetch" href="/assets/js/145.68ff0640.js"><link rel="prefetch" href="/assets/js/146.5ff49156.js"><link rel="prefetch" href="/assets/js/147.fd0e0707.js"><link rel="prefetch" href="/assets/js/148.5bd0032a.js"><link rel="prefetch" href="/assets/js/149.1a76c6aa.js"><link rel="prefetch" href="/assets/js/15.2272cff9.js"><link rel="prefetch" href="/assets/js/150.a4fc0fc4.js"><link rel="prefetch" href="/assets/js/151.955f72fc.js"><link rel="prefetch" href="/assets/js/152.85430891.js"><link rel="prefetch" href="/assets/js/153.624081d4.js"><link rel="prefetch" href="/assets/js/154.f67d47c5.js"><link rel="prefetch" href="/assets/js/155.754393a0.js"><link rel="prefetch" href="/assets/js/156.8f383304.js"><link rel="prefetch" href="/assets/js/157.af09cb0a.js"><link rel="prefetch" href="/assets/js/158.580049d3.js"><link rel="prefetch" href="/assets/js/159.d16a559a.js"><link rel="prefetch" href="/assets/js/16.1aa34173.js"><link rel="prefetch" href="/assets/js/160.d097207e.js"><link rel="prefetch" href="/assets/js/161.4558e711.js"><link rel="prefetch" href="/assets/js/162.595699fd.js"><link rel="prefetch" href="/assets/js/163.f4a3b7d0.js"><link rel="prefetch" href="/assets/js/164.bcabfd5b.js"><link rel="prefetch" href="/assets/js/165.e64f7329.js"><link rel="prefetch" href="/assets/js/166.14a65e28.js"><link rel="prefetch" href="/assets/js/167.98276fa6.js"><link rel="prefetch" href="/assets/js/168.6565520a.js"><link rel="prefetch" href="/assets/js/169.ff1cb633.js"><link rel="prefetch" href="/assets/js/17.05f4a788.js"><link rel="prefetch" href="/assets/js/170.11b56b2f.js"><link rel="prefetch" href="/assets/js/171.bafae7c9.js"><link rel="prefetch" href="/assets/js/18.c9d0a1d0.js"><link rel="prefetch" href="/assets/js/19.2b9b6042.js"><link rel="prefetch" href="/assets/js/20.06dd0149.js"><link rel="prefetch" href="/assets/js/21.e2fe4ea8.js"><link rel="prefetch" href="/assets/js/22.f8a4ee79.js"><link rel="prefetch" href="/assets/js/23.f19666dd.js"><link rel="prefetch" href="/assets/js/24.a6c97de3.js"><link rel="prefetch" href="/assets/js/25.eea82548.js"><link rel="prefetch" href="/assets/js/26.be6dc3ec.js"><link rel="prefetch" href="/assets/js/27.84cf2d4b.js"><link rel="prefetch" href="/assets/js/28.e762a6f9.js"><link rel="prefetch" href="/assets/js/29.7d4dfd03.js"><link rel="prefetch" href="/assets/js/30.566b3bbb.js"><link rel="prefetch" href="/assets/js/31.3ab87166.js"><link rel="prefetch" href="/assets/js/32.ff133fb1.js"><link rel="prefetch" href="/assets/js/33.78e5633c.js"><link rel="prefetch" href="/assets/js/34.7f49fcdc.js"><link rel="prefetch" href="/assets/js/35.3626c34f.js"><link rel="prefetch" href="/assets/js/36.19995ae2.js"><link rel="prefetch" href="/assets/js/37.2b94478b.js"><link rel="prefetch" href="/assets/js/38.3847345e.js"><link rel="prefetch" href="/assets/js/39.f3e8d2d0.js"><link rel="prefetch" href="/assets/js/4.a9e83867.js"><link rel="prefetch" href="/assets/js/40.82a78d99.js"><link rel="prefetch" href="/assets/js/41.3dafd3fe.js"><link rel="prefetch" href="/assets/js/42.5bedb0c9.js"><link rel="prefetch" href="/assets/js/43.a615e469.js"><link rel="prefetch" href="/assets/js/44.bcc6a268.js"><link rel="prefetch" href="/assets/js/45.f18225ca.js"><link rel="prefetch" href="/assets/js/46.250e5cc0.js"><link rel="prefetch" href="/assets/js/47.eaf57768.js"><link rel="prefetch" href="/assets/js/48.ba6cfb92.js"><link rel="prefetch" href="/assets/js/49.57b9c29e.js"><link rel="prefetch" href="/assets/js/5.8e4453e0.js"><link rel="prefetch" href="/assets/js/50.40246950.js"><link rel="prefetch" href="/assets/js/51.1a02dfb7.js"><link rel="prefetch" href="/assets/js/52.2eb4f3c8.js"><link rel="prefetch" href="/assets/js/53.2846ac65.js"><link rel="prefetch" href="/assets/js/54.78bbea29.js"><link rel="prefetch" href="/assets/js/55.850663af.js"><link rel="prefetch" href="/assets/js/56.fa4d919e.js"><link rel="prefetch" href="/assets/js/57.c7b452c8.js"><link rel="prefetch" href="/assets/js/58.28931fb3.js"><link rel="prefetch" href="/assets/js/59.ba2acaf6.js"><link rel="prefetch" href="/assets/js/6.b32243c4.js"><link rel="prefetch" href="/assets/js/60.27b531f5.js"><link rel="prefetch" href="/assets/js/61.6315a0f4.js"><link rel="prefetch" href="/assets/js/62.a596fd30.js"><link rel="prefetch" href="/assets/js/63.e016ce30.js"><link rel="prefetch" href="/assets/js/64.2aad2e3f.js"><link rel="prefetch" href="/assets/js/65.df31550d.js"><link rel="prefetch" href="/assets/js/66.ed006db8.js"><link rel="prefetch" href="/assets/js/67.7eff2ee5.js"><link rel="prefetch" href="/assets/js/68.15bb0456.js"><link rel="prefetch" href="/assets/js/69.b38a7e1a.js"><link rel="prefetch" href="/assets/js/7.b0ae972a.js"><link rel="prefetch" href="/assets/js/71.2d8d5d0c.js"><link rel="prefetch" href="/assets/js/72.e2a809a4.js"><link rel="prefetch" href="/assets/js/73.b5c8670a.js"><link rel="prefetch" href="/assets/js/74.707ba4c2.js"><link rel="prefetch" href="/assets/js/75.2f0e00cf.js"><link rel="prefetch" href="/assets/js/76.19e67ef6.js"><link rel="prefetch" href="/assets/js/77.15e60094.js"><link rel="prefetch" href="/assets/js/78.d447cb84.js"><link rel="prefetch" href="/assets/js/79.2f8c4938.js"><link rel="prefetch" href="/assets/js/8.49100ceb.js"><link rel="prefetch" href="/assets/js/80.708f69aa.js"><link rel="prefetch" href="/assets/js/81.575f8ea1.js"><link rel="prefetch" href="/assets/js/82.4af889b0.js"><link rel="prefetch" href="/assets/js/83.c066688e.js"><link rel="prefetch" href="/assets/js/84.8091a558.js"><link rel="prefetch" href="/assets/js/85.72ceb3b6.js"><link rel="prefetch" href="/assets/js/86.dd2941f6.js"><link rel="prefetch" href="/assets/js/87.e3f0cf9c.js"><link rel="prefetch" href="/assets/js/88.11e4aad3.js"><link rel="prefetch" href="/assets/js/89.43c848f8.js"><link rel="prefetch" href="/assets/js/9.1f0c3c69.js"><link rel="prefetch" href="/assets/js/90.7b8ec81a.js"><link rel="prefetch" href="/assets/js/91.1da9382e.js"><link rel="prefetch" href="/assets/js/92.8314282f.js"><link rel="prefetch" href="/assets/js/93.7f024b5a.js"><link rel="prefetch" href="/assets/js/94.921593f6.js"><link rel="prefetch" href="/assets/js/95.e571cdb5.js"><link rel="prefetch" href="/assets/js/96.3731f8a1.js"><link rel="prefetch" href="/assets/js/97.f0b13686.js"><link rel="prefetch" href="/assets/js/98.5a683693.js"><link rel="prefetch" href="/assets/js/99.66be978a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.4caa756d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Yihui's docs</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2>个人文档管理站点</p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <span data-v-25ba6db2>2021 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="https://doc.yihuiblog.top/logo.png" alt="Yihui's docs" class="logo"> <span class="site-name">Yihui's docs</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/408/" class="nav-link"><i class="undefined"></i>
+  408
+</a></li><li class="dropdown-item"><!----> <a href="/categories/fontEnd/" class="nav-link"><i class="undefined"></i>
+  fontEnd
+</a></li><li class="dropdown-item"><!----> <a href="/categories/blog/" class="nav-link"><i class="undefined"></i>
+  blog
+</a></li><li class="dropdown-item"><!----> <a href="/categories/wiki/" class="nav-link"><i class="undefined"></i>
+  wiki
+</a></li><li class="dropdown-item"><!----> <a href="/categories/算法/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/categories/backend/" class="nav-link"><i class="undefined"></i>
+  backend
+</a></li><li class="dropdown-item"><!----> <a href="/categories/git/" class="nav-link"><i class="undefined"></i>
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/intern/" class="nav-link"><i class="undefined"></i>
+  intern
+</a></li><li class="dropdown-item"><!----> <a href="/categories/大学课程/" class="nav-link"><i class="undefined"></i>
+  大学课程
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="https://github.com/MoMeak9" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="/wiki/interview/" class="nav-link"><i class="undefined"></i>
+  面试题汇总
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/logo.png" alt="author-avatar" class="personal-img" data-v-39576ba9> <!----> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>128</h3> <h6 data-v-39576ba9>Articles</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>17</h3> <h6 data-v-39576ba9>Tags</h6></div></div> <ul class="social-links" data-v-39576ba9><li class="social-item" data-v-39576ba9><i class="iconfont reco-github" style="color:#fb9b5f;" data-v-39576ba9></i></li><li class="social-item" data-v-39576ba9><i class="iconfont reco-npm" style="color:#f47e60;" data-v-39576ba9></i></li></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/408/" class="nav-link"><i class="undefined"></i>
+  408
+</a></li><li class="dropdown-item"><!----> <a href="/categories/fontEnd/" class="nav-link"><i class="undefined"></i>
+  fontEnd
+</a></li><li class="dropdown-item"><!----> <a href="/categories/blog/" class="nav-link"><i class="undefined"></i>
+  blog
+</a></li><li class="dropdown-item"><!----> <a href="/categories/wiki/" class="nav-link"><i class="undefined"></i>
+  wiki
+</a></li><li class="dropdown-item"><!----> <a href="/categories/算法/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/categories/backend/" class="nav-link"><i class="undefined"></i>
+  backend
+</a></li><li class="dropdown-item"><!----> <a href="/categories/git/" class="nav-link"><i class="undefined"></i>
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/intern/" class="nav-link"><i class="undefined"></i>
+  intern
+</a></li><li class="dropdown-item"><!----> <a href="/categories/大学课程/" class="nav-link"><i class="undefined"></i>
+  大学课程
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="https://github.com/MoMeak9" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="/wiki/interview/" class="nav-link"><i class="undefined"></i>
+  面试题汇总
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2></h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <span data-v-25ba6db2>2021 - </span>
+          2022
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">原理解析</h1> <div data-v-f875f3fc><!----> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="原理解析"><a href="#原理解析" class="header-anchor">#</a> 原理解析</h2> <p>探讨乾坤的一些基本实现，帮助了解乾坤原理的一个入门。</p> <p>关注几个问题，围绕并试图得出理解</p> <ul><li>qiankun的基本原理</li> <li>它的路由机制和生命周期</li> <li>不足和弊端</li> <li>一个的最佳实践应该怎样</li> <li>未来框架的形态</li></ul> <h3 id="single-spa的简单原理"><a href="#single-spa的简单原理" class="header-anchor">#</a> single-spa的简单原理</h3> <p>之所以从single-spa说起，缘于乾坤的设计和Ant团队的思考 <a href="https://link.juejin.cn?target=https%3A%2F%2Ftech.antfin.com%2Fcommunity%2Farticles%2F536" target="_blank" rel="noopener noreferrer">可能是你见过最完善的微前端解决方案(19年)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <blockquote><p>由于我们的子应用都是 lazy load 的，当浏览器重新刷新时，主框架的资源会被重新加载，同时异步 load 子应用的静态资源，由于此时主应用的路由系统已经激活，但子应用的资源可能还没有完全加载完毕，从而导致路由注册表里发现没有能匹配子应用 /subApp/123/detail 的规则，这时候就会导致跳 NotFound 页或者直接路由报错。
+这个问题在所有 lazy load 方式加载子应用的方案中都会碰到，早些年前 angularjs 社区把这个问题统一称之为 Future State。
+解决的思路也很简单，我们需要设计这样一套路由机制：
+主框架配置子应用的路由为subApp: { url: '/subApp/**', entry:'./subApp.js' }，则当浏览器的地址为 /subApp/abc 时，框架需要先加载 entry 资源，待 entry 资源加载完毕，确保子应用的路由系统注册进主框架之后后，再去由子应用的路由系统接管 url change 事件。同时在子应用路由切出时，主框架需要触发相应的destroy 事件，子应用在监听到该事件时，调用自己的卸载方法卸载应用，如 React 场景下 destroy = () =&gt; ReactDOM.unmountAtNode(container) 。
+要实现这样一套机制，我们可以自己去劫持 url change 事件从而实现自己的路由系统，也可以基于社区已有的 ui router library，尤其是 react-router 在 v4 之后实现了 Dynamic Routing 能力，我们只需要复写一部分路由发现的逻辑即可。这里我们推荐直接选择社区比较完善的相关实践single-spa</p></blockquote> <p>微前端架构旨在解决应用在一个长时间维护过程中，演变成巨石应用( Frontend Monolith )后，带来的难以维护问题。而乾坤则是基于这类中后台<code>单页应用</code>提出的解决方案。qiankun的主框架选择了成熟的single-spa作为路由方案，同时框架自身还兼顾考虑了父子应用集成方式和应用隔离等问题。</p> <p>然后single-spa， 它是一个将多个<code>单页面应用</code>聚合为一个整体应用的 JavaScript 微前端框架, 我们先看它的设计目的和解决的问题：<a href="https://link.juejin.cn?target=https%3A%2F%2Fzh-hans.single-spa.js.org%2Fdocs%2Fgetting-started-overview%2F%23%E6%9E%B6%E6%9E%84%E6%A6%82%E8%A7%88" target="_blank" rel="noopener noreferrer">single-spa架构概览<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <blockquote><p>Single-spa 从现代框架组件生命周期中获得灵感，将生命周期应用于整个应用程序。
+现在 single-spa 几乎支持任何框架。 由于 JavaScript 因其许多框架的寿命短而臭名昭著，我们决定让它在任何您想要的框架都易于使用。</p></blockquote> <p>很重要一点，single-spa的设计基于现代框架，现代spa框架（如vue,react等）的一个重要特点：每个应用程序都可以响应 url 路由事件，并且必须知道如何从 DOM 中初始化、挂载和卸载自己。</p> <p>我们以vue为例，一个vue项目的初始化通常如下：</p> <p><img src="https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/202203091514543.webp" alt="截屏2021-03-13 下午6.53.56.png"></p> <p>在index文件定义挂载节点（<code>div id=&quot;app&quot;</code>）后，在main入口文件执行时，我们将新建vue实例，并挂载到对应的dom节点。</p> <p>一个尝试，如果不在进入页面时候就初始实例，而是由我决定何时装载卸载实例？卸载实例后是否可以切换装载另一个实例？而这样是否就达到自由切换spa应用的目的了，于是进一步我们有这样一个设计</p> <p><img src="https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/202203091514594.webp" alt="截屏2021-03-13 下午7.21.29.png"></p> <p>事实上这也是single-spa做的最基础的事，我们再回来看它最简单的使用方式：<a href="https://link.juejin.cn?target=https%3A%2F%2Fzh-hans.single-spa.js.org%2Fdocs%2Fgetting-started-overview" target="_blank" rel="noopener noreferrer">中文文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ol><li>创建HTML</li></ol> <div class="language- extra-class"><pre class="language-text"><code>&lt;html&gt;
+&lt;body&gt;
+    &lt;script src=&quot;single-spa-config.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre></div><ol><li>创建启动文件，在这里加载微应用的脚本文件，定义路由的激活规则，注册微应用的信息。采用qiankun registerMicroApps 方式加载微应用的话，基本也基于这种registerApplication的使用方式。</li></ol> <div class="language- extra-class"><pre class="language-text"><code>//main.js
+import * as singleSpa from 'single-spa';
+const name = 'app1';
+/* loading 是一个返回 promise 的函数，用于 加载/解析 应用代码。
+ * 它的目的是为延迟加载提供便利 —— single-spa 只有在需要时才会下载应用程序的代码。
+ * 在这个示例中，在 webpack 中支持 import ()并返回 Promise，但是 single-spa 可以使用任何返回 Promise 的加载函数。
+ */
+const app = () =&gt; import('./app1/app1.js');
+/* Single-spa 配置顶级路由，以确定哪个应用程序对于指定 url 是活动的。
+ * 您可以以任何您喜欢的方式实现此路由。
+ * 一种有用的约定是在url前面加上活动应用程序的名称，以使顶层路由保持简单。
+ */
+const activeWhen = '/app1';
+singleSpa.registerApplication({ name, app, activeWhen });
+singleSpa.start();
+
+</code></pre></div><ol><li>定义子应用的生命周期</li></ol> <div class="language- extra-class"><pre class="language-text"><code>//app1.js
+let domEl;
+export function bootstrap(props) {
+    return Promise
+        .resolve()
+        .then(() =&gt; {
+            // 如果我们使用vue等，这里相当于初始化挂载节点，
+            domEl = document.createElement('div');
+            domEl.id = 'app1';
+            document.body.appendChild(domEl);
+        });
+}
+export function mount(props) {
+    return Promise
+        .resolve()
+        .then(() =&gt; {
+            // 在这里通常使用框架将ui组件挂载到dom。请参阅https://single-spa.js.org/docs/ecosystem.html。
+            // 如果我们使用vue等，这里相当于进行vue实例化和mount执行，https://cn.vuejs.org/v2/api/#vm-mount
+            domEl.textContent = 'App 1 is mounted!'
+        });
+}
+export function unmount(props) {
+    return Promise
+        .resolve()
+        .then(() =&gt; {
+            // 在这里通常是通知框架把ui组件从dom中卸载。参见https://single-spa.js.org/docs/ecosystem.html
+            // 如果我们使用vue等，这里相当于进行vue实例的销毁 destroy()，参见vue文档
+            domEl.textContent = '';
+        })
+}
+
+注意：single-api 有两套api， 「Application api」 和 「Parcel api」
+Parcel api提供了手动挂载应用的能力，剥离了registerApplication默认路由监听能力，
+qiankun的「loadMicroApp」手动加载正是基于此方式实现
+
+</code></pre></div><p>这里single-spa做了几件事情</p> <ol><li>仿现代应用实现了自己的生命周期，并在不同阶段执行不同的生命周期函数（<code>bootstrap，mount,unmount</code>）</li> <li>用户需在对应生命周期完成子应用的逻辑，如在mount和unmount执行初始化vue mount和vue的销毁destroy方法</li> <li>single-spa拦截监听了系统的顶层路由事件，通过<code>activeWhen</code>规则切换不同应用的生命周期（如切换页面，对应执行过程：bootstrap page1，mount page1，unmount page1, bootstrap page2, mount page2, unmount page2···），在完成子应用加载后，框架才把路由事件下发给子应用，子应用可以继续响应自身路由逻辑</li></ol> <h3 id="乾坤对single-spa的封装"><a href="#乾坤对single-spa的封装" class="header-anchor">#</a> 乾坤对single-spa的封装</h3> <p>乾坤两种微应用加载方式<code>registerMicroApps</code>和<code>loadMicroApp</code>如下(<a href="https://link.juejin.cn?target=https%3A%2F%2Fqiankun.umijs.org%2Fzh%2Fguide%2Fgetting-started" target="_blank" rel="noopener noreferrer">官网<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>)</p> <div class="language- extra-class"><pre class="language-text"><code>import { registerMicroApps, loadMicroApp, start } from 'qiankun';
+
+registerMicroApps([
+  {
+    name: 'react app', // app name registered
+    entry: '//localhost:7100',
+    container: '#yourContainer',
+    activeRule: '/yourActiveRule',
+  },
+  {
+    name: 'vue app',
+    entry: { scripts: ['//localhost:7100/main.js'] },
+    container: '#yourContainer2',
+    activeRule: '/yourActiveRule2',
+  },
+]);
+// 或者手动
+loadMicroApp(
+  { 
+    name: 'app', 
+    entry: '//localhost:7100',
+    container: '#yourContainer', 
+  }
+);
+
+start();
+
+</code></pre></div><p>实际上也基于single-spa中registerApplication和Parcel，我们可以从源码确认 <a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub1s.com%2Fumijs%2Fqiankun%2Fblob%2FHEAD%2Fsrc%2Fapis.ts" target="_blank" rel="noopener noreferrer">github1s.com/umijs/qiank…<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>activeRule字段对应了activeWhen, 其他字段和生命周期钩子也是基本配置，但这里我们需关注另一个问题，子页面加载入口<code>entry: '//localhost:7100'</code>。</p> <h3 id="entry文件加载-js-entry-vs-html-entry"><a href="#entry文件加载-js-entry-vs-html-entry" class="header-anchor">#</a> entry文件加载：JS Entry vs HTML Entry</h3> <p>回过头来看single-spa的基本示例，我们觉得是有点不直观反习惯的，主要是加载子应用时候，通过<code>const app = () =&gt; import('./app1/app1.js')</code>来定义一个子页面。由于现代spa应用里面，我们通常都是从入口文件加载框架（vue/react）起步，打包生成一个js bundle, 在模版html里面加载构成最后的静态资源。而在使用single-spa时候，我们则需要对入口文件重新封装，使之暴露为一个生命周期钩子函数，并实现构建子应用的容器节点的逻辑，即html挂载节点（single-spa当前通过封装不同<a href="https://link.juejin.cn?target=https%3A%2F%2Fsingle-spa.js.org%2Fdocs%2Fecosystem-vue%2F" target="_blank" rel="noopener noreferrer">框架库<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>来实现，其实也挺好）。这样子的好处我们可以在资源加载层面做优化，比如运行时依赖共享。当我们有多个子应用共用一套样式组件，或者vue/react等框架时，可以在打包子应用时候设置webpack的<code>externals</code>，忽略这些依赖的打包，然后再借助<code>systemjs</code>这种动态模块加载工具，把依赖的systemjs版本引进来（简单场景里，也可以动态标签方式引入依赖，反正umd导出的第三方库都支持） 用这样的方式去避免重复加载，single-spa也提供了一种面向webpack5的<code>模块联合</code>方式解决共享问题，<a href="https://link.juejin.cn?target=https%3A%2F%2Fzh-hans.single-spa.js.org%2Fdocs%2Frecommended-setup%2F%23%E5%85%B1%E4%BA%AB%E4%BE%9D%E8%B5%96" target="_blank" rel="noopener noreferrer">共享联合<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，可以对比下。</p> <p>上述的问题在于，我们在使用single-spa加载子应用的时候，要做的工作是比较繁琐的，至少有2点</p> <ol><li>改变了子应用原有的开发方式，节点挂载等要么自行实现，要么引入不同的single-spa框架库，然后再对入口文件做适配</li> <li>修改了子应用原有一些依赖引入的方式（例如模块引入改为script引入等，实现依赖共享的话）</li></ol> <p>乾坤在入口加载的处理上有着不同的考量，本着应用分离，快速集成不同技术框架应用的初衷，qiankun采用HTML的加载方式：（乾坤不提倡应用间共享依赖，建议各应用互相独立）</p> <div class="language- extra-class"><pre class="language-text"><code>import { importEntry } from 'import-html-entry';
+// get the entry html content and script executor
+const { entry, name: appName } = app;
+const { template, execScripts, assetPublicPath } = await importEntry(entry, importEntryOpts);
+
+</code></pre></div><p>主要原理是利用fetch获取到请求url的资源，解析对应的模版和脚本文件，获取子应用对应的模版和脚本依赖（包含了生命周期钩子），fetch url的实现主要用了<code>import-html-entry</code>。这样的好处是，基本保留了子应用原有的开发模式（除了增加生命周期钩子），成本相对js entry低廉很多，也适应了<strong>不同技术框架项目快速集成</strong>的背景.</p> <p>关于这两种的选择，可以继续细读<a href="https://link.juejin.cn?target=https%3A%2F%2Ftech.antfin.com%2Fcommunity%2Farticles%2F536" target="_blank" rel="noopener noreferrer">可能是你见过最完善的微前端解决方案(19年)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。复制下它的总结</p> <p><img src="https://mc-web-1259409954.cos.ap-guangzhou.myqcloud.com/MyImages/202203091514704.webp" alt="image.png"></p> <h3 id="不足和定位"><a href="#不足和定位" class="header-anchor">#</a> 不足和定位</h3> <p>乾坤的不足上面已经体现，即无法实现<code>依赖共享</code>，然而这也是框架定位的问题，即作为<code>微应用</code>，乾坤更着重于应用间的隔离和解耦，以便可以以最小的工作量集成大量现有应用，所以乾坤考量的还有应用隔离（<code>样式隔离</code>和<code>js沙箱</code>），关于定位问题，这里推荐一篇文章分析得很不错 <a href="https://juejin.cn/post/6871145516026527757" target="_blank" rel="noopener noreferrer">谈谈微前端的两种粒度<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language- extra-class"><pre class="language-text"><code>微应用加载器：“微”的粒度是应用，也就是HTML（或main.js），它只能做到应用级别的分享
+微模块加载器：“微”的粒度是模块，也就是JS模块，它能做到模块级别的分享
+
+所以，它们的区别就是微服务的粒度，乾坤的所能服务的粒度是应用级别，而single-spa则是模块级别。
+
+</code></pre></div><h3 id="一些原则"><a href="#一些原则" class="header-anchor">#</a> 一些原则</h3> <h4 id="关于依赖"><a href="#关于依赖" class="header-anchor">#</a> 关于依赖</h4> <p>在梳理single-spa文档时候，官方其实是有推荐设置的，包括什么应该被定义为运行时模块（子应用，大型共享依赖库等），什么是构建时模块。官方也很建议只加载一次大型JavaScript库（react,组件库等），<a href="https://link.juejin.cn?target=https%3A%2F%2Fzh-hans.single-spa.js.org%2Fdocs%2Frecommended-setup" target="_blank" rel="noopener noreferrer">推荐设置<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>而乾坤并不建议共享依赖（虽然可以用external实现）。我们可以理解不同背景团队间的项目集成，为了维护目的分离开发。但也有相当部分新项目或项目有相关性强的依赖（比如共用项目组件库，地图库等），还是建议共享依赖，一种未来的方式是通过webpack5的<code>模块联合</code>(下面会提)实现，当前我们可以通过external在子应用忽略依赖，在主应用script引入等方式调用公共依赖库</p> <h4 id="关于路由和手动注册应用"><a href="#关于路由和手动注册应用" class="header-anchor">#</a> 关于路由和手动注册应用</h4> <p>取决于场景，对于简单场景，交与框架监听路由即可，也有子路由复杂的情况（如在主应用存在菜单栏，对两个属于同一子应用的不同路由链接跳转等），这时路由规则可能会让调用方混乱，一种不错的方式是在主应用，以组件方式封装子应用，再通过组件的生命周期控制子应用的加载和销毁，此时在主应用的外层，仅通过v-if等命令就可以便捷地管理切换不同子应用</p> <div class="language- extra-class"><pre class="language-text"><code>const App
+onMounted(() =&gt; {
+    App = loadMicroApp({
+        name: 'app',
+        entry: '/app/index.html',
+        container: '#app-container', 
+    })
+})
+onBeforeUnmount(() =&gt; {
+    if (App) {
+        App.unmount()
+    } 
+})
+
+</code></pre></div><h3 id="优化的方向"><a href="#优化的方向" class="header-anchor">#</a> 优化的方向</h3> <p>qiankun提供了一套很方便上手的微前端框架，但减少总体体积，解决依赖共享问题，仍然是值得优化的一个点。其中一种大的趋势和解决方案便是webpack5的<code>模块联合</code>。</p> <p>模块联合是一种webpack-specific技术，用于共享[构建时模块](#in-browser- vs -build-time-modules)。它涉及到每个microfrontend捆绑它所有的依赖，甚至共享的依赖。这意味着每个共享依赖项都有多个副本——每个microfrontend一个。在浏览器中，共享依赖项的第一个副本将被下载，但随后的microfrontend将重用该共享依赖项，而不需要下载它们的副本。</p> <p>更多可以参照<a href="https://link.juejin.cn?target=https%3A%2F%2Fwebpack.js.org%2Fconcepts%2Fmodule-federation%2F" target="_blank" rel="noopener noreferrer">webpack.js.org/concepts/mo…<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="后话"><a href="#后话" class="header-anchor">#</a> 后话</h3> <ol><li>项目中发现微应用另一个好处：技术框架升级过程很好用，可以在一个简单子应用率先用vue3，后续子应用升级过渡</li> <li>有时候不能为了微应用而微应用，但还没找到论据</li> <li>虽然single-spa的颗粒度更小，但反而因为复杂度，有些场景不如qiankun简洁和易于组织</li></ol></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">3/10/2022, 1:34:09 AM</span></div></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-2" data-v-cb1513f6><a href="/blog/Micro-front-end/qiankun-yuanli.html#原理解析" class="sidebar-link reco-side-原理解析" data-v-cb1513f6>原理解析</a></li><li class="level-3" data-v-cb1513f6><a href="/blog/Micro-front-end/qiankun-yuanli.html#single-spa的简单原理" class="sidebar-link reco-side-single-spa的简单原理" data-v-cb1513f6>single-spa的简单原理</a></li><li class="level-3" data-v-cb1513f6><a href="/blog/Micro-front-end/qiankun-yuanli.html#乾坤对single-spa的封装" class="sidebar-link reco-side-乾坤对single-spa的封装" data-v-cb1513f6>乾坤对single-spa的封装</a></li><li class="level-3" data-v-cb1513f6><a href="/blog/Micro-front-end/qiankun-yuanli.html#entry文件加载-js-entry-vs-html-entry" class="sidebar-link reco-side-entry文件加载-js-entry-vs-html-entry" data-v-cb1513f6>entry文件加载：JS Entry vs HTML Entry</a></li><li class="level-3" data-v-cb1513f6><a href="/blog/Micro-front-end/qiankun-yuanli.html#不足和定位" class="sidebar-link reco-side-不足和定位" data-v-cb1513f6>不足和定位</a></li><li class="level-3" data-v-cb1513f6><a href="/blog/Micro-front-end/qiankun-yuanli.html#一些原则" class="sidebar-link reco-side-一些原则" data-v-cb1513f6>一些原则</a></li><li class="level-3" data-v-cb1513f6><a href="/blog/Micro-front-end/qiankun-yuanli.html#优化的方向" class="sidebar-link reco-side-优化的方向" data-v-cb1513f6>优化的方向</a></li><li class="level-3" data-v-cb1513f6><a href="/blog/Micro-front-end/qiankun-yuanli.html#后话" class="sidebar-link reco-side-后话" data-v-cb1513f6>后话</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><!----><!----><div></div></div></div>
+    <script src="/assets/js/app.862b4c32.js" defer></script><script src="/assets/js/3.9cc2b3a1.js" defer></script><script src="/assets/js/1.8c30e9e6.js" defer></script><script src="/assets/js/70.71ef19c6.js" defer></script>
+  </body>
+</html>

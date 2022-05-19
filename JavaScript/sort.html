@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JS算法之排序 | Yihui&#39;s docs</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/favicon.ico">
+    <script language="javascript" type="text/JavaScript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script language="javascript" type="text/JavaScript" src="/js/MouseClickEffect.js"></script>
+    <meta name="description" content="个人文档管理站点">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.4caa756d.css" as="style"><link rel="preload" href="/assets/js/app.862b4c32.js" as="script"><link rel="preload" href="/assets/js/3.9cc2b3a1.js" as="script"><link rel="preload" href="/assets/js/1.8c30e9e6.js" as="script"><link rel="preload" href="/assets/js/34.7f49fcdc.js" as="script"><link rel="prefetch" href="/assets/js/10.89bf3c25.js"><link rel="prefetch" href="/assets/js/100.7133c3a8.js"><link rel="prefetch" href="/assets/js/101.932098af.js"><link rel="prefetch" href="/assets/js/102.c704e352.js"><link rel="prefetch" href="/assets/js/103.b291d6db.js"><link rel="prefetch" href="/assets/js/104.f0885496.js"><link rel="prefetch" href="/assets/js/105.b472b4cf.js"><link rel="prefetch" href="/assets/js/106.5449e0d1.js"><link rel="prefetch" href="/assets/js/107.712cb568.js"><link rel="prefetch" href="/assets/js/108.6bbb646f.js"><link rel="prefetch" href="/assets/js/109.23e9a01a.js"><link rel="prefetch" href="/assets/js/11.2c9469b3.js"><link rel="prefetch" href="/assets/js/110.5377dfc7.js"><link rel="prefetch" href="/assets/js/111.203e1bf9.js"><link rel="prefetch" href="/assets/js/112.515caa39.js"><link rel="prefetch" href="/assets/js/113.2211fb61.js"><link rel="prefetch" href="/assets/js/114.b078b81a.js"><link rel="prefetch" href="/assets/js/115.dda65b61.js"><link rel="prefetch" href="/assets/js/116.18f9570c.js"><link rel="prefetch" href="/assets/js/117.4542ab00.js"><link rel="prefetch" href="/assets/js/118.a8770ae0.js"><link rel="prefetch" href="/assets/js/119.d5e17064.js"><link rel="prefetch" href="/assets/js/12.a58abcfb.js"><link rel="prefetch" href="/assets/js/120.ec5a3762.js"><link rel="prefetch" href="/assets/js/121.1cbf0d1a.js"><link rel="prefetch" href="/assets/js/122.80d54e33.js"><link rel="prefetch" href="/assets/js/123.793b4d4f.js"><link rel="prefetch" href="/assets/js/124.0b9a9ddf.js"><link rel="prefetch" href="/assets/js/125.ec19248f.js"><link rel="prefetch" href="/assets/js/126.ea0acb20.js"><link rel="prefetch" href="/assets/js/127.31295f9c.js"><link rel="prefetch" href="/assets/js/128.da7ace80.js"><link rel="prefetch" href="/assets/js/129.a233f6d3.js"><link rel="prefetch" href="/assets/js/13.fa825284.js"><link rel="prefetch" href="/assets/js/130.9cb3b41f.js"><link rel="prefetch" href="/assets/js/131.ff462882.js"><link rel="prefetch" href="/assets/js/132.86e32433.js"><link rel="prefetch" href="/assets/js/133.54f255af.js"><link rel="prefetch" href="/assets/js/134.ef93a475.js"><link rel="prefetch" href="/assets/js/135.0cbdb5bc.js"><link rel="prefetch" href="/assets/js/136.87d608fc.js"><link rel="prefetch" href="/assets/js/137.433d1ac4.js"><link rel="prefetch" href="/assets/js/138.d2e8d969.js"><link rel="prefetch" href="/assets/js/139.da348669.js"><link rel="prefetch" href="/assets/js/14.6ef12044.js"><link rel="prefetch" href="/assets/js/140.7efcb7cf.js"><link rel="prefetch" href="/assets/js/141.d3c21f17.js"><link rel="prefetch" href="/assets/js/142.e458f722.js"><link rel="prefetch" href="/assets/js/143.757b1062.js"><link rel="prefetch" href="/assets/js/144.b1e6765e.js"><link rel="prefetch" href="/assets/js/145.68ff0640.js"><link rel="prefetch" href="/assets/js/146.5ff49156.js"><link rel="prefetch" href="/assets/js/147.fd0e0707.js"><link rel="prefetch" href="/assets/js/148.5bd0032a.js"><link rel="prefetch" href="/assets/js/149.1a76c6aa.js"><link rel="prefetch" href="/assets/js/15.2272cff9.js"><link rel="prefetch" href="/assets/js/150.a4fc0fc4.js"><link rel="prefetch" href="/assets/js/151.955f72fc.js"><link rel="prefetch" href="/assets/js/152.85430891.js"><link rel="prefetch" href="/assets/js/153.624081d4.js"><link rel="prefetch" href="/assets/js/154.f67d47c5.js"><link rel="prefetch" href="/assets/js/155.754393a0.js"><link rel="prefetch" href="/assets/js/156.8f383304.js"><link rel="prefetch" href="/assets/js/157.af09cb0a.js"><link rel="prefetch" href="/assets/js/158.580049d3.js"><link rel="prefetch" href="/assets/js/159.d16a559a.js"><link rel="prefetch" href="/assets/js/16.1aa34173.js"><link rel="prefetch" href="/assets/js/160.d097207e.js"><link rel="prefetch" href="/assets/js/161.4558e711.js"><link rel="prefetch" href="/assets/js/162.595699fd.js"><link rel="prefetch" href="/assets/js/163.f4a3b7d0.js"><link rel="prefetch" href="/assets/js/164.bcabfd5b.js"><link rel="prefetch" href="/assets/js/165.e64f7329.js"><link rel="prefetch" href="/assets/js/166.14a65e28.js"><link rel="prefetch" href="/assets/js/167.98276fa6.js"><link rel="prefetch" href="/assets/js/168.6565520a.js"><link rel="prefetch" href="/assets/js/169.ff1cb633.js"><link rel="prefetch" href="/assets/js/17.05f4a788.js"><link rel="prefetch" href="/assets/js/170.11b56b2f.js"><link rel="prefetch" href="/assets/js/171.bafae7c9.js"><link rel="prefetch" href="/assets/js/18.c9d0a1d0.js"><link rel="prefetch" href="/assets/js/19.2b9b6042.js"><link rel="prefetch" href="/assets/js/20.06dd0149.js"><link rel="prefetch" href="/assets/js/21.e2fe4ea8.js"><link rel="prefetch" href="/assets/js/22.f8a4ee79.js"><link rel="prefetch" href="/assets/js/23.f19666dd.js"><link rel="prefetch" href="/assets/js/24.a6c97de3.js"><link rel="prefetch" href="/assets/js/25.eea82548.js"><link rel="prefetch" href="/assets/js/26.be6dc3ec.js"><link rel="prefetch" href="/assets/js/27.84cf2d4b.js"><link rel="prefetch" href="/assets/js/28.e762a6f9.js"><link rel="prefetch" href="/assets/js/29.7d4dfd03.js"><link rel="prefetch" href="/assets/js/30.566b3bbb.js"><link rel="prefetch" href="/assets/js/31.3ab87166.js"><link rel="prefetch" href="/assets/js/32.ff133fb1.js"><link rel="prefetch" href="/assets/js/33.78e5633c.js"><link rel="prefetch" href="/assets/js/35.3626c34f.js"><link rel="prefetch" href="/assets/js/36.19995ae2.js"><link rel="prefetch" href="/assets/js/37.2b94478b.js"><link rel="prefetch" href="/assets/js/38.3847345e.js"><link rel="prefetch" href="/assets/js/39.f3e8d2d0.js"><link rel="prefetch" href="/assets/js/4.a9e83867.js"><link rel="prefetch" href="/assets/js/40.82a78d99.js"><link rel="prefetch" href="/assets/js/41.3dafd3fe.js"><link rel="prefetch" href="/assets/js/42.5bedb0c9.js"><link rel="prefetch" href="/assets/js/43.a615e469.js"><link rel="prefetch" href="/assets/js/44.bcc6a268.js"><link rel="prefetch" href="/assets/js/45.f18225ca.js"><link rel="prefetch" href="/assets/js/46.250e5cc0.js"><link rel="prefetch" href="/assets/js/47.eaf57768.js"><link rel="prefetch" href="/assets/js/48.ba6cfb92.js"><link rel="prefetch" href="/assets/js/49.57b9c29e.js"><link rel="prefetch" href="/assets/js/5.8e4453e0.js"><link rel="prefetch" href="/assets/js/50.40246950.js"><link rel="prefetch" href="/assets/js/51.1a02dfb7.js"><link rel="prefetch" href="/assets/js/52.2eb4f3c8.js"><link rel="prefetch" href="/assets/js/53.2846ac65.js"><link rel="prefetch" href="/assets/js/54.78bbea29.js"><link rel="prefetch" href="/assets/js/55.850663af.js"><link rel="prefetch" href="/assets/js/56.fa4d919e.js"><link rel="prefetch" href="/assets/js/57.c7b452c8.js"><link rel="prefetch" href="/assets/js/58.28931fb3.js"><link rel="prefetch" href="/assets/js/59.ba2acaf6.js"><link rel="prefetch" href="/assets/js/6.b32243c4.js"><link rel="prefetch" href="/assets/js/60.27b531f5.js"><link rel="prefetch" href="/assets/js/61.6315a0f4.js"><link rel="prefetch" href="/assets/js/62.a596fd30.js"><link rel="prefetch" href="/assets/js/63.e016ce30.js"><link rel="prefetch" href="/assets/js/64.2aad2e3f.js"><link rel="prefetch" href="/assets/js/65.df31550d.js"><link rel="prefetch" href="/assets/js/66.ed006db8.js"><link rel="prefetch" href="/assets/js/67.7eff2ee5.js"><link rel="prefetch" href="/assets/js/68.15bb0456.js"><link rel="prefetch" href="/assets/js/69.b38a7e1a.js"><link rel="prefetch" href="/assets/js/7.b0ae972a.js"><link rel="prefetch" href="/assets/js/70.71ef19c6.js"><link rel="prefetch" href="/assets/js/71.2d8d5d0c.js"><link rel="prefetch" href="/assets/js/72.e2a809a4.js"><link rel="prefetch" href="/assets/js/73.b5c8670a.js"><link rel="prefetch" href="/assets/js/74.707ba4c2.js"><link rel="prefetch" href="/assets/js/75.2f0e00cf.js"><link rel="prefetch" href="/assets/js/76.19e67ef6.js"><link rel="prefetch" href="/assets/js/77.15e60094.js"><link rel="prefetch" href="/assets/js/78.d447cb84.js"><link rel="prefetch" href="/assets/js/79.2f8c4938.js"><link rel="prefetch" href="/assets/js/8.49100ceb.js"><link rel="prefetch" href="/assets/js/80.708f69aa.js"><link rel="prefetch" href="/assets/js/81.575f8ea1.js"><link rel="prefetch" href="/assets/js/82.4af889b0.js"><link rel="prefetch" href="/assets/js/83.c066688e.js"><link rel="prefetch" href="/assets/js/84.8091a558.js"><link rel="prefetch" href="/assets/js/85.72ceb3b6.js"><link rel="prefetch" href="/assets/js/86.dd2941f6.js"><link rel="prefetch" href="/assets/js/87.e3f0cf9c.js"><link rel="prefetch" href="/assets/js/88.11e4aad3.js"><link rel="prefetch" href="/assets/js/89.43c848f8.js"><link rel="prefetch" href="/assets/js/9.1f0c3c69.js"><link rel="prefetch" href="/assets/js/90.7b8ec81a.js"><link rel="prefetch" href="/assets/js/91.1da9382e.js"><link rel="prefetch" href="/assets/js/92.8314282f.js"><link rel="prefetch" href="/assets/js/93.7f024b5a.js"><link rel="prefetch" href="/assets/js/94.921593f6.js"><link rel="prefetch" href="/assets/js/95.e571cdb5.js"><link rel="prefetch" href="/assets/js/96.3731f8a1.js"><link rel="prefetch" href="/assets/js/97.f0b13686.js"><link rel="prefetch" href="/assets/js/98.5a683693.js"><link rel="prefetch" href="/assets/js/99.66be978a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.4caa756d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Yihui's docs</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2>个人文档管理站点</p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <span data-v-25ba6db2>2021 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="https://doc.yihuiblog.top/logo.png" alt="Yihui's docs" class="logo"> <span class="site-name">Yihui's docs</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/408/" class="nav-link"><i class="undefined"></i>
+  408
+</a></li><li class="dropdown-item"><!----> <a href="/categories/fontEnd/" class="nav-link"><i class="undefined"></i>
+  fontEnd
+</a></li><li class="dropdown-item"><!----> <a href="/categories/blog/" class="nav-link"><i class="undefined"></i>
+  blog
+</a></li><li class="dropdown-item"><!----> <a href="/categories/wiki/" class="nav-link"><i class="undefined"></i>
+  wiki
+</a></li><li class="dropdown-item"><!----> <a href="/categories/算法/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/categories/backend/" class="nav-link"><i class="undefined"></i>
+  backend
+</a></li><li class="dropdown-item"><!----> <a href="/categories/git/" class="nav-link"><i class="undefined"></i>
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/intern/" class="nav-link"><i class="undefined"></i>
+  intern
+</a></li><li class="dropdown-item"><!----> <a href="/categories/大学课程/" class="nav-link"><i class="undefined"></i>
+  大学课程
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="https://github.com/MoMeak9" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="/wiki/interview/" class="nav-link"><i class="undefined"></i>
+  面试题汇总
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/logo.png" alt="author-avatar" class="personal-img" data-v-39576ba9> <!----> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>128</h3> <h6 data-v-39576ba9>Articles</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>17</h3> <h6 data-v-39576ba9>Tags</h6></div></div> <ul class="social-links" data-v-39576ba9><li class="social-item" data-v-39576ba9><i class="iconfont reco-github" style="color:#fb9b5f;" data-v-39576ba9></i></li><li class="social-item" data-v-39576ba9><i class="iconfont reco-npm" style="color:#f47e60;" data-v-39576ba9></i></li></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/408/" class="nav-link"><i class="undefined"></i>
+  408
+</a></li><li class="dropdown-item"><!----> <a href="/categories/fontEnd/" class="nav-link"><i class="undefined"></i>
+  fontEnd
+</a></li><li class="dropdown-item"><!----> <a href="/categories/blog/" class="nav-link"><i class="undefined"></i>
+  blog
+</a></li><li class="dropdown-item"><!----> <a href="/categories/wiki/" class="nav-link"><i class="undefined"></i>
+  wiki
+</a></li><li class="dropdown-item"><!----> <a href="/categories/算法/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/categories/backend/" class="nav-link"><i class="undefined"></i>
+  backend
+</a></li><li class="dropdown-item"><!----> <a href="/categories/git/" class="nav-link"><i class="undefined"></i>
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/intern/" class="nav-link"><i class="undefined"></i>
+  intern
+</a></li><li class="dropdown-item"><!----> <a href="/categories/大学课程/" class="nav-link"><i class="undefined"></i>
+  大学课程
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="https://github.com/MoMeak9" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="/wiki/interview/" class="nav-link"><i class="undefined"></i>
+  面试题汇总
+</a></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>CS320 ComputerNetwork</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/university/CS320/Chapter1.html" class="sidebar-link">计算机网络Chapter1</a></li><li><a href="/university/CS320/Chapter2.html" class="sidebar-link">计算机网络Chapter2 Application Layer 应用层</a></li><li><a href="/university/CS320/Chapter3.html" class="sidebar-link">计算机网络Chapter3 Transport-layer  传输层</a></li><li><a href="/university/CS320/Chapter4.html" class="sidebar-link">计算机网络Chapter4 Network layer 网络层</a></li><li><a href="/university/CS320/Chapter5.html" class="sidebar-link">计算机网络Chapter5 Link Layer 链路层</a></li><li><a href="/university/CS320/Chapter6.html" class="sidebar-link">计算机网络Chapter6 无线网络与加密</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>JS算法之排序</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <span data-v-25ba6db2>2021 - </span>
+          2022
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">JS算法之排序</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>Damonare</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>6/25/2021</span></i> <!----> <i class="tags iconfont reco-tag" data-v-f875f3fc><span class="tag-item" data-v-f875f3fc>js</span></i></div></div> <div class="theme-reco-content content__default"><blockquote><p>作者：Damonare
+链接：https://juejin.cn/post/6844903444365443080
+来源：稀土掘金</p></blockquote> <h3 id="排序算法说明"><a href="#排序算法说明" class="header-anchor">#</a> 排序算法说明</h3> <p><strong>（1）排序的定义：对一序列对象根据某个关键字进行排序；</strong></p> <p>输入：n个数：a1,a2,a3,...,an 输出：n个数的排列:a1',a2',a3',...,an'，使得a1'&lt;=a2'&lt;=a3'&lt;=...&lt;=an'。</p> <p>再讲的形象点就是排排坐，调座位，高的站在后面，矮的站在前面咯。</p> <p><strong>（3）对于评述算法优劣术语的说明</strong></p> <p><strong>稳定</strong>：如果a原本在b前面，而a=b，排序之后a仍然在b的前面； <strong>不稳定</strong>：如果a原本在b的前面，而a=b，排序之后a可能会出现在b的后面；</p> <p><strong>内排序</strong>：所有排序操作都在内存中完成； <strong>外排序</strong>：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；</p> <p><strong>时间复杂度</strong>: 一个算法执行所耗费的时间。 <strong>空间复杂度</strong>: 运行完一个程序所需内存的大小。</p> <p>关于时间空间复杂度的更多了解请戳<a href="https://link.juejin.cn?target=http%3A%2F%2Fblog.csdn.net%2Fbooirror%2Farticle%2Fdetails%2F7707551%2F" target="_blank" rel="noopener noreferrer">这里<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，或是看书程杰大大编写的《大话数据结构》还是很赞的，通俗易懂。</p> <p><strong>（4）排序算法图片总结(图片来源于网络):</strong></p> <p>排序对比：</p> <p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/4abde1748817d7f35f2bf8b6a058aa40~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p> <p><strong>图片名词解释：</strong> n: 数据规模 k:“桶”的个数 In-place: 占用常数内存，不占用额外内存 Out-place: 占用额外内存</p> <p>排序分类：</p> <p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/b93d9288a682f5538667fb1fa4c65220~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p> <h3 id="_1-冒泡排序-bubble-sort"><a href="#_1-冒泡排序-bubble-sort" class="header-anchor">#</a> 1.冒泡排序（Bubble Sort）</h3> <blockquote><p>好的，开始总结第一个排序算法，冒泡排序。我想对于它每个学过C语言的都会了解的吧，这可能是很多人接触的第一个排序算法。</p></blockquote> <h4 id="_1-算法描述"><a href="#_1-算法描述" class="header-anchor">#</a> (1)算法描述</h4> <blockquote><p>冒泡排序是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。</p></blockquote> <h4 id="_2-算法描述和实现"><a href="#_2-算法描述和实现" class="header-anchor">#</a> (2)算法描述和实现</h4> <p>具体算法描述如下：</p> <ul><li>&lt;1&gt;.比较相邻的元素。如果第一个比第二个大，就交换它们两个；</li> <li>&lt;2&gt;.对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对，这样在最后的元素应该会是最大的数；</li> <li>&lt;3&gt;.针对所有的元素重复以上的步骤，除了最后一个；</li> <li>&lt;4&gt;.重复步骤1~3，直到排序完成。</li></ul> <p><strong>JavaScript代码实现：</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">bubbleSort</span><span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> len <span class="token operator">=</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> len <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&gt;</span> arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment">//相邻元素两两对比</span>
+                <span class="token keyword">var</span> temp <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token comment">//元素交换</span>
+                arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> arr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> arr<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">44</span><span class="token punctuation">,</span><span class="token number">38</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">47</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">36</span><span class="token punctuation">,</span><span class="token number">26</span><span class="token punctuation">,</span><span class="token number">27</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">46</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">19</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">,</span><span class="token number">48</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">bubbleSort</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]</span>
+</code></pre></div><blockquote><p>**改进冒泡排序： **设置一标志性变量pos,用于记录每趟排序中最后一次进行交换的位置。由于pos位置之后的记录均已交换到位,故在进行下一趟排序时只要扫描到pos位置即可。</p></blockquote> <p>改进后算法如下:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">bubbleSort2</span><span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token string">'改进后冒泡排序耗时'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> i <span class="token operator">=</span> arr<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment">//初始时,最后位置保持不变</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span> i<span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> pos<span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//每趟开始时,无记录交换</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> j<span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">&lt;</span> i<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&gt;</span> arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                pos<span class="token operator">=</span> j<span class="token punctuation">;</span> <span class="token comment">//记录交换的位置</span>
+                <span class="token keyword">var</span> tmp <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>tmp<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        i<span class="token operator">=</span> pos<span class="token punctuation">;</span> <span class="token comment">//为下一趟排序作准备</span>
+     <span class="token punctuation">}</span>
+     console<span class="token punctuation">.</span><span class="token function">timeEnd</span><span class="token punctuation">(</span><span class="token string">'改进后冒泡排序耗时'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token keyword">return</span> arr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> arr<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">44</span><span class="token punctuation">,</span><span class="token number">38</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">47</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">36</span><span class="token punctuation">,</span><span class="token number">26</span><span class="token punctuation">,</span><span class="token number">27</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">46</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">19</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">,</span><span class="token number">48</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">bubbleSort2</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]</span>
+</code></pre></div><blockquote><p>传统冒泡排序中每一趟排序操作只能找到一个最大值或最小值,我们考虑利用在每趟排序中进行正向和反向两遍冒泡的方法一次可以得到两个最终值(最大者和最小者) , 从而使排序趟数几乎减少了一半。</p></blockquote> <p>改进后的算法实现为:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">bubbleSort3</span><span class="token punctuation">(</span><span class="token parameter">arr3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> low <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> high<span class="token operator">=</span> arr<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">//设置变量的初始值</span>
+    <span class="token keyword">var</span> tmp<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token string">'2.改进后冒泡排序耗时'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>low <span class="token operator">&lt;</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>j<span class="token operator">=</span> low<span class="token punctuation">;</span> j<span class="token operator">&lt;</span> high<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token comment">//正向冒泡,找到最大者</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&gt;</span> arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                tmp <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>arr<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>tmp<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token operator">--</span>high<span class="token punctuation">;</span>                 <span class="token comment">//修改high值, 前移一位</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>j<span class="token operator">=</span>high<span class="token punctuation">;</span> j<span class="token operator">&gt;</span>low<span class="token punctuation">;</span> <span class="token operator">--</span>j<span class="token punctuation">)</span> <span class="token comment">//反向冒泡,找到最小者</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&lt;</span>arr<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                tmp <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>arr<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>arr<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>tmp<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token operator">++</span>low<span class="token punctuation">;</span>                  <span class="token comment">//修改low值,后移一位</span>
+    <span class="token punctuation">}</span>
+    console<span class="token punctuation">.</span><span class="token function">timeEnd</span><span class="token punctuation">(</span><span class="token string">'2.改进后冒泡排序耗时'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> arr3<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> arr<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">44</span><span class="token punctuation">,</span><span class="token number">38</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">47</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">36</span><span class="token punctuation">,</span><span class="token number">26</span><span class="token punctuation">,</span><span class="token number">27</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">46</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">19</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">,</span><span class="token number">48</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">bubbleSort3</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]</span>
+</code></pre></div><p>三种方法耗时对比：</p> <p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/9cc7d151ab9b298c756bf95b6d8dae78~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p> <blockquote><p>由图可以看出改进后的冒泡排序明显的时间复杂度更低，耗时更短了。读者自行尝试可以戳这，博主在github建了个库，读者可以Clone下来本地尝试。此博文配合源码体验更棒哦~~~</p></blockquote> <p><strong>冒泡排序动图演示:</strong></p> <p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/30/f427727489dff5fcb0debdd69b478ecf~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p> <p><strong>(3)算法分析</strong></p> <ul><li>最佳情况：T(n) = O(n)</li></ul> <blockquote><p>当输入的数据已经是正序时（都已经是正序了，为毛何必还排序呢....）</p></blockquote> <ul><li>最差情况：T(n) = O(n^2)</li></ul> <blockquote><p>当输入的数据是反序时(卧槽，我直接反序不就完了....)</p></blockquote> <ul><li>平均情况：T(n) = O(n^2)</li></ul> <h3 id="_2-选择排序-selection-sort"><a href="#_2-选择排序-selection-sort" class="header-anchor">#</a> 2.选择排序（Selection Sort）</h3> <blockquote><p>表现最稳定的排序算法之一(这个稳定不是指算法层面上的稳定哈，相信聪明的你能明白我说的意思2333)，因为无论什么数据进去都是O(n²)的时间复杂度.....所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间了吧。理论上讲，选择排序可能也是平时排序一般人想到的最多的排序方法了吧。</p></blockquote> <h4 id="_1-算法简介"><a href="#_1-算法简介" class="header-anchor">#</a> (1)算法简介</h4> <blockquote><p>选择排序(Selection-sort)是一种简单直观的排序算法。它的工作原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p></blockquote> <h4 id="_2-算法描述和实现-2"><a href="#_2-算法描述和实现-2" class="header-anchor">#</a> (2)算法描述和实现</h4> <p>n个记录的直接选择排序可经过n-1趟直接选择排序得到有序结果。具体算法描述如下：</p> <ul><li>&lt;1&gt;.初始状态：无序区为R[1..n]，有序区为空；</li> <li>&lt;2&gt;.第i趟排序(i=1,2,3...n-1)开始时，当前有序区和无序区分别为R[1..i-1]和R(i..n）。该趟排序从当前无序区中-选出关键字最小的记录 R[k]，将它与无序区的第1个记录R交换，使R[1..i]和R[i+1..n)分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；</li> <li>&lt;3&gt;.n-1趟结束，数组有序化了。</li></ul> <p><strong>Javascript代码实现:</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">selectionSort</span><span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> len <span class="token operator">=</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> minIndex<span class="token punctuation">,</span> temp<span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token string">'选择排序耗时'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        minIndex <span class="token operator">=</span> i<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> arr<span class="token punctuation">[</span>minIndex<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>     <span class="token comment">//寻找最小的数</span>
+                minIndex <span class="token operator">=</span> j<span class="token punctuation">;</span>                 <span class="token comment">//将最小数的索引保存</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        temp <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>minIndex<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        arr<span class="token punctuation">[</span>minIndex<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    console<span class="token punctuation">.</span><span class="token function">timeEnd</span><span class="token punctuation">(</span><span class="token string">'选择排序耗时'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> arr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> arr<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">44</span><span class="token punctuation">,</span><span class="token number">38</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">47</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">36</span><span class="token punctuation">,</span><span class="token number">26</span><span class="token punctuation">,</span><span class="token number">27</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">46</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">19</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">,</span><span class="token number">48</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">selectionSort</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]</span>
+</code></pre></div><p><strong>选择排序动图演示：</strong></p> <p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/138a44298f3693e3fdd1722235e72f0f~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p> <h4 id="_3-算法分析"><a href="#_3-算法分析" class="header-anchor">#</a> (3)算法分析</h4> <ul><li>最佳情况：T(n) = O(n^2)</li> <li>最差情况：T(n) = O(n^2)</li> <li>平均情况：T(n) = O(n^2)</li></ul> <h3 id="_3-插入排序-insertion-sort"><a href="#_3-插入排序-insertion-sort" class="header-anchor">#</a> 3.插入排序（Insertion Sort）</h3> <blockquote><p>插入排序的代码实现虽然没有冒泡排序和选择排序那么简单粗暴，但它的原理应该是最容易理解的了，因为只要打过扑克牌的人都应该能够秒懂。当然，如果你说你打扑克牌摸牌的时候从来不按牌的大小整理牌，那估计这辈子你对插入排序的算法都不会产生任何兴趣了.....</p></blockquote> <h4 id="_1-算法简介-2"><a href="#_1-算法简介-2" class="header-anchor">#</a> (1)算法简介</h4> <blockquote><p>插入排序（Insertion-Sort）的算法描述是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用in-place排序（即只需用到O(1)的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p></blockquote> <h4 id="_2-算法描述和实现-3"><a href="#_2-算法描述和实现-3" class="header-anchor">#</a> (2)算法描述和实现</h4> <p>一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下：</p> <ul><li>&lt;1&gt;.从第一个元素开始，该元素可以认为已经被排序；</li> <li>&lt;2&gt;.取出下一个元素，在已经排序的元素序列中从后向前扫描；</li> <li>&lt;3&gt;.如果该元素（已排序）大于新元素，将该元素移到下一位置；</li> <li>&lt;4&gt;.重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；</li> <li>&lt;5&gt;.将新元素插入到该位置后；</li> <li>&lt;6&gt;.重复步骤2~5。</li></ul> <p><strong>Javascript代码实现:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>function insertionSort(array) {
+    if (Object.prototype.toString.call(array).slice(8, -1) === 'Array') {
+        console.time('插入排序耗时：');
+        for (var i = 1; i &lt; array.length; i++) {
+            var key = array[i];
+            var j = i - 1;
+            while (j &gt;= 0 &amp;&amp; array[j] &gt; key) {
+                array[j + 1] = array[j];
+                j--;
+            }
+            array[j + 1] = key;
+        }
+        console.timeEnd('插入排序耗时：');
+        return array;
+    } else {
+        return 'array is not an Array!';
+    }
+}
+
+复制代码
+</code></pre></div><blockquote><p><strong>改进插入排序：</strong> 查找插入位置时使用二分查找的方式</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>function binaryInsertionSort(array) {
+    if (Object.prototype.toString.call(array).slice(8, -1) === 'Array') {
+        console.time('二分插入排序耗时：');
+
+        for (var i = 1; i &lt; array.length; i++) {
+            var key = array[i], left = 0, right = i - 1;
+            while (left &lt;= right) {
+                var middle = parseInt((left + right) / 2);
+                if (key &lt; array[middle]) {
+                    right = middle - 1;
+                } else {
+                    left = middle + 1;
+                }
+            }
+            for (var j = i - 1; j &gt;= left; j--) {
+                array[j + 1] = array[j];
+            }
+            array[left] = key;
+        }
+        console.timeEnd('二分插入排序耗时：');
+
+        return array;
+    } else {
+        return 'array is not an Array!';
+    }
+}
+var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+console.log(binaryInsertionSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+复制代码
+</code></pre></div><blockquote><p>改进前后对比：</p></blockquote> <p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/ff1cfcfb0a7cd174955b4fba2e7da830~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p> <p><strong>插入排序动图演示:</strong></p> <p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/f0e1e3b7f95c3888ab2791b6abbfae41~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p> <h4 id="_3-算法分析-2"><a href="#_3-算法分析-2" class="header-anchor">#</a> (3)算法分析</h4> <ul><li>最佳情况：输入数组按升序排列。T(n) = O(n)</li> <li>最坏情况：输入数组按降序排列。T(n) = O(n2)</li> <li>平均情况：T(n) = O(n2)</li></ul> <h3 id="_4-希尔排序-shell-sort"><a href="#_4-希尔排序-shell-sort" class="header-anchor">#</a> 4.希尔排序（Shell Sort）</h3> <blockquote><p>1959年Shell发明； 第一个突破O(n^2)的排序算法；是简单插入排序的改进版；它与插入排序的不同之处在于，它会优先比较距离较远的元素。希尔排序又叫缩小增量排序</p></blockquote> <h4 id="_1-算法简介-3"><a href="#_1-算法简介-3" class="header-anchor">#</a> (1)算法简介</h4> <blockquote><p>希尔排序的核心在于间隔序列的设定。既可以提前设定好间隔序列，也可以动态的定义间隔序列。动态定义间隔序列的算法是《算法（第4版》的合著者Robert Sedgewick提出的。</p></blockquote> <h4 id="_2-算法描述和实现-4"><a href="#_2-算法描述和实现-4" class="header-anchor">#</a> (2)算法描述和实现</h4> <p>先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，具体算法描述：</p> <ul><li>&lt;1&gt;. 选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；</li> <li>&lt;2&gt;.按增量序列个数k，对序列进行k 趟排序；</li> <li>&lt;3&gt;.每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</li></ul> <p><strong>Javascript代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>function shellSort(arr) {
+    var len = arr.length,
+        temp,
+        gap = 1;
+    console.time('希尔排序耗时:');
+    while(gap &lt; len/5) {          //动态定义间隔序列
+        gap =gap*5+1;
+    }
+    for (gap; gap &gt; 0; gap = Math.floor(gap/5)) {
+        for (var i = gap; i &lt; len; i++) {
+            temp = arr[i];
+            for (var j = i-gap; j &gt;= 0 &amp;&amp; arr[j] &gt; temp; j-=gap) {
+                arr[j+gap] = arr[j];
+            }
+            arr[j+gap] = temp;
+        }
+    }
+    console.timeEnd('希尔排序耗时:');
+    return arr;
+}
+var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+console.log(shellSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+
+复制代码
+</code></pre></div><p><strong>希尔排序图示（图片来源网络）：</strong></p> <p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/86dc5422e18bd545afef8898b1bb1315~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p> <h4 id="_3-算法分析-3"><a href="#_3-算法分析-3" class="header-anchor">#</a> （3）算法分析</h4> <ul><li>最佳情况：T(n) = O(nlog2 n)</li> <li>最坏情况：T(n) = O(nlog2 n)</li> <li>平均情况：T(n) =O(nlog n)</li></ul> <h3 id="_5-归并排序-merge-sort"><a href="#_5-归并排序-merge-sort" class="header-anchor">#</a> 5.归并排序（Merge Sort）</h3> <blockquote><p>和选择排序一样，归并排序的性能不受输入数据的影响，但表现比选择排序好的多，因为始终都是O(n log n）的时间复杂度。代价是需要额外的内存空间。</p></blockquote> <h4 id="_1-算法简介-4"><a href="#_1-算法简介-4" class="header-anchor">#</a> (1)算法简介</h4> <blockquote><p>归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。归并排序是一种稳定的排序方法。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为2-路归并。</p></blockquote> <h4 id="_2-算法描述和实现-5"><a href="#_2-算法描述和实现-5" class="header-anchor">#</a> (2)算法描述和实现</h4> <p>具体算法描述如下：</p> <ul><li>&lt;1&gt;.把长度为n的输入序列分成两个长度为n/2的子序列；</li> <li>&lt;2&gt;.对这两个子序列分别采用归并排序；</li> <li>&lt;3&gt;.将两个排序好的子序列合并成一个最终的排序序列。</li></ul> <p><strong>Javscript代码实现:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>function mergeSort(arr) {  //采用自上而下的递归方法
+    var len = arr.length;
+    if(len &lt; 2) {
+        return arr;
+    }
+    var middle = Math.floor(len / 2),
+        left = arr.slice(0, middle),
+        right = arr.slice(middle);
+    return merge(mergeSort(left), mergeSort(right));
+}
+
+function merge(left, right)
+{
+    var result = [];
+    console.time('归并排序耗时');
+    while (left.length &amp;&amp; right.length) {
+        if (left[0] &lt;= right[0]) {
+            result.push(left.shift());
+        } else {
+            result.push(right.shift());
+        }
+    }
+
+    while (left.length)
+        result.push(left.shift());
+
+    while (right.length)
+        result.push(right.shift());
+    console.timeEnd('归并排序耗时');
+    return result;
+}
+var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+console.log(mergeSort(arr));
+
+复制代码
+</code></pre></div><p><strong>归并排序动图演示:</strong></p> <p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/33d105e7e7e9c60221c445f5684ccfb6~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p> <h4 id="_3-算法分析-4"><a href="#_3-算法分析-4" class="header-anchor">#</a> (3)算法分析</h4> <ul><li>最佳情况：T(n) = O(n)</li> <li>最差情况：T(n) = O(nlogn)</li> <li>平均情况：T(n) = O(nlogn)</li></ul> <h3 id="_6-快速排序-quick-sort"><a href="#_6-快速排序-quick-sort" class="header-anchor">#</a> 6.快速排序（Quick Sort）</h3> <blockquote><p>快速排序的名字起的是简单粗暴，因为一听到这个名字你就知道它存在的意义，就是快，而且效率高! 它是处理大数据最快的排序算法之一了。</p></blockquote> <h4 id="_1-算法简介-5"><a href="#_1-算法简介-5" class="header-anchor">#</a> (1)算法简介</h4> <blockquote><p>快速排序的基本思想：通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p></blockquote> <h4 id="_2-算法描述和实现-6"><a href="#_2-算法描述和实现-6" class="header-anchor">#</a> (2)算法描述和实现</h4> <p>快速排序使用分治法来把一个串（list）分为两个子串（sub-lists）。具体算法描述如下：</p> <ul><li>&lt;1&gt;.从数列中挑出一个元素，称为 &quot;基准&quot;（pivot）；</li> <li>&lt;2&gt;.重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；</li> <li>&lt;3&gt;.递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</li></ul> <p><strong>Javascript代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>/*方法说明：快速排序
+@param  array 待排序数组*/
+//方法一
+function quickSort(array, left, right) {
+    console.time('1.快速排序耗时');
+    if (Object.prototype.toString.call(array).slice(8, -1) === 'Array' &amp;&amp; typeof left === 'number' &amp;&amp; typeof right === 'number') {
+        if (left &lt; right) {
+            var x = array[right], i = left - 1, temp;
+            for (var j = left; j &lt;= right; j++) {
+                if (array[j] &lt;= x) {
+                    i++;
+                    temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+            quickSort(array, left, i - 1);
+            quickSort(array, i + 1, right);
+        }
+        console.timeEnd('1.快速排序耗时');
+        return array;
+    } else {
+        return 'array is not an Array or left or right is not a number!';
+    }
+}
+
+//方法二
+var quickSort2 = function(arr) {
+    console.time('2.快速排序耗时');
+&amp;emsp;&amp;emsp;if (arr.length &lt;= 1) { return arr; }
+&amp;emsp;&amp;emsp;var pivotIndex = Math.floor(arr.length / 2);
+&amp;emsp;&amp;emsp;var pivot = arr.splice(pivotIndex, 1)[0];
+&amp;emsp;&amp;emsp;var left = [];
+&amp;emsp;&amp;emsp;var right = [];
+&amp;emsp;&amp;emsp;for (var i = 0; i &lt; arr.length; i++){
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;if (arr[i] &lt; pivot) {
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;left.push(arr[i]);
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;} else {
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;right.push(arr[i]);
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;}
+&amp;emsp;&amp;emsp;}
+console.timeEnd('2.快速排序耗时');
+&amp;emsp;&amp;emsp;return quickSort2(left).concat([pivot], quickSort2(right));
+};
+
+var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+console.log(quickSort(arr,0,arr.length-1));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+console.log(quickSort2(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+
+
+复制代码
+</code></pre></div><p><strong>快速排序动图演示：</strong></p> <p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/dd9dc195a7331351671fe9ac4f7d5aa4~tplv-t2oaga2asx-watermark.awebp" alt="快速排序"></p> <h4 id="_3-算法分析-5"><a href="#_3-算法分析-5" class="header-anchor">#</a> (3)算法分析</h4> <ul><li>最佳情况：T(n) = O(nlogn)</li> <li>最差情况：T(n) = O(n2)</li> <li>平均情况：T(n) = O(nlogn)</li></ul> <h3 id="_7-堆排序-heap-sort"><a href="#_7-堆排序-heap-sort" class="header-anchor">#</a> 7.堆排序（Heap Sort）</h3> <blockquote><p>堆排序可以说是一种利用堆的概念来排序的选择排序。</p></blockquote> <h4 id="_1-算法简介-6"><a href="#_1-算法简介-6" class="header-anchor">#</a> (1)算法简介</h4> <blockquote><p>堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。</p></blockquote> <h4 id="_2-算法描述和实现-7"><a href="#_2-算法描述和实现-7" class="header-anchor">#</a> (2)算法描述和实现</h4> <p>具体算法描述如下：</p> <ul><li>&lt;1&gt;.将初始待排序关键字序列(R1,R2....Rn)构建成大顶堆，此堆为初始的无序区；</li> <li>&lt;2&gt;.将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,......Rn-1)和新的有序区(Rn),且满足R[1,2...n-1]&lt;=R[n]；</li> <li>&lt;3&gt;.由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,......Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，得到新的无序区(R1,R2....Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成。</li></ul> <p><strong>Javascript代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>/*方法说明：堆排序
+@param  array 待排序数组*/
+function heapSort(array) {
+    console.time('堆排序耗时');
+    if (Object.prototype.toString.call(array).slice(8, -1) === 'Array') {
+        //建堆
+        var heapSize = array.length, temp;
+        for (var i = Math.floor(heapSize / 2) - 1; i &gt;= 0; i--) {
+            heapify(array, i, heapSize);
+        }
+
+        //堆排序
+        for (var j = heapSize - 1; j &gt;= 1; j--) {
+            temp = array[0];
+            array[0] = array[j];
+            array[j] = temp;
+            heapify(array, 0, --heapSize);
+        }
+        console.timeEnd('堆排序耗时');
+        return array;
+    } else {
+        return 'array is not an Array!';
+    }
+}
+/*方法说明：维护堆的性质
+@param  arr 数组
+@param  x   数组下标
+@param  len 堆大小*/
+function heapify(arr, x, len) {
+    if (Object.prototype.toString.call(arr).slice(8, -1) === 'Array' &amp;&amp; typeof x === 'number') {
+        var l = 2 * x + 1, r = 2 * x + 2, largest = x, temp;
+        if (l &lt; len &amp;&amp; arr[l] &gt; arr[largest]) {
+            largest = l;
+        }
+        if (r &lt; len &amp;&amp; arr[r] &gt; arr[largest]) {
+            largest = r;
+        }
+        if (largest != x) {
+            temp = arr[x];
+            arr[x] = arr[largest];
+            arr[largest] = temp;
+            heapify(arr, largest, len);
+        }
+    } else {
+        return 'arr is not an Array or x is not a number!';
+    }
+}
+var arr=[91,60,96,13,35,65,46,65,10,30,20,31,77,81,22];
+console.log(heapSort(arr));//[10, 13, 20, 22, 30, 31, 35, 46, 60, 65, 65, 77, 81, 91, 96]
+
+复制代码
+</code></pre></div><p><strong>堆排序动图演示：</strong></p> <p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/d1ac550a097055f65ed10a50d408f40d~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p> <h4 id="_3-算法分析-6"><a href="#_3-算法分析-6" class="header-anchor">#</a> (3)算法分析</h4> <ul><li>最佳情况：T(n) = O(nlogn)</li> <li>最差情况：T(n) = O(nlogn)</li> <li>平均情况：T(n) = O(nlogn)</li></ul> <h3 id="_8-计数排序-counting-sort"><a href="#_8-计数排序-counting-sort" class="header-anchor">#</a> 8.计数排序（Counting Sort）</h3> <blockquote><p>计数排序的核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。 作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数。</p></blockquote> <h4 id="_1-算法简介-7"><a href="#_1-算法简介-7" class="header-anchor">#</a> (1)算法简介</h4> <blockquote><p>计数排序(Counting sort)是一种稳定的排序算法。计数排序使用一个额外的数组C，其中第i个元素是待排序数组A中值等于i的元素的个数。然后根据数组C来将A中的元素排到正确的位置。它只能对整数进行排序。</p></blockquote> <h4 id="_2-算法描述和实现-8"><a href="#_2-算法描述和实现-8" class="header-anchor">#</a> (2)算法描述和实现</h4> <p>具体算法描述如下：</p> <ul><li>&lt;1&gt;. 找出待排序的数组中最大和最小的元素；</li> <li>&lt;2&gt;. 统计数组中每个值为i的元素出现的次数，存入数组C的第i项；</li> <li>&lt;3&gt;. 对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）；</li> <li>&lt;4&gt;. 反向填充目标数组：将每个元素i放在新数组的第C(i)项，每放一个元素就将C(i)减去1。</li></ul> <p><strong>Javascript代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>function countingSort(array) {
+    var len = array.length,
+        B = [],
+        C = [],
+        min = max = array[0];
+    console.time('计数排序耗时');
+    for (var i = 0; i &lt; len; i++) {
+        min = min &lt;= array[i] ? min : array[i];
+        max = max &gt;= array[i] ? max : array[i];
+        C[array[i]] = C[array[i]] ? C[array[i]] + 1 : 1;
+    }
+    for (var j = min; j &lt; max; j++) {
+        C[j + 1] = (C[j + 1] || 0) + (C[j] || 0);
+    }
+    for (var k = len - 1; k &gt;= 0; k--) {
+        B[C[array[k]] - 1] = array[k];
+        C[array[k]]--;
+    }
+    console.timeEnd('计数排序耗时');
+    return B;
+}
+var arr = [2, 2, 3, 8, 7, 1, 2, 2, 2, 7, 3, 9, 8, 2, 1, 4, 2, 4, 6, 9, 2];
+console.log(countingSort(arr)); //[1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 4, 4, 6, 7, 7, 8, 8, 9, 9]
+
+复制代码
+</code></pre></div><p><strong>JavaScript动图演示：</strong>、</p> <p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/30/001a78daaa82eae890e54dc91c6a35d1~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p> <h4 id="_3-算法分析-7"><a href="#_3-算法分析-7" class="header-anchor">#</a> (3)算法分析</h4> <blockquote><p>当输入的元素是n 个0到k之间的整数时，它的运行时间是 O(n + k)。计数排序不是比较排序，排序的速度快于任何比较排序算法。由于用来计数的数组C的长度取决于待排序数组中数据的范围（等于待排序数组的最大值与最小值的差加上1），这使得计数排序对于数据范围很大的数组，需要大量时间和内存。</p></blockquote> <ul><li>最佳情况：T(n) = O(n+k)</li> <li>最差情况：T(n) = O(n+k)</li> <li>平均情况：T(n) = O(n+k)</li></ul> <h3 id="_9-桶排序-bucket-sort"><a href="#_9-桶排序-bucket-sort" class="header-anchor">#</a> 9.桶排序（Bucket Sort）</h3> <blockquote><p>桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。</p></blockquote> <h4 id="_1-算法简介-8"><a href="#_1-算法简介-8" class="header-anchor">#</a> (1)算法简介</h4> <blockquote><p>桶排序 (Bucket sort)的工作的原理：假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排</p></blockquote> <h4 id="_2-算法描述和实现-9"><a href="#_2-算法描述和实现-9" class="header-anchor">#</a> (2)算法描述和实现</h4> <p>具体算法描述如下：</p> <ul><li>&lt;1&gt;.设置一个定量的数组当作空桶；</li> <li>&lt;2&gt;.遍历输入数据，并且把数据一个一个放到对应的桶里去；</li> <li>&lt;3&gt;.对每个不是空的桶进行排序；</li> <li>&lt;4&gt;.从不是空的桶里把排好序的数据拼接起来。</li></ul> <p><strong>Javascript代码实现:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>/*方法说明：桶排序
+@param  array 数组
+@param  num   桶的数量*/
+function bucketSort(array, num) {
+    if (array.length &lt;= 1) {
+        return array;
+    }
+    var len = array.length, buckets = [], result = [], min = max = array[0], regex = '/^[1-9]+[0-9]*$/', space, n = 0;
+    num = num || ((num &gt; 1 &amp;&amp; regex.test(num)) ? num : 10);
+    console.time('桶排序耗时');
+    for (var i = 1; i &lt; len; i++) {
+        min = min &lt;= array[i] ? min : array[i];
+        max = max &gt;= array[i] ? max : array[i];
+    }
+    space = (max - min + 1) / num;
+    for (var j = 0; j &lt; len; j++) {
+        var index = Math.floor((array[j] - min) / space);
+        if (buckets[index]) {   //  非空桶，插入排序
+            var k = buckets[index].length - 1;
+            while (k &gt;= 0 &amp;&amp; buckets[index][k] &gt; array[j]) {
+                buckets[index][k + 1] = buckets[index][k];
+                k--;
+            }
+            buckets[index][k + 1] = array[j];
+        } else {    //空桶，初始化
+            buckets[index] = [];
+            buckets[index].push(array[j]);
+        }
+    }
+    while (n &lt; num) {
+        result = result.concat(buckets[n]);
+        n++;
+    }
+    console.timeEnd('桶排序耗时');
+    return result;
+}
+var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+console.log(bucketSort(arr,4));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+
+复制代码
+</code></pre></div><p><strong>桶排序图示（图片来源网络）：</strong></p> <p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/8a69eff37ef7a5cc8fa585ef3c3e8bb1~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p> <p>关于桶排序<a href="https://link.juejin.cn?target=http%3A%2F%2Fwww.cnblogs.com%2Flonelyxmas%2Fp%2F3561938.html" target="_blank" rel="noopener noreferrer">更多<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h4 id="_3-算法分析-8"><a href="#_3-算法分析-8" class="header-anchor">#</a> (3)算法分析</h4> <blockquote><p>桶排序最好情况下使用线性时间O(n)，桶排序的时间复杂度，取决与对各个桶之间数据进行排序的时间复杂度，因为其它部分的时间复杂度都为O(n)。很显然，桶划分的越小，各个桶之间的数据越少，排序所用的时间也会越少。但相应的空间消耗就会增大。</p></blockquote> <ul><li>最佳情况：T(n) = O(n+k)</li> <li>最差情况：T(n) = O(n+k)</li> <li>平均情况：T(n) = O(n2)</li></ul> <h3 id="_10-基数排序-radix-sort"><a href="#_10-基数排序-radix-sort" class="header-anchor">#</a> 10.基数排序（Radix Sort）</h3> <blockquote><p>基数排序也是非比较的排序算法，对每一位进行排序，从最低位开始排序，复杂度为O(kn),为数组长度，k为数组中的数的最大的位数；</p></blockquote> <h4 id="_1-算法简介-9"><a href="#_1-算法简介-9" class="header-anchor">#</a> (1)算法简介</h4> <blockquote><p>基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。基数排序基于分别排序，分别收集，所以是稳定的。</p></blockquote> <h4 id="_2-算法描述和实现-10"><a href="#_2-算法描述和实现-10" class="header-anchor">#</a> (2)算法描述和实现</h4> <p>具体算法描述如下：</p> <ul><li>&lt;1&gt;.取得数组中的最大数，并取得位数；</li> <li>&lt;2&gt;.arr为原始数组，从最低位开始取每个位组成radix数组；</li> <li>&lt;3&gt;.对radix进行计数排序（利用计数排序适用于小范围数的特点）；</li></ul> <p><strong>Javascript代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 基数排序适用于：
+ *  (1)数据范围较小，建议在小于1000
+ *  (2)每个数值都要大于等于0
+ * @author xiazdong
+ * @param  arr 待排序数组
+ * @param  maxDigit 最大位数
+ */
+//LSD Radix Sort
+
+function radixSort(arr, maxDigit) {
+    var mod = 10;
+    var dev = 1;
+    var counter = [];
+    console.time('基数排序耗时');
+    for (var i = 0; i &lt; maxDigit; i++, dev *= 10, mod *= 10) {
+        for(var j = 0; j &lt; arr.length; j++) {
+            var bucket = parseInt((arr[j] % mod) / dev);
+            if(counter[bucket]== null) {
+                counter[bucket] = [];
+            }
+            counter[bucket].push(arr[j]);
+        }
+        var pos = 0;
+        for(var j = 0; j &lt; counter.length; j++) {
+            var value = null;
+            if(counter[j]!=null) {
+                while ((value = counter[j].shift()) != null) {
+                      arr[pos++] = value;
+                }
+          }
+        }
+    }
+    console.timeEnd('基数排序耗时');
+    return arr;
+}
+var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
+console.log(radixSort(arr,2)); //[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+
+复制代码
+</code></pre></div><p><strong>基数排序LSD动图演示：</strong></p> <p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/54c03e0f47fcb8203389f99f65860ee6~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p> <h4 id="_3-算法分析-9"><a href="#_3-算法分析-9" class="header-anchor">#</a> (3)算法分析</h4> <ul><li>最佳情况：T(n) = O(n * k)</li> <li>最差情况：T(n) = O(n * k)</li> <li>平均情况：T(n) = O(n * k)</li></ul> <p>基数排序有两种方法：</p> <ul><li>MSD 从高位开始进行排序</li> <li>LSD 从低位开始进行排序</li></ul> <p><strong>基数排序 vs 计数排序 vs 桶排序</strong></p> <p>这三种排序算法都利用了桶的概念，但对桶的使用方法上有明显差异：</p> <ol><li>基数排序：根据键值的每位数字来分配桶</li> <li>计数排序：每个桶只存储单一键值</li> <li>桶排序：每个桶存储一定范围的数值</li></ol></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2/7/2022, 5:19:45 PM</span></div></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-3" data-v-cb1513f6><a href="/JavaScript/sort.html#排序算法说明" class="sidebar-link reco-side-排序算法说明" data-v-cb1513f6>排序算法说明</a></li><li class="level-3" data-v-cb1513f6><a href="/JavaScript/sort.html#_1-冒泡排序-bubble-sort" class="sidebar-link reco-side-_1-冒泡排序-bubble-sort" data-v-cb1513f6>1.冒泡排序（Bubble Sort）</a></li><li class="level-3" data-v-cb1513f6><a href="/JavaScript/sort.html#_2-选择排序-selection-sort" class="sidebar-link reco-side-_2-选择排序-selection-sort" data-v-cb1513f6>2.选择排序（Selection Sort）</a></li><li class="level-3" data-v-cb1513f6><a href="/JavaScript/sort.html#_3-插入排序-insertion-sort" class="sidebar-link reco-side-_3-插入排序-insertion-sort" data-v-cb1513f6>3.插入排序（Insertion Sort）</a></li><li class="level-3" data-v-cb1513f6><a href="/JavaScript/sort.html#_4-希尔排序-shell-sort" class="sidebar-link reco-side-_4-希尔排序-shell-sort" data-v-cb1513f6>4.希尔排序（Shell Sort）</a></li><li class="level-3" data-v-cb1513f6><a href="/JavaScript/sort.html#_5-归并排序-merge-sort" class="sidebar-link reco-side-_5-归并排序-merge-sort" data-v-cb1513f6>5.归并排序（Merge Sort）</a></li><li class="level-3" data-v-cb1513f6><a href="/JavaScript/sort.html#_6-快速排序-quick-sort" class="sidebar-link reco-side-_6-快速排序-quick-sort" data-v-cb1513f6>6.快速排序（Quick Sort）</a></li><li class="level-3" data-v-cb1513f6><a href="/JavaScript/sort.html#_7-堆排序-heap-sort" class="sidebar-link reco-side-_7-堆排序-heap-sort" data-v-cb1513f6>7.堆排序（Heap Sort）</a></li><li class="level-3" data-v-cb1513f6><a href="/JavaScript/sort.html#_8-计数排序-counting-sort" class="sidebar-link reco-side-_8-计数排序-counting-sort" data-v-cb1513f6>8.计数排序（Counting Sort）</a></li><li class="level-3" data-v-cb1513f6><a href="/JavaScript/sort.html#_9-桶排序-bucket-sort" class="sidebar-link reco-side-_9-桶排序-bucket-sort" data-v-cb1513f6>9.桶排序（Bucket Sort）</a></li><li class="level-3" data-v-cb1513f6><a href="/JavaScript/sort.html#_10-基数排序-radix-sort" class="sidebar-link reco-side-_10-基数排序-radix-sort" data-v-cb1513f6>10.基数排序（Radix Sort）</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><!----><!----><div></div></div></div>
+    <script src="/assets/js/app.862b4c32.js" defer></script><script src="/assets/js/3.9cc2b3a1.js" defer></script><script src="/assets/js/1.8c30e9e6.js" defer></script><script src="/assets/js/34.7f49fcdc.js" defer></script>
+  </body>
+</html>
