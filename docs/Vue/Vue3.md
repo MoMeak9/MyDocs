@@ -15,7 +15,7 @@
       - Vue2.x配置（data、methos、computed...）中<strong style="color:#DD5145">可以访问到</strong>setup中的属性、方法。
       - 但在setup中<strong style="color:#DD5145">不能访问到</strong>Vue2.x配置（data、methos、computed...）。
       - 如果有重名, setup优先。
-   2. s**etup不能是一个async函数，因为返回值不再是return的对象, 而是promise, 模板看不到return对象中的属性。**（后期也可以返回一个Promise实例，但需要Suspense和异步组件的配合）
+   2. **setup不能是一个async函数，因为返回值不再是return的对象, 而是promise, 模板看不到return对象中的属性。**（后期也可以返回一个Promise实例，但需要Suspense和异步组件的配合）
 
 ##  2.ref函数
 
@@ -57,7 +57,7 @@
 
   - **新增属性、删除属性, 界面不会更新。**
 
-  - **直接通过下标修改数组, 界面不会自动更新。**
+  - **直接通过下标修改数组, 界面不会自动更新（发生重新赋值，失去get，set方法）。**
 
     详见Vue题集解决办法
 
@@ -99,7 +99,7 @@
 -  从定义数据角度对比：
    -  ref用来定义：<strong style="color:#DD5145">基本类型数据</strong>。
    -  reactive用来定义：<strong style="color:#DD5145">对象（或数组）类型数据</strong>。
-   -  备注：ref也可以用来定义<strong style="color:#DD5145">对象（或数组）类型数据</strong>, 它内部会自动通过```reactive```转为<strong style="color:#DD5145">代理对象</strong>。
+   -  <u>备注：ref也可以用来定义<strong style="color:#DD5145">对象（或数组）类型数据</strong>, 它内部会自动通过```reactive```转为<strong style="color:#DD5145">代理对象</strong>。</u>
 -  从原理角度对比：
    -  ref通过``Object.defineProperty()``的```get```与```set```来实现响应式（数据劫持）。
    -  reactive通过使用<strong style="color:#DD5145">Proxy</strong>来实现响应式（数据劫持）, 并通过<strong style="color:#DD5145">Reflect</strong>操作<strong style="color:orange">源对象</strong>内部的数据。
@@ -125,8 +125,6 @@
 ### 1.computed函数
 
 - **与Vue2.x中computed配置功能一致**
-
-- 写法
 
   ```js
   import {computed} from 'vue'
@@ -157,8 +155,8 @@
 
 - 两个小“坑”：
 
-  - **监视reactive定义的响应式数据时：oldValue无法正确获取、强制开启了深度监视（deep配置失效）。**
-  - **监视reactive定义的响应式数据中某个属性时：deep配置有效。**
+  - **<u>监视reactive定义的响应式数据时</u>：oldValue无法正确获取、强制开启了深度监视（deep配置失效）。**
+  - **监视reactive定义的响应式数据中<u>某个属性时</u>：deep配置有效。**
 
   ```js
   //情况一：监视ref定义的响应式数据
