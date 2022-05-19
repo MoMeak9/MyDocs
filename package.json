@@ -13,7 +13,7 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "deploy":"serverless deploy"
+    "deploy":"npm run docs:build && serverless deploy"
   },
   "dependencies": {
     "vuepress-theme-reco": "^1.6.6"

@@ -201,8 +201,6 @@ this.$route.query.id
     data() { return { level: 3 } }
   }
 </script>
-
-复制代码
 ```
 
 2.render 和 template 的对比 前者适合复杂逻辑,后者适合逻辑简单; 后者属于声明是渲染，前者属于自定Render函数; 前者的性能较高，后者性能较低。

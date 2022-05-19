@@ -182,15 +182,13 @@ vue中is的属性引入是为了解决dom结构中对放入html的元素有限�
 
 26. prop验证的type类型有哪几种？
 
-8种：String、Number、Boolean、Array、Object、Date、Function、Symbol、自定义构造函数
+8种：String、Number、Boolean、Array、Object、**Date、Function、Symbol**、自定义构造函数
 
 27. 说说你对slot的理解有多少？slot使用场景有哪些？
 
     通过插槽可以让用户可以拓展组件，去更好地复用组件和对其做定制化处理
 
-    如果父组件在使用到一个复用组件的时候，获取这个组件在不同地方有少量的更改，如果去重写组件是一件不明智的事情
-
-    通过slot插槽向组件内部指定位置传递内容，完成这个复用组件在不同场景的应用
+    如果父组件在使用到一个复用组件的时候，**获取这个组件在不同地方有少量的更改，如果去重写组件是一件不明智的事情** 通过slot插槽向组件内部指定位置传递内容，完成这个复用组件在不同场景的应用
 
 28. 第一次加载页面时会触发哪几个钩子？
 
@@ -336,6 +334,13 @@ vue中is的属性引入是为了解决dom结构中对放入html的元素有限�
 
 5. vue-router有哪几种导航钩子（ 导航守卫 ）？
 
+   - 1、全局**导航钩子**
+     - **router.beforeEach(to, from, next): 路由改变前的钩子**
+     - **router.beforeResolve : 在导航被确认之前，同时在所有组件内守卫和异步路由组件被解析之后，该钩子函数就被调用**
+     - **router.afterEach : 路由改变后的钩子**
+   - 2、路由独享**钩子**
+   - 3、组件内的**导航钩子**
+
 6. 说说你对router-link的了解
 
 ## 知识点50个
@@ -473,7 +478,7 @@ Vue是MVVM框架，但是**不是严格符合MVVM**，因为MVVM规定Model和Vi
 <div v-for="item in [1, 2, 3, 4, 5, 6, 7]" v-if="item !== 3">
     {{item}}
 </div>
-复制代码
+
 ```
 
 上面的写法是`v-for`和`v-if`同时存在，会先把7个元素都遍历出来，然后再一个个判断是否为3，并把3给隐藏掉，这样的坏处就是，渲染了无用的3节点，增加无用的dom操作，建议使用computed来解决这个问题：
@@ -500,7 +505,7 @@ computed()
 - Getter：允许组件从 Store 中获取数据，mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性。
 - Mutation：是唯一更改 store 中状态的方法，且必须是同步函数。
 - Action：用于提交 mutation，而不是直接变更状态，可以包含任意异步操作。
-- Module：允许将单一的 Store 拆分为多个 store 且同时保存在单一的状态树中。
+- **Module：允许将单一的 Store 拆分为多个 store 且同时保存在单一的状态树中。**
 
 ![进阶Vuex](/blog/Vue/vuex)
 
@@ -548,7 +553,6 @@ watch: {
         // do something
     }
 }
-复制代码
 ```
 
 当我们监听一个引用数据类型时：
@@ -564,7 +568,6 @@ watch: {
         immediate:true // 是否初始执行handler函数
     }
 }
-复制代码
 ```
 
 ##### 20. 父子组件生命周期顺序
@@ -679,7 +682,6 @@ list.unshift({name: '小林', id: '122'})，渲染为
 this.name = '林三心'
 this.age = 18
 this.gender = '男'
-复制代码
 ```
 
 我们修改了三个变量，那问题来了，是每修改一次，DOM就更新一次吗？不是的，Vue采用的是`异步更新`的策略，通俗点说就是，`同一事件循环内`多次修改，会`统一`进行一次`视图更新`，这样才能节省性能嘛
@@ -693,7 +695,6 @@ name: '小林'
 
 this.name = '林三心'
 console.log(this.$refs.testDiv.innerHTML) // 这里是啥呢
-复制代码
 ```
 
 答案是“小林”，前面说了，Vue是`异步更新`，所以数据一更新，视图却还没更新，所以拿到的还是上一次的旧视图数据，那么想要拿到最新视图数据怎么办呢？
@@ -703,7 +704,6 @@ this.name = '林三心'
 this.$nextTick(() => {
     console.log(this.$refs.testDiv.innerHTML) // 林三心
 })
-复制代码
 ```
 
 ### 27. Vue的SSR是什么？有什么好处？
@@ -715,9 +715,9 @@ this.$nextTick(() => {
 
 ### 28. Vue响应式是怎么实现的？
 
-整体思路是数据劫持+观察者模式
+整体思路是**数据劫持+观察者模式**
 
-对象内部通过` defineReactive` 方法，使用 `Object.defineProperty` 将属性进行劫持（只会劫持已经存在的属性），数组则是通过重写数组方法来实现。当页面使用对应属性时，每个属性都拥有自己的`dep`
+对象内部通过` defineReactive` 方法，使用 `Object.defineProperty` 将属性进行劫持（只会劫持已经存在的属性），**数组则是通过重写数组方法来实现**。当页面使用对应属性时，每个属性都拥有自己的`dep`
 属性，存放他所依赖的` watcher`（依赖收集），当属性变化后会通知自己对应的` watcher` 去更新(派发更新)。
 
 想详细了解过程，建议阅读我的[Vue源码解析系列](https://juejin.cn/column/6969563635194527758)
@@ -847,12 +847,11 @@ methodsToPatch.forEach(method => {
     }
 })
 
-复制代码
 ```
 
 ### 29. 为什么只对对象劫持，而要对数组进行方法重写？
 
-因为对象最多也就几十个属性，拦截起来数量不多，但是数组可能会有几百几千项，拦截起来非常耗性能，所以直接重写数组原型上的方法，是比较节省性能的方案
+因为对象最多也就几十个属性，拦截起来数量不多，**但是数组可能会有几百几千项，拦截起来非常耗性能，所以直接重写数组原型上的方法，是比较节省性能的方案**
 
 ### 30. Vue的模板编译原理？
 
@@ -891,8 +890,6 @@ function set(target, key, val) {
     defineReactive(target, key, val)
     return val
 }
-
-复制代码
 ```
 
 ### 33. Vue.delete方法的原理？
@@ -920,8 +917,6 @@ function del(target, key) {
     // 是的话，删除后要通知视图更新
     ob.dep.notify()
 }
-
-复制代码
 ```
 
 ### 34. nextTick的原理？
@@ -976,8 +971,6 @@ export function nextTick(cb) {
         timerFunc();
     }
 }
-
-复制代码
 ```
 
 ### 35. key有什么用？说说diff算法吧？
@@ -1002,7 +995,6 @@ created()
 {
     this.num = 999
 }
-复制代码
 ```
 
 ![0458e2ff1538ee85d42953cec9a94ca.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/047859eda3bf47a5930dd0b28e842017~tplv-k3u1fbpfcp-watermark.awebp)
