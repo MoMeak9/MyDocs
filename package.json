@@ -6,14 +6,14 @@
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.8.2",
     "@vuepress/plugin-blog": "^1.9.4",
+    "ssh-publish": "^1.1.1",
     "vuepress": "^1.8.2",
     "vuepress-plugin-dynamic-title": "^1.0.0",
     "vuepress-plugin-nuggets-style-copy": "^1.0.3"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "deploy":"npm run docs:build && serverless deploy"
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "vuepress-theme-reco": "^1.6.6"

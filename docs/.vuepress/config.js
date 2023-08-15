@@ -1,6 +1,8 @@
 // .vuepress/config.js
 const sidebar = require("./config/sidebar")
 module.exports = {
+    // 构建位置
+    dest: 'dist',
     head: [
         [
             'link', // 设置 favicon.ico，注意图片放在 public 文件夹下
@@ -53,8 +55,6 @@ module.exports = {
             {text: '面试题汇总', link: '/wiki/interview/', target: '_blank'}
         ],
         // 备案
-        record: '闽ICP备19026932号-1',
-        recordLink: 'https://beian.miit.gov.cn/',
         // 项目开始时间，只填写年份
         startYear: '2021',
         searchMaxSuggestions: 10,
