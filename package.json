@@ -13,7 +13,8 @@
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "deploy": "npm run docs:build && s2p publish"
   },
   "dependencies": {
     "vuepress-theme-reco": "^1.6.6"

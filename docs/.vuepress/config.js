@@ -23,7 +23,7 @@ module.exports = {
             "src": "/js/MouseClickEffect.js"
         }]
     ],
-    base: '/MyDocs/',
+    base: '/',
     title: "Yihui's docs",
     description: '个人文档管理站点',
     plugins: ['@vuepress/back-to-top',
